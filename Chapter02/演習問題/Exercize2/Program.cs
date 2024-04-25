@@ -19,16 +19,16 @@ namespace Exercize2 {
 
         //インチからメートルへの対応表を出力
         private static void PrintInchToMeterList(int start, int stop) {
-            for (int Inch = start; Inch <= stop; Inch++) {
-                double meter = InchConverter.ToMeter(Inch);
-                Console.WriteLine("{0}inch = {1:0.0000} m", Inch, meter);
+            for (int inch = start; inch <= stop; inch++) {
+                double meter = InchConverter.ToMeter(inch);
+                Console.WriteLine("{0}inch = {1:0.0000} m", inch, meter);
             }
         }
         //メートルからインチへの対応表を出力
         private static void PrintMeterToInchList(int start, int stop) {
             for (int meter = start; meter <= stop; meter++) {
-                double Inch = InchConverter.FromMeter(meter);
-                Console.WriteLine("{0}m = {1:0.0000} inch", meter, Inch);
+                double inch = InchConverter.FromMeter(meter);
+                Console.WriteLine("{0}m = {1:0.0000} inch", meter, inch);
             }
         }
 
