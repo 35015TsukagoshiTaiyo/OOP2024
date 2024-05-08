@@ -6,7 +6,6 @@ namespace BallApp {
         //コンストラクタ
         public Form1() {
             InitializeComponent();
-
         }
 
         //フォームが最初にロードされるとき一度だけ実行される
@@ -19,18 +18,20 @@ namespace BallApp {
         }
 
         private void Form1_MouseClick(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Left) {
+                pb = new PictureBox();   //画像を表示するコントロール
+                pb.Size = new Size(50, 50);
 
-            pb = new PictureBox();   //画像を表示するコントロール
-            pb.Size = new Size(50, 50);
+                soccerBall = new SoccerBall(e.X - 25, e.Y - 25);
+                pb.Image = soccerBall.Image;
+                pb.Location = new Point((int)soccerBall.PosX, (int)soccerBall.PosY);
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                pb.Parent = this;
 
-            soccerBall = new SoccerBall(e.X-25,e.Y-25);
+                timer1.Start();
+            }
 
-            pb.Image = soccerBall.Image;
-            pb.Location = new Point((int)soccerBall.PosX,(int)soccerBall.PosY);
-            pb.SizeMode = PictureBoxSizeMode.StretchImage;
-            pb.Parent = this;
 
-            timer1.Start();
 
         }
     }
