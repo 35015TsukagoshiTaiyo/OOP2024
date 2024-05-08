@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise1", "Chapter02\演�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercize2", "Chapter02\演習問題\Exercize2\Exercize2.csproj", "{178D7AC5-4B82-48F2-84F3-41DDB2A7DF80}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FormApps", "FormApps", "{2F64A0C8-F8B2-43BE-BECE-35677B0CCC3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallApp", "FormApps\BallApp\BallApp.csproj", "{DA5D250A-F528-4100-93DE-4B7DC833D32A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{178D7AC5-4B82-48F2-84F3-41DDB2A7DF80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{178D7AC5-4B82-48F2-84F3-41DDB2A7DF80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{178D7AC5-4B82-48F2-84F3-41DDB2A7DF80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA5D250A-F528-4100-93DE-4B7DC833D32A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA5D250A-F528-4100-93DE-4B7DC833D32A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA5D250A-F528-4100-93DE-4B7DC833D32A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA5D250A-F528-4100-93DE-4B7DC833D32A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +77,7 @@ Global
 		{22C4BCC9-B446-4D79-B292-A60040E7BC40} = {5F329CBF-E2AA-420F-A9D7-0127C7E075E6}
 		{62228BED-C58E-4AED-9768-DDB4D6C8BA6C} = {22C4BCC9-B446-4D79-B292-A60040E7BC40}
 		{178D7AC5-4B82-48F2-84F3-41DDB2A7DF80} = {22C4BCC9-B446-4D79-B292-A60040E7BC40}
+		{DA5D250A-F528-4100-93DE-4B7DC833D32A} = {2F64A0C8-F8B2-43BE-BECE-35677B0CCC3E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A44D47AA-6067-4388-8A83-636FB27FF96A}
