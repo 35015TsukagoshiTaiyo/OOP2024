@@ -64,6 +64,8 @@ namespace BallApp {
 
             bar.Move(e.KeyCode);
             pbBar.Location= new Point((int)bar.PosX, (int)bar.PosY);
+
+
         }
     }
 }
