@@ -26,28 +26,31 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_1(List<int> numbers) {
-            var exits = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
-            Console.WriteLine(exits);
+            var exist = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
+            Console.WriteLine(exist);
         }
 
         private static void Exercise1_2(List<int> numbers) {
-            var halfNum = numbers.ConvertAll(s => s / 2.0);
-            halfNum.ForEach(s => Console.WriteLine(s));
+            //var halfNum = numbers.ConvertAll(s => s / 2.0);
+            //halfNum.ForEach(s => Console.WriteLine(s));
+            numbers.ForEach(s=> Console.WriteLine(s/2.0));
         }
 
         private static void Exercise1_3(List<int> numbers) {
-            IEnumerable<int> query = numbers.Where(s => s >= 50);
-            foreach (int num in query) {
-                Console.WriteLine(num);
-            }
+            //IEnumerable<int> query = numbers.Where(s => s >= 50);
+            //foreach (int num in query) {
+            //    Console.WriteLine(num);
+            //}
+            numbers.Where(s => s >= 50).ToList().ForEach(s=> Console.WriteLine(s));
         }
 
         private static void Exercise1_4(List<int> numbers) {
-            IEnumerable<int> query = numbers.Select(s => s * 2);
-            List<int> twiceNum = query.ToList();
-            foreach(int num in twiceNum) {
-                Console.WriteLine(num);
-            }
+            //IEnumerable<int> query = numbers.Select(s => s * 2);
+            //List<int> twiceNum = query.ToList();
+            //foreach(int num in twiceNum) {
+            //    Console.WriteLine(num);
+            //}
+            numbers.Select(s => s * 2).ToList().ForEach(s => Console.WriteLine(s));
         }
     }
 }
