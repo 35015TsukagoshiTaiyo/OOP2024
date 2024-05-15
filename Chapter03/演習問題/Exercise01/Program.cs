@@ -28,7 +28,8 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(List<int> numbers) {
-            
+            var halfNum = numbers.ConvertAll(s => s / 2.0);
+            halfNum.ForEach(s => Console.WriteLine(s));
         }
 
         private static void Exercise1_3(List<int> numbers) {
