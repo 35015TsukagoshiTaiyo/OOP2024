@@ -13,8 +13,14 @@ namespace BallApp {
         public SoccerBall(double xp, double yp)
             : base(xp - 25, yp - 25, @"Picture\soccer_ball.png") {
 
+#if DEBUG
+            MoveX = 5;
+            MoveY = 5;
+#else
             MoveX = rand.Next(-25, 25);//移動量設定
             MoveY = rand.Next(-25, 25);
+#endif
+
             Count++;
         }
         //戻り値：０…移動OK、１…落下した、２…バーに当たった
@@ -41,7 +47,7 @@ namespace BallApp {
             PosY += MoveY;
 
             //下に落下したか
-            if (PosY > 500) {
+            if (PosY > 600) {
                 ret = 1;
             }
 

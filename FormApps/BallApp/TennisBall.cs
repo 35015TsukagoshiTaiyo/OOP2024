@@ -41,7 +41,7 @@ namespace BallApp {
             PosY += MoveY;
 
             //下に落下したか
-            if (PosY > 500) {
+            if (PosY > 600) {
                 ret = 1;
             }
 
