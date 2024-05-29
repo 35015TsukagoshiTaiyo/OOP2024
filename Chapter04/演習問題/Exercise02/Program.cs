@@ -33,12 +33,26 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_2(YearMonth[] ymCollection) {
+            foreach (var yearMonth in ymCollection) {
+                Console.WriteLine(yearMonth);
+            }
         }
 
         private static void Exercise2_4(YearMonth[] ymCollection) {
+            foreach (var yearMonth in ymCollection) {
+                if (yearMonth.Is21Century) {
+                    Console.WriteLine(yearMonth.ToString());
+                    break;
+                } else {
+                    
+                }
+                
+            }
+
         }
 
         private static void Exercise2_5(YearMonth[] ymCollection) {
+            var newYearMonth = new YearMonth[ymCollection.Length];
         }
     }
 }
