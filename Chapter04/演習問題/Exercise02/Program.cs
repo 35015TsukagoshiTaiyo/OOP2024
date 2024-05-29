@@ -42,26 +42,25 @@ namespace Exercise02 {
             foreach (var yearMonth in yms) {
                 if (yearMonth.Is21Century) {
                     return yearMonth;
-                } 
+                }
             }
             return null;
         }
 
 
         private static void Exercise2_4(YearMonth[] ymCollection) {
+            //var yearMonth = FindFirst21C(ymCollection);
+            //if (yearMonth == null) {
+            //    Console.WriteLine("21世紀のデータではありません");
+            //} else {
+            //    Console.WriteLine(yearMonth);
+            //}
             var yearMonth = FindFirst21C(ymCollection);
-            if (yearMonth == null) {
-                Console.WriteLine("21世紀ではありません");
-            } else {
-                Console.WriteLine(yearMonth);
-            }
+            Console.WriteLine((yearMonth == null) ? "21世紀のデータではありません" : yearMonth.ToString());
         }
 
         private static void Exercise2_5(YearMonth[] ymCollection) {
-            var newYearMonth = ymCollection.Select(ym=> ym.AddOneMonth());
-            //for (int i = 0; i < ymCollection.Length; i++) {
-            //    newYearMonth[i] = ymCollection[i].AddOneMonth();
-            //}
+            var newYearMonth = ymCollection.Select(ym => ym.AddOneMonth()).ToArray();
             foreach (var yearMonth in newYearMonth) {
                 Console.WriteLine(yearMonth);
             }
