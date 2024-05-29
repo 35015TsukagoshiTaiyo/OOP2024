@@ -16,7 +16,7 @@ namespace Exercise02 {
                 new YearMonth(1980, 1),
                 new YearMonth(2000, 9),
                 new YearMonth(2000, 12),
-};
+            };
 
             // 4.2.2
             Console.WriteLine("\n- 4.2.2 ---");
@@ -49,7 +49,7 @@ namespace Exercise02 {
 
 
         private static void Exercise2_4(YearMonth[] ymCollection) {
-            YearMonth yearMonth = FindFirst21C(ymCollection);
+            var yearMonth = FindFirst21C(ymCollection);
             if (yearMonth == null) {
                 Console.WriteLine("21世紀ではありません");
             } else {
@@ -58,10 +58,10 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_5(YearMonth[] ymCollection) {
-            var newYearMonth = new YearMonth[ymCollection.Length];
-            for (int i = 0; i < ymCollection.Length; i++) {
-                newYearMonth[i] = ymCollection[i].AddOneMonth();
-            }
+            var newYearMonth = ymCollection.Select(ym=> ym.AddOneMonth());
+            //for (int i = 0; i < ymCollection.Length; i++) {
+            //    newYearMonth[i] = ymCollection[i].AddOneMonth();
+            //}
             foreach (var yearMonth in newYearMonth) {
                 Console.WriteLine(yearMonth);
             }
