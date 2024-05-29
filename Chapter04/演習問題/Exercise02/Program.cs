@@ -14,8 +14,8 @@ namespace Exercise02 {
                 new YearMonth(1990, 4),
                 new YearMonth(2000, 7),
                 new YearMonth(1980, 1),
-                new YearMonth(2010, 9),
-                new YearMonth(2020, 12),
+                new YearMonth(2000, 9),
+                new YearMonth(2000, 12),
 };
 
             // 4.2.2
@@ -37,22 +37,35 @@ namespace Exercise02 {
                 Console.WriteLine(yearMonth);
             }
         }
+        //4.2.3
+        static YearMonth FindFirst21C(YearMonth[] yms) {
+            foreach (var yearMonth in yms) {
+                if (yearMonth.Is21Century) {
+                    return yearMonth;
+                } 
+            }
+            return null;
+        }
+
 
         private static void Exercise2_4(YearMonth[] ymCollection) {
-            foreach (var yearMonth in ymCollection) {
-                if (yearMonth.Is21Century) {
-                    Console.WriteLine(yearMonth.ToString());
-                    break;
-                } else {
-                    
-                }
-                
+            YearMonth yearMonth = FindFirst21C(ymCollection);
+            if (yearMonth == null) {
+                Console.WriteLine("21世紀ではありません");
+            } else {
+                Console.WriteLine(yearMonth);
             }
-
         }
 
         private static void Exercise2_5(YearMonth[] ymCollection) {
             var newYearMonth = new YearMonth[ymCollection.Length];
+            for (int i = 0; i < ymCollection.Length; i++) {
+                newYearMonth[i] = ymCollection[i].AddOneMonth();
+            }
+            foreach (var yearMonth in newYearMonth) {
+                Console.WriteLine(yearMonth);
+            }
+
         }
     }
 }
