@@ -36,15 +36,17 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_3(string text) {
-            string[] words = text.Split(' ');
-            Console.WriteLine($"単語数：{words.Length} ");
+            //string[] words = text.Split(' ');
+            //Console.WriteLine($"単語数：{words.Length} ");
+            int count = text.Split(' ').Length;
+            Console.WriteLine("単語数：{0}", count);
         }
 
         private static void Exercise3_4(string text) {
             string[] words = text.Split(' ');
             foreach (var word in words) {
                 if (word.Length <= 4) {
-                    Console.WriteLine(word);    
+                    Console.WriteLine(word);
                 }
             }
         }
@@ -52,8 +54,8 @@ namespace Exercise03 {
         private static void Exercise3_5(string text) {
             string[] words = text.Split(' ');
             StringBuilder sb = new StringBuilder();
-            foreach(var word in words) {
-                sb.Append(word+' ');
+            foreach (var word in words) {
+                sb.Append(word + ' ');
             }
             Console.WriteLine(sb);
         }
