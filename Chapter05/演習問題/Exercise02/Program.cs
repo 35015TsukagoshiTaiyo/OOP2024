@@ -13,7 +13,8 @@ namespace Exercise02 {
             int num;
 
             if (int.TryParse(str, out num)) {
-                string numStr = String.Format("{0:#,#}", num);
+                //string numStr = String.Format("{0:#,#}", num);
+                string numStr = String.Format($"{num:#,#}");
                 Console.WriteLine(numStr);
             } else { 
                 Console.WriteLine("数字文字列ではありません");
