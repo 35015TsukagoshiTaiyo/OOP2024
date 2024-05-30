@@ -25,7 +25,8 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_1(string text) {
-            int spaceCount = text.Where(c => c == ' ').Count();
+            //int spaceCount = text.Where(c => c == ' ').Count();
+            var spaceCount = text.Count(c => c == ' ');
             Console.WriteLine("空白の数：" + spaceCount);
         }
 
