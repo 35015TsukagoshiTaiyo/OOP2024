@@ -40,7 +40,12 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_4(string text) {
-
+            string[] words = text.Split(' ');
+            foreach (var word in words) {
+                if (word.Length <= 4) {
+                    Console.WriteLine(word);    
+                }
+            }
         }
 
         private static void Exercise3_5(string text) {
