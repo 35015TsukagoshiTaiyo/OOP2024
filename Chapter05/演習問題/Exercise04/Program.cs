@@ -9,14 +9,14 @@ namespace Exercise04 {
         static void Main(string[] args) {
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
 
-            string[] str = line.Split(';');
-            foreach(string s in str) {
-                string[] equal = s.Split
+            var replaced = line.Replace("Novelist=", "作家：")
+                               .Replace("BestWork=","代表作：")
+                               .Replace("Born=","誕生年：");
 
+            string[] str = replaced.Split(';');
+            foreach (string s in str) { 
+                Console.WriteLine(s);
             }
-        
-        
-        
         }
 
         //できたら以下のメソッドを完成させて利用する

@@ -43,11 +43,15 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_4(string text) {
-            string[] words = text.Split(' ');
+            //string[] words = text.Split(' ');
+            //foreach (var word in words) {
+            //    if (word.Length <= 4) {
+            //        Console.WriteLine(word);
+            //    }
+            //}
+            var words = text.Split(' ').Where(s => s.Length <= 4);
             foreach (var word in words) {
-                if (word.Length <= 4) {
-                    Console.WriteLine(word);
-                }
+                Console.WriteLine(word);
             }
         }
 
