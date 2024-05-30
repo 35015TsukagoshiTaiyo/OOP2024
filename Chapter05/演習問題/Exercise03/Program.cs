@@ -69,13 +69,15 @@ namespace Exercise03 {
         }
         private static void Exercise3_6(string text) {
             string[] words = text.Split(new[] { ' ', ',', '_' }).ToArray();
-            var sb = new StringBuilder();
-            foreach (var word in words) {
-                sb.Append(word);
-                sb.Append(' ');
+            if (words.Length >= 1) {
+                var sb = new StringBuilder(words[0]);
+                foreach (var word in words.Skip(1)) {
+                    sb.Append(' ');
+                    sb.Append(word);
+                }
+                Console.WriteLine(sb);
             }
-            Console.WriteLine(sb);
         }
-        
-}
+
+    }
 }
