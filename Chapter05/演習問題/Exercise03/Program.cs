@@ -52,7 +52,7 @@ namespace Exercise03 {
             string[] words = text.Split(' ');
             StringBuilder sb = new StringBuilder();
             foreach(var word in words) {
-                sb.Append(word);
+                sb.Append(word+' ');
             }
             Console.WriteLine(sb);
         }

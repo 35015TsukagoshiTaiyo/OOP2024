@@ -10,6 +10,10 @@ namespace Exercise04 {
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
 
 
+            
+
+
+
         }
 
         //できたら以下のメソッドを完成させて利用する
