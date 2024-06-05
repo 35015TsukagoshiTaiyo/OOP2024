@@ -37,14 +37,18 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3(int[] numbers) {
-            var strings = numbers.Select(n=> n.ToString("0000")).ToArray();
+            var strings = numbers.Select(n => n.ToString("0000")).ToArray();
             foreach (var num in strings) {
                 Console.WriteLine(num);
             }
         }
 
         private static void Exercise1_4(int[] numbers) {
-
+            var sortNumbers = numbers.OrderBy(n => n);
+            var selected = numbers.Take(3).ToArray();
+            foreach(var num in selected) {
+                Console.WriteLine(num);
+            }
         }
 
         private static void Exercise1_5(int[] numbers) {
