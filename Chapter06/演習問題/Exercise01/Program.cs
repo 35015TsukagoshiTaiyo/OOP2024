@@ -30,10 +30,15 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(int[] numbers) {
-            var selected = numbers.Skip(numbers.Length - 2).ToArray();
-            foreach (var num in selected) {
-                Console.WriteLine(num);
+            //var selected = numbers.Skip(numbers.Length - 2).ToArray();
+            //foreach (var num in selected) {
+            //    Console.WriteLine(num);
+            //}
+            var skip = numbers.Length - 2;
+            foreach (var number in numbers.Skip(skip)) { 
+                Console.WriteLine(number);
             }
+
         }
 
         private static void Exercise1_3(int[] numbers) {
