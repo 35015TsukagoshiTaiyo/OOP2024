@@ -35,30 +35,32 @@ namespace Exercise01 {
             //    Console.WriteLine(num);
             //}
             var skip = numbers.Length - 2;
-            foreach (var number in numbers.Skip(skip)) { 
+            foreach (var number in numbers.Skip(skip)) {
                 Console.WriteLine(number);
             }
 
         }
 
         private static void Exercise1_3(int[] numbers) {
-            var strings = numbers.Select(n => n.ToString("0000")).ToArray();
+            var strings = numbers.Select(n => n.ToString());
             foreach (var num in strings) {
                 Console.WriteLine(num);
             }
         }
 
         private static void Exercise1_4(int[] numbers) {
-            var sortNumbers = numbers.OrderBy(n => n).Take(3).ToArray();
-            foreach(var num in sortNumbers) {
-                Console.WriteLine(num);
+            //var sortNumbers = numbers.OrderBy(n => n).Take(3);
+            //foreach(var num in sortNumbers) {
+            //    Console.WriteLine(num);
+            //}
+            foreach (var number in numbers.OrderBy(n => n).Take(3)) {
+                Console.WriteLine(number);
             }
         }
 
         private static void Exercise1_5(int[] numbers) {
-            var newNumbers =numbers.Distinct().ToArray();
-            var count = newNumbers.Count(n => n > 10);
-            Console.WriteLine(count);
+            var newNumbers = numbers.Distinct().Count(n => n > 10);
+            Console.WriteLine(newNumbers);
         }
     }
 }
