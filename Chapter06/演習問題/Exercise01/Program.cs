@@ -52,7 +52,7 @@ namespace Exercise01 {
 
         private static void Exercise1_5(int[] numbers) {
             var newNumbers =numbers.Distinct().ToArray();
-            var count = numbers.Count(n => n > 10);
+            var count = newNumbers.Count(n => n > 10);
             Console.WriteLine(count);
         }
     }
