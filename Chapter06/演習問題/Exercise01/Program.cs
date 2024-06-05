@@ -26,23 +26,26 @@ namespace Exercise01 {
 
         private static void Exercise1_1(int[] numbers) {
             var maxNum = numbers.Max();
-            Console.WriteLine("最大値："+maxNum);
+            Console.WriteLine("最大値：" + maxNum);
         }
 
         private static void Exercise1_2(int[] numbers) {
-
+            var selected = numbers.Skip(numbers.Length - 2).ToArray();
+            foreach (var num in selected) {
+                Console.WriteLine(num);
+            }
         }
 
         private static void Exercise1_3(int[] numbers) {
-            
+
         }
 
         private static void Exercise1_4(int[] numbers) {
-            
+
         }
 
         private static void Exercise1_5(int[] numbers) {
-            
+
         }
     }
 }
