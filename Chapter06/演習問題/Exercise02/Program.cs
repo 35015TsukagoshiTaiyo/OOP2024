@@ -71,7 +71,10 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_6(List<Book> books) {
-            
+            var sortBooks = books.Where(b=> b.Pages>= 400).OrderByDescending(b=>b.Price);
+            foreach (var book in sortBooks) { 
+                Console.WriteLine("タイトル：{0} 価格：{1}",book.Title,book.Price);
+            }
         }
 
         private static void Exercise2_7(List<Book> books) {
