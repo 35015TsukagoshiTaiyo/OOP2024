@@ -55,9 +55,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<Book> books) {
-            var countBook = books.Where(b => b.Title.Contains("C#"));
-            var average = countBook.Average(b => b.Pages);
-            Console.WriteLine("平均ページ数：" + average);
+            var countBook = books.Where(b => b.Title.Contains("C#")).Average(b=>b.Pages);
+            Console.WriteLine("平均ページ数：" + countBook);
         }
 
         private static void Exercise2_4(List<Book> books) {
