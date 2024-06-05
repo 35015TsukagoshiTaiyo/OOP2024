@@ -24,7 +24,7 @@ namespace Exercise03 {
             Exercise3_5(text);
             Console.WriteLine("-----");
 
-            Exercise3_6(text);
+            Exercise3_6(text2);
         }
 
         private static void Exercise3_1(string text) {

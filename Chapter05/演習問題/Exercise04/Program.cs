@@ -12,9 +12,7 @@ namespace Exercise04 {
             string[] pairs = line.Split(';');
             foreach (string pair in pairs) {
                 string[] keyValue = pair.Split('=');
-                string key = keyValue[0];
-                string value = keyValue[1];
-                Console.WriteLine(ToJapanese(key) + value);
+                Console.WriteLine(ToJapanese(keyValue[0]) + keyValue[1]);
             }
         }
 
@@ -27,9 +25,8 @@ namespace Exercise04 {
                     return "代表作：";
                 case "Born":
                     return "誕生年：";
-                default:
-                    return "";
             }
+            throw new ArgumentException("引数に誤りがあります");
         }
     }
 }
