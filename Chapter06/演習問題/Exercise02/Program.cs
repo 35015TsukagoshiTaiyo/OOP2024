@@ -47,7 +47,7 @@ namespace Exercise02 {
         private static void Exercise2_1(List<Book> books) {
             var selected = books.Where(b => b.Title == "ワンダフル・C#ライフ");
             foreach (var book in selected) {
-                Console.WriteLine("{0}:{1}円 {2}ページ",book.Title, book.Price, book.Pages);
+                Console.WriteLine("{0}:{1}円 {2}ページ", book.Title, book.Price, book.Pages);
             }
         }
 
@@ -57,18 +57,19 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<Book> books) {
-            var countBook = books.Where(b => b.Title.Contains("C#")).Average(b=>b.Pages);
-            Console.WriteLine("平均ページ数：" + countBook);
+            var average = books.Where(b => b.Title.Contains("C#")).Average(b => b.Pages);
+            Console.WriteLine("平均ページ数：" + average);
         }
 
         private static void Exercise2_4(List<Book> books) {
             var book = books.FirstOrDefault(b => b.Price >= 4000);
-            Console.WriteLine(book.Title);
+            if(book != null)
+                Console.WriteLine(book.Title);
         }
 
         private static void Exercise2_5(List<Book> books) {
-            var book = books.Where(b => b.Price < 4000).Max(b => b.Pages);
-            Console.WriteLine("ページ数：" + book);
+            var pages = books.Where(b => b.Price < 4000).Max(b => b.Pages);
+            Console.WriteLine("ページ数：" + pages);
         }
 
         private static void Exercise2_6(List<Book> books) {
