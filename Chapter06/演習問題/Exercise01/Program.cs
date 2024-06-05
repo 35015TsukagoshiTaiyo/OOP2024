@@ -45,7 +45,7 @@ namespace Exercise01 {
 
         private static void Exercise1_4(int[] numbers) {
             var sortNumbers = numbers.OrderBy(n => n);
-            var selected = numbers.Take(3).ToArray();
+            var selected = sortNumbers.Take(3).ToArray();
             foreach(var num in selected) {
                 Console.WriteLine(num);
             }
