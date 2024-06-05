@@ -46,7 +46,7 @@ namespace Exercise02 {
 
         private static void Exercise2_1(List<Book> books) {
             var selected = books.Where(b => b.Title == "ワンダフル・C#ライフ").ToList();
-            selected.ForEach(b=> Console.WriteLine("価格：{0}　ページ数：{1}",b.Price,b.Pages));
+            selected.ForEach(b => Console.WriteLine("価格：{0}　ページ数：{1}", b.Price, b.Pages));
         }
 
         private static void Exercise2_2(List<Book> books) {
@@ -57,7 +57,7 @@ namespace Exercise02 {
         private static void Exercise2_3(List<Book> books) {
             var countBook = books.Where(b => b.Title.Contains("C#"));
             var average = countBook.Average(b => b.Pages);
-            Console.WriteLine("平均ページ数："+average);
+            Console.WriteLine("平均ページ数：" + average);
         }
 
         private static void Exercise2_4(List<Book> books) {
@@ -66,19 +66,22 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_5(List<Book> books) {
-            var book = books.Where(b => b.Price < 4000).Max(b=> b.Pages);
-            Console.WriteLine("ページ数："+book);
+            var book = books.Where(b => b.Price < 4000).Max(b => b.Pages);
+            Console.WriteLine("ページ数：" + book);
         }
 
         private static void Exercise2_6(List<Book> books) {
-            var sortBooks = books.Where(b=> b.Pages>= 400).OrderByDescending(b=>b.Price);
-            foreach (var book in sortBooks) { 
-                Console.WriteLine("タイトル：{0} 価格：{1}",book.Title,book.Price);
+            var sortBooks = books.Where(b => b.Pages >= 400).OrderByDescending(b => b.Price);
+            foreach (var book in sortBooks) {
+                Console.WriteLine("タイトル：{0} 価格：{1}", book.Title, book.Price);
             }
         }
 
         private static void Exercise2_7(List<Book> books) {
-            
+            var selectBook = books.Where(b => b.Title.Contains("C#")).Where(b => b.Pages <= 500);
+            foreach (var book in selectBook) {
+                Console.WriteLine("タイトル：" + book.Title);
+            }
         }
     }
 }
