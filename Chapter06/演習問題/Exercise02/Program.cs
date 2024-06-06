@@ -63,7 +63,7 @@ namespace Exercise02 {
 
         private static void Exercise2_4(List<Book> books) {
             var book = books.FirstOrDefault(b => b.Price >= 4000);
-            if(book != null)
+            if (book != null)
                 Console.WriteLine(book.Title);
         }
 
@@ -80,7 +80,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_7(List<Book> books) {
-            var selectBook = books.Where(b => b.Title.Contains("C#")).Where(b => b.Pages <= 500);
+            //var selectBook = books.Where(b => b.Title.Contains("C#")).Where(b => b.Pages <= 500);
+            var selectBook = books.Where(b => b.Title.Contains("C#") && b.Pages <= 500);
             foreach (var book in selectBook) {
                 Console.WriteLine("タイトル：" + book.Title);
             }
