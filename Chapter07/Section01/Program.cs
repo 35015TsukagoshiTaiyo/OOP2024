@@ -34,8 +34,7 @@ namespace Section01 {
                 string value;
                 if (prefecturesDict.ContainsKey(key)) {
                     Console.WriteLine("上書きしますか？ yes/no");
-                    string response = Console.ReadLine();
-                    if (response.ToLower() == "yes") {
+                    if (Console.ReadLine().ToLower() == "yes") {
                         Console.Write("県庁所在地：");
                         value = Console.ReadLine();
                         prefecturesDict[key] = value;
@@ -47,7 +46,7 @@ namespace Section01 {
                 }
             }
 
-            bool isLoop = true;
+            bool isLoop = false;
             do {
                 Console.WriteLine("*メニュー*");
                 Console.WriteLine("1.一覧表示");
@@ -60,7 +59,6 @@ namespace Section01 {
                             foreach (var item in prefecturesDict) {
                                 Console.WriteLine("「{0}」の県庁所在地は「{1}」です", item.Key, item.Value);
                             }
-                            isLoop = false;
                             break;
                         case 2:
                             Console.Write("都道府県：");
@@ -72,17 +70,17 @@ namespace Section01 {
                             }
                             break;
                         case 9:
-                            isLoop = false;
+                            isLoop = true;
                             break;
                         default:
                             Console.WriteLine("エラーです");
-                            isLoop = false;
+                            isLoop = true;
                             break;
                     }
                 } else {
                     Console.WriteLine("正しく数値が入力されていません");
                 }
-            } while (isLoop);
+            } while (!isLoop);
         }
     }
 }
