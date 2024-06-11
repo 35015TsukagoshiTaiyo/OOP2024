@@ -24,51 +24,65 @@ namespace Section01 {
 
             var prefecturesDict = new Dictionary<string, string>();
             Console.WriteLine("県庁所在地の登録");
-            while(true){
+            while (true) {
                 Console.Write("都道府県：");
                 string key = Console.ReadLine();
                 if (key == null) {
                     break;
                 }
-                Console.Write("県庁所在地：");
-                string value = Console.ReadLine();
-                prefecturesDict.Add(key, value);
+
+                string value;
+                if (prefecturesDict.ContainsKey(key)) {
+                    Console.WriteLine("上書きしますか？ yes/no");
+                    string response = Console.ReadLine();
+                    if (response.ToLower() == "yes") {
+                        Console.Write("県庁所在地：");
+                        value = Console.ReadLine();
+                        prefecturesDict[key] = value;
+                    }
+                } else {
+                    Console.Write("県庁所在地：");
+                    value = Console.ReadLine();
+                    prefecturesDict.Add(key, value);
+                }
             }
 
-            bool judge = true;
+            bool isLoop = true;
             do {
                 Console.WriteLine("*メニュー*");
                 Console.WriteLine("1.一覧表示");
                 Console.WriteLine("2.検索");
                 Console.WriteLine("9.終了");
-                var selectNum = int.Parse(Console.ReadLine());
-
-                switch (selectNum) {
-                    case 1:
-                        foreach (var item in prefecturesDict) {
-                            Console.WriteLine("「{0}」の県庁所在地は「{1}」です", item.Key, item.Value);
-                        }
-                        judge = false;
-                        break;
-                    case 2:
-                        Console.Write("都道府県：");
-                        string key = Console.ReadLine();
-                        if (prefecturesDict.ContainsKey(key)) {
-                            Console.WriteLine("県庁所在地：" + prefecturesDict[key]);
-                        } else {
-                            Console.WriteLine("登録されていません");
-                        }
-                        break;
-                    case 9:
-                        judge = false;
-                        break;
-                    default:
-                        Console.WriteLine("エラーです");
-                        judge = false;
-                        break;
+                int menuNum;
+                if (int.TryParse(Console.ReadLine(), out menuNum)) {
+                    switch (menuNum) {
+                        case 1:
+                            foreach (var item in prefecturesDict) {
+                                Console.WriteLine("「{0}」の県庁所在地は「{1}」です", item.Key, item.Value);
+                            }
+                            isLoop = false;
+                            break;
+                        case 2:
+                            Console.Write("都道府県：");
+                            string searchKey = Console.ReadLine();
+                            if (prefecturesDict.ContainsKey(searchKey)) {
+                                Console.WriteLine($"県庁所在地：{prefecturesDict[searchKey]}");
+                            } else {
+                                Console.WriteLine("登録されていません");
+                            }
+                            break;
+                        case 9:
+                            isLoop = false;
+                            break;
+                        default:
+                            Console.WriteLine("エラーです");
+                            isLoop = false;
+                            break;
+                    }
+                } else {
+                    Console.WriteLine("正しく数値が入力されていません");
                 }
-            } while (judge);
-
+            } while (isLoop);
         }
     }
 }
