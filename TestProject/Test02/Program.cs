@@ -88,10 +88,8 @@ namespace Test02 {
         //問題４　10以上50以下の数字のみを表示（即時実行でも可とする）
         //　　　　出力結果【12 14 20 40 35 31 17 48】
         private static void Exercise04(List<int> numbers) {
-            var whereNumbers = numbers.Where(n => 10 <= n && n <= 50);
-            foreach (var num in whereNumbers) {
-                Console.Write(num + " ");
-            }
+            var whereNumbers = numbers.Where(n => 10 <= n && n <= 50).ToList();
+            whereNumbers.ForEach(n => Console.Write(n + " "));
         }
 
         //問題５　平均年齢を表示
@@ -103,8 +101,7 @@ namespace Test02 {
         //問題６　身長170cm以上の体重平均を表示
         //　　　　出力結果【72.25kg】
         private static void Exercise06(List<Person> persons) {
-            var personsAverage = persons.Where(n => n.Height >= 170).Average(n => n.Weight);
-            Console.WriteLine(personsAverage + "kg");
+            Console.WriteLine(persons.Where(n => n.Height >= 170).Average(n => n.Weight) + "kg");
         }
 
         //問題７　体重70Kg以下の人を全て表示（名前と体重）
@@ -112,8 +109,7 @@ namespace Test02 {
         //　　　　　　　　　沖田宏一 59kg
         //　　　　　　　　　片山伸介 65kg】
         private static void Exercise07(List<Person> persons) {
-            var personsWhere = persons.Where(n => n.Weight <= 70);
-            foreach (var person in personsWhere) {
+            foreach (var person in persons.Where(n => n.Weight <= 70)) {
                 Console.WriteLine("{0} {1}kg", person.Name, person.Weight);
             }
         }
@@ -122,8 +118,7 @@ namespace Test02 {
         //　　　　出力結果【山田隆司
         //　　　　　　　　　片山伸介】
         private static void Exercise08(List<Person> persons) {
-            var personsWhere = persons.Where(n => n.Name.Contains('山'));
-            foreach (var person in personsWhere) {
+            foreach (var person in persons.Where(n => n.Name.Contains('山'))) {
                 Console.WriteLine(person.Name);
             }
         }
