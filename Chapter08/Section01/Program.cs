@@ -53,7 +53,7 @@ namespace Section01 {
             //あなたは生まれてから今日で〇〇〇〇日目です
             var today = DateTime.Today;
             TimeSpan diff = today - birthday;
-            Console.WriteLine("あなたは生まれてから今日で{0}日目です",diff.Days);
+            Console.WriteLine("あなたは生まれてから今日で{0}日目です",diff.Days+1);
 
         }
     }
