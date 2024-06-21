@@ -40,20 +40,20 @@ namespace Section01 {
             Console.Write("日：");
             var day = int.Parse(Console.ReadLine());
 
-            var dt1 = new DateTime(year, month, day);
+            var birthday = new DateTime(year, month, day);
 
             //あなたは平成〇〇年〇月〇日〇曜日に生まれました
             var culture = new CultureInfo("ja-JP");
             culture.DateTimeFormat.Calendar = new JapaneseCalendar();
-            var str = dt1.ToString("ggyy年M月d日dddd", culture);
+            var str = birthday.ToString("ggyy年M月d日dddd", culture);
 
             Console.WriteLine("あなたは{0}に生まれました", str);
             Console.WriteLine("----------------------------");
 
             //あなたは生まれてから今日で〇〇〇〇日目です
             var today = DateTime.Today;
-            TimeSpan diff = today - dt1;
-            Console.WriteLine("あなたは生まれてから今日まで{0}日目です",diff.Days);
+            TimeSpan diff = today - birthday;
+            Console.WriteLine("あなたは生まれてから今日で{0}日目です",diff.Days);
 
         }
     }
