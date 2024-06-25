@@ -23,5 +23,21 @@ namespace DateTimeApp {
             var after = dtpBirthday.Value.AddDays((double)numericUpDown1.Value);
             tbDisp.Text = after.ToString("yyyy”N MŒdd“ú");
         }
+
+        private void btAge_Click(object sender, EventArgs e) {
+            var birthday = dtpBirthday.Value;
+            var today = DateTime.Today;
+            int age = GetAge(birthday,today);
+            tbDisp.Text = age.ToString()+"Î";
+
+
+        }
+        public static int GetAge(DateTime birthday,DateTime targetDay) {
+            var age = targetDay.Year - birthday.Year;
+            if(targetDay < birthday.AddYears(age)) {
+                age--;
+            }
+            return age;
+        }
     }
 }

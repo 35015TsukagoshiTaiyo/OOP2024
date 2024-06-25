@@ -111,6 +111,7 @@
             btAge.TabIndex = 6;
             btAge.Text = "年齢";
             btAge.UseVisualStyleBackColor = true;
+            btAge.Click += btAge_Click;
             // 
             // nudDay
             // 
