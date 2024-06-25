@@ -14,10 +14,8 @@ namespace Exercise01 {
             var str = now.ToString("ggyy”N MŒdd“ú(dddd)", culture);
 
             tbDisp.Text = now.ToString("yyyy/M/dd hh:mm") + "\r\n" +
-                          now.ToString("yyyy”NMMŒdd“ú hhmm•ªss•b") + "\r\n" +
+                          now.ToString("yyyy”NMMŒdd“ú HHmm•ªss•b") + "\r\n" +
                           now.ToString(str);
-
-
         }
 
         private void btEx8_2_Click(object sender, EventArgs e) {
@@ -25,8 +23,8 @@ namespace Exercise01 {
             DateTime nextSunday = NextDay(today, DayOfWeek.Sunday);
             tbDisp.Text = today.ToString("yy/MM/dd‚ÌŸT‚Ì“ú—j“ú: ") +
                           nextSunday.ToString("yy/MM/dd(ddd)");
-
         }
+
         public static DateTime NextDay(DateTime date, DayOfWeek dayOfWeek) {
             var days = (int)dayOfWeek - (int)(date.DayOfWeek);
             if (days <= 0)
