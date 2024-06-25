@@ -1,5 +1,5 @@
 ﻿namespace DateTimeApp {
-    partial class nudDay {
+    partial class Form1 {
         /// <summary>
         ///  Required designer variable.
         /// </summary>
@@ -24,14 +24,14 @@
         /// </summary>
         private void InitializeComponent() {
             label1 = new Label();
-            dtpBirthday = new DateTimePicker();
+            dtpDate = new DateTimePicker();
             btDateCount = new Button();
             tbDisp = new TextBox();
-            numericUpDown1 = new NumericUpDown();
+            nudDay = new NumericUpDown();
             btDayBefore = new Button();
             btDayAfter = new Button();
             btAge = new Button();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudDay).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -46,11 +46,11 @@
             // 
             // dtpBirthday
             // 
-            dtpBirthday.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            dtpBirthday.Location = new Point(169, 43);
-            dtpBirthday.Name = "dtpBirthday";
-            dtpBirthday.Size = new Size(200, 39);
-            dtpBirthday.TabIndex = 1;
+            dtpDate.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            dtpDate.Location = new Point(169, 43);
+            dtpDate.Name = "dtpBirthday";
+            dtpDate.Size = new Size(200, 39);
+            dtpDate.TabIndex = 1;
             // 
             // btDateCount
             // 
@@ -73,12 +73,12 @@
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Font = new Font("Yu Gothic UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            numericUpDown1.Location = new Point(79, 245);
-            numericUpDown1.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(120, 46);
-            numericUpDown1.TabIndex = 4;
+            nudDay.Font = new Font("Yu Gothic UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            nudDay.Location = new Point(79, 245);
+            nudDay.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            nudDay.Name = "numericUpDown1";
+            nudDay.Size = new Size(120, 46);
+            nudDay.TabIndex = 4;
             // 
             // btDayBefore
             // 
@@ -121,14 +121,14 @@
             Controls.Add(btAge);
             Controls.Add(btDayAfter);
             Controls.Add(btDayBefore);
-            Controls.Add(numericUpDown1);
+            Controls.Add(nudDay);
             Controls.Add(tbDisp);
             Controls.Add(btDateCount);
-            Controls.Add(dtpBirthday);
+            Controls.Add(dtpDate);
             Controls.Add(label1);
             Name = "nudDay";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudDay).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -136,10 +136,10 @@
         #endregion
 
         private Label label1;
-        private DateTimePicker dtpBirthday;
+        private DateTimePicker dtpDate;
         private Button btDateCount;
         private TextBox tbDisp;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown nudDay;
         private Button btDayBefore;
         private Button btDayAfter;
         private Button btAge;
