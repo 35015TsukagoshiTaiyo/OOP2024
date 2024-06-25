@@ -25,7 +25,7 @@ namespace DateTimeApp {
         }
 
         private void btAge_Click(object sender, EventArgs e) {
-            var birthday = dtpDate.Value;
+            var birthday = dtpDate.Value.Date;
             var today = DateTime.Today;
             int age = GetAge(birthday,today);
             tbDisp.Text = age.ToString()+"çŒ";
