@@ -20,15 +20,23 @@ namespace Exercise01 {
 
         private void btEx8_2_Click(object sender, EventArgs e) {
             var today = DateTime.Today;
-            DateTime nextSunday = NextDay(today, DayOfWeek.Sunday);
-            tbDisp.Text = today.ToString("yy/MM/dd‚ÌŸT‚Ì“ú—j“ú: ") +
-                          nextSunday.ToString("yy/MM/dd(ddd)");
+            foreach (var dayofweek in Enum.GetValues(typeof(DayOfWeek))) {
+                var str = string.Format("{0:yy/MM/dd}‚ÌŸT‚Ì{1}F{2:yy/MM/dd(ddd)}",
+                                        today, (DayOfWeek)dayofweek, 
+                                        NextWeek(today, (DayOfWeek)dayofweek));
+                tbDisp.Text += str + "\r\n";
+            }
+        }
+
+        //‘æ‚Pˆø”‚Åw’è‚µ‚½“ú•t‚ÌA‘æ‚Qˆø”‚Åw’è‚µ‚½—‚T‚Ì—j“ú
+        public static DateTime NextWeek(DateTime date, DayOfWeek dayOfWeek) {
+            var nextWeek = NextDay(date, dayOfWeek);
+            return nextWeek;
         }
 
         public static DateTime NextDay(DateTime date, DayOfWeek dayOfWeek) {
-            var days = (int)dayOfWeek - (int)(date.DayOfWeek);
-            if (days <= 0)
-                days += 7;
+            var days = (int)dayOfWeek - (int)date.DayOfWeek;
+            days += 7;
             return date.AddDays(days);
         }
     }

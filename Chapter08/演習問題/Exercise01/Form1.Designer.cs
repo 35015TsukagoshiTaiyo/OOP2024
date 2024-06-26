@@ -41,11 +41,11 @@
             // 
             // tbDisp
             // 
-            tbDisp.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            tbDisp.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
             tbDisp.Location = new Point(30, 180);
             tbDisp.Multiline = true;
             tbDisp.Name = "tbDisp";
-            tbDisp.Size = new Size(518, 171);
+            tbDisp.Size = new Size(518, 237);
             tbDisp.TabIndex = 1;
             // 
             // btEx8_2
