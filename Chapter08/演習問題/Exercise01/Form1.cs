@@ -22,7 +22,7 @@ namespace Exercise01 {
             var today = DateTime.Today;
             foreach (var dayofweek in Enum.GetValues(typeof(DayOfWeek))) {
                 var str = string.Format("{0:yy/MM/dd}ÇÃéüèTÇÃ{1}ÅF{2:yy/MM/dd(ddd)}",
-                                        today, (DayOfWeek)dayofweek, 
+                                        today, (DayOfWeek)dayofweek,
                                         NextWeek(today, (DayOfWeek)dayofweek));
                 tbDisp.Text += str + "\r\n";
             }
@@ -38,6 +38,27 @@ namespace Exercise01 {
             var days = (int)dayOfWeek - (int)date.DayOfWeek;
             days += 7;
             return date.AddDays(days);
+        }
+
+        private void btEx8_3_Click(object sender, EventArgs e) {
+            var tw = new TImeWatch();
+            tw.Start();
+            Thread.Sleep(1000);
+            TimeSpan duration = tw.Stop();
+            var str = String.Format("èàóùéûä‘ÇÕ{0}É~ÉäïbÇ≈ÇµÇΩ", duration.TotalMilliseconds);
+            tbDisp.Text = str;
+        }
+    }
+
+    class TImeWatch() {
+        private DateTime _time;
+
+        public void Start() {
+            _time = DateTime.Now;
+        }
+
+        public TimeSpan Stop() {
+            return DateTime.Now - _time;
         }
     }
 }

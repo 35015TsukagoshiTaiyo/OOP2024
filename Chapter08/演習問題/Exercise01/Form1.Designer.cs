@@ -26,6 +26,7 @@
             btEx8_1 = new Button();
             tbDisp = new TextBox();
             btEx8_2 = new Button();
+            btEx8_3 = new Button();
             SuspendLayout();
             // 
             // btEx8_1
@@ -51,7 +52,7 @@
             // btEx8_2
             // 
             btEx8_2.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            btEx8_2.Location = new Point(30, 96);
+            btEx8_2.Location = new Point(30, 74);
             btEx8_2.Name = "btEx8_2";
             btEx8_2.Size = new Size(192, 43);
             btEx8_2.TabIndex = 0;
@@ -59,12 +60,24 @@
             btEx8_2.UseVisualStyleBackColor = true;
             btEx8_2.Click += btEx8_2_Click;
             // 
+            // btEx8_3
+            // 
+            btEx8_3.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            btEx8_3.Location = new Point(30, 123);
+            btEx8_3.Name = "btEx8_3";
+            btEx8_3.Size = new Size(192, 43);
+            btEx8_3.TabIndex = 0;
+            btEx8_3.Text = "問題8.3";
+            btEx8_3.UseVisualStyleBackColor = true;
+            btEx8_3.Click += btEx8_3_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(572, 442);
             Controls.Add(tbDisp);
+            Controls.Add(btEx8_3);
             Controls.Add(btEx8_2);
             Controls.Add(btEx8_1);
             Name = "Form1";
@@ -78,5 +91,6 @@
         private Button btEx8_1;
         private TextBox tbDisp;
         private Button btEx8_2;
+        private Button btEx8_3;
     }
 }
