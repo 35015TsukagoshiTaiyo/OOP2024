@@ -19,7 +19,7 @@ namespace CarReportSystem {
                 Maker = GetRadioButtonMaker(),
                 CarName = cbCarName.Text,
                 Report = tbReport.Text,
-
+                Picture = pbPicture.Image,
             };
             listCarReports.Add(carReport);
         }
