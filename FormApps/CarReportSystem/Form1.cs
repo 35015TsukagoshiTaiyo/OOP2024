@@ -15,7 +15,7 @@ namespace CarReportSystem {
         private void btAddReport_Click(object sender, EventArgs e) {
             CarReport carReport = new CarReport {
                 Date = dtpDate.Value,
-                Auther = cbAuther.Text,
+                Author = cbAuthor.Text,
                 Maker = GetRadioButtonMaker(),
                 CarName = cbCarName.Text,
                 Report = tbReport.Text,
@@ -36,9 +36,43 @@ namespace CarReportSystem {
                 return CarReport.MakerGroup.スバル;
             } else if (rbImport.Checked) {
                 return CarReport.MakerGroup.輸入車;
-            } else{
+            } else {
                 return CarReport.MakerGroup.その他;
             }
+        }
+
+        //指定したメーカーのラジオボタンをセット
+        private void setMakerRadioButton(CarReport.MakerGroup targetMaker) { 
+            switch (targetMaker) {
+                case CarReport.MakerGroup.日産:
+                    break;
+            }
+        }
+
+        //開くボタンで画像の追加
+        private void btPicOpen_Click(object sender, EventArgs e) {
+            if (ofdPicFileOpen.ShowDialog() == DialogResult.OK)
+                pbPicture.Image = Image.FromFile(ofdPicFileOpen.FileName);
+        }
+
+        //削除ボタンで画像の削除
+        private void btPicDelete_Click(object sender, EventArgs e) {
+            pbPicture.Image = null;
+        }
+
+        //最初に実行される
+        private void Form1_Load(object sender, EventArgs e) {
+            dgvCarReport.Columns["Picture"].Visible = false; //画像列の非表示
+        }
+
+        //一覧のクリックした行を表示
+        private void dgvCarReport_Click(object sender, EventArgs e) {
+            dtpDate.Value = (DateTime)dgvCarReport.CurrentRow.Cells["Date"].Value;
+            cbAuthor.Text = (string)dgvCarReport.CurrentRow.Cells["Author"].Value;
+
+            cbCarName.Text = (string)dgvCarReport.CurrentRow.Cells["CarName"].Value;
+            tbReport.Text = (string)dgvCarReport.CurrentRow.Cells["Report"].Value;
+            pbPicture.Image = (Image)dgvCarReport.CurrentRow.Cells["Picture"].Value;
         }
     }
 }
