@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
@@ -91,6 +92,23 @@ namespace CarReportSystem {
             cbCarName.Text = (string)dgvCarReport.CurrentRow.Cells["CarName"].Value;
             tbReport.Text = (string)dgvCarReport.CurrentRow.Cells["Report"].Value;
             pbPicture.Image = (Image)dgvCarReport.CurrentRow.Cells["Picture"].Value;
+        }
+
+        private void btDeleteReport_Click(object sender, EventArgs e) {
+            int rowIndex =dgvCarReport.CurrentRow.Index;
+            listCarReports.RemoveAt(rowIndex);
+            if (dgvCarReport.CurrentRow == null) return;
+
+            dtpDate.Value = (DateTime)dgvCarReport.CurrentRow.Cells["Date"].Value;
+            cbAuthor.Text = (string)dgvCarReport.CurrentRow.Cells["Author"].Value;
+            setMakerRadioButton((CarReport.MakerGroup)dgvCarReport.CurrentRow.Cells["Maker"].Value);
+            cbCarName.Text = (string)dgvCarReport.CurrentRow.Cells["CarName"].Value;
+            tbReport.Text = (string)dgvCarReport.CurrentRow.Cells["Report"].Value;
+            pbPicture.Image = (Image)dgvCarReport.CurrentRow.Cells["Picture"].Value;
+        }
+
+        private void btModifyReport_Click(object sender, EventArgs e) {
+
         }
     }
 }
