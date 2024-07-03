@@ -15,7 +15,7 @@ namespace CarReportSystem {
 
         //追加ボタン
         private void btAddReport_Click(object sender, EventArgs e) {
-            if (cbAuthor.Text == "" && cbCarName.Text == "") {
+            if (cbAuthor.Text == "" || cbCarName.Text == "") {
                 //MessageBox.Show("記録者と車名を入力してください。","エラー",
                 //                 MessageBoxButtons.OK,MessageBoxIcon.Error);
                 tlssMassageArea.Text = "記録者と車名を入力してください。";
