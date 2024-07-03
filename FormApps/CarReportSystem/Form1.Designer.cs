@@ -52,9 +52,12 @@
             btReportSave = new Button();
             button8 = new Button();
             ofdPicFileOpen = new OpenFileDialog();
+            ssMassageArea = new StatusStrip();
+            tlssMassageArea = new ToolStripStatusLabel();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).BeginInit();
+            ssMassageArea.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -346,11 +349,26 @@
             // 
             ofdPicFileOpen.FileName = "openFileDialog1";
             // 
+            // ssMassageArea
+            // 
+            ssMassageArea.Items.AddRange(new ToolStripItem[] { tlssMassageArea });
+            ssMassageArea.Location = new Point(0, 533);
+            ssMassageArea.Name = "ssMassageArea";
+            ssMassageArea.Size = new Size(785, 22);
+            ssMassageArea.TabIndex = 8;
+            ssMassageArea.Text = "statusStrip1";
+            // 
+            // tlssMassageArea
+            // 
+            tlssMassageArea.Name = "tlssMassageArea";
+            tlssMassageArea.Size = new Size(0, 17);
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(785, 537);
+            ClientSize = new Size(785, 555);
+            Controls.Add(ssMassageArea);
             Controls.Add(dgvCarReport);
             Controls.Add(pbPicture);
             Controls.Add(btDeleteReport);
@@ -380,6 +398,8 @@
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbPicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).EndInit();
+            ssMassageArea.ResumeLayout(false);
+            ssMassageArea.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -415,5 +435,7 @@
         private Button btReportSave;
         private Button button8;
         private OpenFileDialog ofdPicFileOpen;
+        private StatusStrip ssMassageArea;
+        private ToolStripStatusLabel tlssMassageArea;
     }
 }

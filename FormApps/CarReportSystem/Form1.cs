@@ -15,22 +15,23 @@ namespace CarReportSystem {
 
         //追加ボタン
         private void btAddReport_Click(object sender, EventArgs e) {
-            if (cbAuthor.Text != "" && cbCarName.Text != "") {
-                CarReport carReport = new CarReport {
-                    Date = dtpDate.Value,
-                    Author = cbAuthor.Text,
-                    Maker = GetRadioButtonMaker(),
-                    CarName = cbCarName.Text,
-                    Report = tbReport.Text,
-                    Picture = pbPicture.Image,
-                };
-                listCarReports.Add(carReport);
-                setCbAuthor(cbAuthor.Text);
-                setCbCarName(cbCarName.Text);
-            } else {
-                MessageBox.Show("記録者と車名を入力してください。","エラー",
-                                 MessageBoxButtons.OK,MessageBoxIcon.Error);
+            if (cbAuthor.Text == "" && cbCarName.Text == "") {
+                //MessageBox.Show("記録者と車名を入力してください。","エラー",
+                //                 MessageBoxButtons.OK,MessageBoxIcon.Error);
+                tlssMassageArea.Text = "記録者と車名を入力してください。";
+                return;
             }
+            CarReport carReport = new CarReport {
+                Date = dtpDate.Value,
+                Author = cbAuthor.Text,
+                Maker = GetRadioButtonMaker(),
+                CarName = cbCarName.Text,
+                Report = tbReport.Text,
+                Picture = pbPicture.Image,
+            };
+            listCarReports.Add(carReport);
+            setCbAuthor(cbAuthor.Text);
+            setCbCarName(cbCarName.Text);
         }
 
         //記録者の履歴をコンボボックスへ登録(重複なし)
@@ -118,6 +119,10 @@ namespace CarReportSystem {
 
         //削除ボタン
         private void btDeleteReport_Click(object sender, EventArgs e) {
+            if (dgvCarReport.CurrentRow == null) {
+                tlssMassageArea.Text = "データがありません。";
+                return;
+            }
             //リストの削除
             listCarReports.RemoveAt(dgvCarReport.CurrentRow.Index);
 
@@ -133,12 +138,17 @@ namespace CarReportSystem {
 
         //修正ボタン
         private void btModifyReport_Click(object sender, EventArgs e) {
+            if (dgvCarReport.CurrentRow == null) {
+                tlssMassageArea.Text = "データがありません。";
+                return;
+            }
             listCarReports[dgvCarReport.CurrentRow.Index].Date = dtpDate.Value;
             listCarReports[dgvCarReport.CurrentRow.Index].Author = cbAuthor.Text;
             listCarReports[dgvCarReport.CurrentRow.Index].Maker = GetRadioButtonMaker();
             listCarReports[dgvCarReport.CurrentRow.Index].CarName = cbCarName.Text;
             listCarReports[dgvCarReport.CurrentRow.Index].Report = tbReport.Text;
             listCarReports[dgvCarReport.CurrentRow.Index].Picture = pbPicture.Image;
+
 
             dgvCarReport.Refresh(); //データグリッドビューの更新
         }
