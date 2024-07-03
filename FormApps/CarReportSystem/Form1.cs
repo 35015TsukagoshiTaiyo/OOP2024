@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
@@ -32,6 +33,16 @@ namespace CarReportSystem {
             listCarReports.Add(carReport);
             setCbAuthor(cbAuthor.Text);
             setCbCarName(cbCarName.Text);
+            reset();
+            
+        }
+        //ボタンやテキストをリセットする
+        private void reset() {
+            dgvCarReport.CurrentCell = null;
+            cbAuthor.Text = "";
+            rbToyota.Checked = true;
+            cbCarName.Text = "";
+            tbReport.Text = "";
         }
 
         //記録者の履歴をコンボボックスへ登録(重複なし)
@@ -134,6 +145,7 @@ namespace CarReportSystem {
             cbCarName.Text = (string)dgvCarReport.CurrentRow.Cells["CarName"].Value;
             tbReport.Text = (string)dgvCarReport.CurrentRow.Cells["Report"].Value;
             pbPicture.Image = (Image)dgvCarReport.CurrentRow.Cells["Picture"].Value;
+            reset();
         }
 
         //修正ボタン
@@ -151,6 +163,7 @@ namespace CarReportSystem {
 
 
             dgvCarReport.Refresh(); //データグリッドビューの更新
+            reset();
         }
     }
 }
