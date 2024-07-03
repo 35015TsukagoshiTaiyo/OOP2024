@@ -27,6 +27,9 @@ namespace CarReportSystem {
                 listCarReports.Add(carReport);
                 setCbAuthor(cbAuthor.Text);
                 setCbCarName(cbCarName.Text);
+            } else {
+                MessageBox.Show("記録者と車名を入力してください。","エラー",
+                                 MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
