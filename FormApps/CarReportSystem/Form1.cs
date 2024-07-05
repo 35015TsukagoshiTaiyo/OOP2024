@@ -36,6 +36,7 @@ namespace CarReportSystem {
             reset();
             
         }
+
         //ボタンやテキストをリセットする
         private void reset() {
             dgvCarReport.CurrentCell = null;
@@ -43,6 +44,8 @@ namespace CarReportSystem {
             rbToyota.Checked = true;
             cbCarName.Text = "";
             tbReport.Text = "";
+            pbPicture.Image = null;
+            tlssMassageArea.Text = "";
         }
 
         //記録者の履歴をコンボボックスへ登録(重複なし)
@@ -131,20 +134,17 @@ namespace CarReportSystem {
         //削除ボタン
         private void btDeleteReport_Click(object sender, EventArgs e) {
             if (dgvCarReport.CurrentRow == null) {
-                tlssMassageArea.Text = "データがありません。";
+                tlssMassageArea.Text = "データが選択されていません。";
                 return;
             }
+
             //リストの削除
             listCarReports.RemoveAt(dgvCarReport.CurrentRow.Index);
 
-            if (dgvCarReport.CurrentRow == null) return;
-
-            dtpDate.Value = (DateTime)dgvCarReport.CurrentRow.Cells["Date"].Value;
-            cbAuthor.Text = (string)dgvCarReport.CurrentRow.Cells["Author"].Value;
-            setMakerRadioButton((CarReport.MakerGroup)dgvCarReport.CurrentRow.Cells["Maker"].Value);
-            cbCarName.Text = (string)dgvCarReport.CurrentRow.Cells["CarName"].Value;
-            tbReport.Text = (string)dgvCarReport.CurrentRow.Cells["Report"].Value;
-            pbPicture.Image = (Image)dgvCarReport.CurrentRow.Cells["Picture"].Value;
+            if (dgvCarReport.CurrentRow == null) {
+                reset();
+                return;
+            }
             reset();
         }
 
@@ -154,13 +154,13 @@ namespace CarReportSystem {
                 tlssMassageArea.Text = "データがありません。";
                 return;
             }
+
             listCarReports[dgvCarReport.CurrentRow.Index].Date = dtpDate.Value;
             listCarReports[dgvCarReport.CurrentRow.Index].Author = cbAuthor.Text;
             listCarReports[dgvCarReport.CurrentRow.Index].Maker = GetRadioButtonMaker();
             listCarReports[dgvCarReport.CurrentRow.Index].CarName = cbCarName.Text;
             listCarReports[dgvCarReport.CurrentRow.Index].Report = tbReport.Text;
             listCarReports[dgvCarReport.CurrentRow.Index].Picture = pbPicture.Image;
-
 
             dgvCarReport.Refresh(); //データグリッドビューの更新
             reset();
