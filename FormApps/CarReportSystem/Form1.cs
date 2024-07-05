@@ -33,15 +33,17 @@ namespace CarReportSystem {
             listCarReports.Add(carReport);
             setCbAuthor(cbAuthor.Text);
             setCbCarName(cbCarName.Text);
-            reset();
             
+            inputItemsAllClear(); //入力項目をすべてクリア
+
         }
 
-        //ボタンやテキストをリセットする
-        private void reset() {
-            dgvCarReport.CurrentCell = null;
+        //入力項目をすべてクリア
+        private void inputItemsAllClear() {
+            dgvCarReport.ClearSelection(); //セレクションを外す
+            dtpDate.Value = DateTime.Now;
             cbAuthor.Text = "";
-            rbToyota.Checked = true;
+            setRadioButtonMaker(CarReport.MakerGroup.なし);
             cbCarName.Text = "";
             tbReport.Text = "";
             pbPicture.Image = null;
@@ -80,8 +82,11 @@ namespace CarReportSystem {
         }
 
         //指定したメーカーのラジオボタンをセット
-        private void setMakerRadioButton(CarReport.MakerGroup targetMaker) {
+        private void setRadioButtonMaker(CarReport.MakerGroup targetMaker) {
             switch (targetMaker) {
+                case CarReport.MakerGroup.なし:
+                    rbAllClear();
+                    break;
                 case CarReport.MakerGroup.日産:
                     rbNissan.Checked = true;
                     break;
@@ -101,6 +106,15 @@ namespace CarReportSystem {
                     rbOther.Checked = true;
                     break;
             }
+        }
+
+        private void rbAllClear() {
+            rbNissan.Checked = false;
+            rbToyota.Checked = false;
+            rbHonda.Checked = false;
+            rbSubaru.Checked = false;
+            rbImport.Checked = false;
+            rbOther.Checked = false;
         }
 
         //開くボタンで画像の追加
@@ -125,7 +139,7 @@ namespace CarReportSystem {
 
             dtpDate.Value = (DateTime)dgvCarReport.CurrentRow.Cells["Date"].Value;
             cbAuthor.Text = (string)dgvCarReport.CurrentRow.Cells["Author"].Value;
-            setMakerRadioButton((CarReport.MakerGroup)dgvCarReport.CurrentRow.Cells["Maker"].Value);
+            setRadioButtonMaker((CarReport.MakerGroup)dgvCarReport.CurrentRow.Cells["Maker"].Value);
             cbCarName.Text = (string)dgvCarReport.CurrentRow.Cells["CarName"].Value;
             tbReport.Text = (string)dgvCarReport.CurrentRow.Cells["Report"].Value;
             pbPicture.Image = (Image)dgvCarReport.CurrentRow.Cells["Picture"].Value;
@@ -142,10 +156,10 @@ namespace CarReportSystem {
             listCarReports.RemoveAt(dgvCarReport.CurrentRow.Index);
 
             if (dgvCarReport.CurrentRow == null) {
-                reset();
+                inputItemsAllClear(); //入力項目をすべてクリア
                 return;
             }
-            reset();
+            inputItemsAllClear(); //入力項目をすべてクリア
         }
 
         //修正ボタン
@@ -163,7 +177,7 @@ namespace CarReportSystem {
             listCarReports[dgvCarReport.CurrentRow.Index].Picture = pbPicture.Image;
 
             dgvCarReport.Refresh(); //データグリッドビューの更新
-            reset();
+            inputItemsAllClear(); //入力項目をすべてクリア
         }
     }
 }
