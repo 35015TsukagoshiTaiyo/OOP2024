@@ -135,6 +135,8 @@ namespace CarReportSystem {
 
         //一覧のクリックした行を表示
         private void dgvCarReport_Click(object sender, EventArgs e) {
+            //if ((dgvCarReport.CurrentRow == null) || 
+            //    (!dgvCarReport.CurrentRow.Selected)) return;
             if (dgvCarReport.CurrentRow == null) return;
 
             dtpDate.Value = (DateTime)dgvCarReport.CurrentRow.Cells["Date"].Value;
@@ -147,6 +149,8 @@ namespace CarReportSystem {
 
         //削除ボタン
         private void btDeleteReport_Click(object sender, EventArgs e) {
+            //if ((dgvCarReport.CurrentRow == null) || 
+            //    (!dgvCarReport.CurrentRow.Selected)) return;
             if (dgvCarReport.CurrentRow == null) {
                 tlssMassageArea.Text = "データが選択されていないか存在しません。";
                 return;
@@ -161,7 +165,12 @@ namespace CarReportSystem {
         //修正ボタン
         private void btModifyReport_Click(object sender, EventArgs e) {
             if (dgvCarReport.CurrentRow == null) {
-                tlssMassageArea.Text = "データが選択されていないか存在しません";
+                tlssMassageArea.Text = "データが選択されていないか存在しません。";
+                return;
+            }
+            //修正時に記録者・車名のみ入力不可
+            if (cbAuthor.Text == "" || cbCarName.Text == "") {
+                tlssMassageArea.Text = "記録者と車名を入力してください。";
                 return;
             }
 

@@ -308,11 +308,13 @@
             // 
             dgvCarReport.AllowUserToAddRows = false;
             dgvCarReport.AllowUserToDeleteRows = false;
+            dgvCarReport.AllowUserToResizeRows = false;
             dgvCarReport.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCarReport.Location = new Point(102, 333);
             dgvCarReport.MultiSelect = false;
             dgvCarReport.Name = "dgvCarReport";
             dgvCarReport.ReadOnly = true;
+            dgvCarReport.RowHeadersVisible = false;
             dgvCarReport.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCarReport.Size = new Size(654, 160);
             dgvCarReport.TabIndex = 7;
