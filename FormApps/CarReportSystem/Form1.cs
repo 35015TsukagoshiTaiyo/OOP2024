@@ -33,21 +33,21 @@ namespace CarReportSystem {
             listCarReports.Add(carReport);
             setCbAuthor(cbAuthor.Text);
             setCbCarName(cbCarName.Text);
-            
+
             inputItemsAllClear(); //入力項目をすべてクリア
 
         }
 
         //入力項目をすべてクリア
         private void inputItemsAllClear() {
-            dgvCarReport.ClearSelection(); //セレクションを外す
+            //dgvCarReport.ClearSelection(); //セレクションを外す1
+            dgvCarReport.CurrentCell = null; //セレクションを外す2
             dtpDate.Value = DateTime.Now;
             cbAuthor.Text = "";
             setRadioButtonMaker(CarReport.MakerGroup.なし);
             cbCarName.Text = "";
             tbReport.Text = "";
             pbPicture.Image = null;
-            tlssMassageArea.Text = "";
         }
 
         //記録者の履歴をコンボボックスへ登録(重複なし)
@@ -148,24 +148,20 @@ namespace CarReportSystem {
         //削除ボタン
         private void btDeleteReport_Click(object sender, EventArgs e) {
             if (dgvCarReport.CurrentRow == null) {
-                tlssMassageArea.Text = "データが選択されていません。";
+                tlssMassageArea.Text = "データが選択されていないか存在しません。";
                 return;
             }
 
             //リストの削除
             listCarReports.RemoveAt(dgvCarReport.CurrentRow.Index);
 
-            if (dgvCarReport.CurrentRow == null) {
-                inputItemsAllClear(); //入力項目をすべてクリア
-                return;
-            }
             inputItemsAllClear(); //入力項目をすべてクリア
         }
 
         //修正ボタン
         private void btModifyReport_Click(object sender, EventArgs e) {
             if (dgvCarReport.CurrentRow == null) {
-                tlssMassageArea.Text = "データがありません。";
+                tlssMassageArea.Text = "データが選択されていないか存在しません";
                 return;
             }
 
@@ -178,6 +174,16 @@ namespace CarReportSystem {
 
             dgvCarReport.Refresh(); //データグリッドビューの更新
             inputItemsAllClear(); //入力項目をすべてクリア
+        }
+
+        //記録者のテキストが編集されたら
+        private void cbAuthor_TextChanged(object sender, EventArgs e) {
+            tlssMassageArea.Text = "";
+        }
+
+        //車名のテキストが編集されたら
+        private void cbCarName_TextChanged(object sender, EventArgs e) {
+            tlssMassageArea.Text = "";
         }
     }
 }

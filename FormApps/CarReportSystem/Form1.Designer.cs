@@ -107,6 +107,7 @@
             cbAuthor.Name = "cbAuthor";
             cbAuthor.Size = new Size(244, 33);
             cbAuthor.TabIndex = 2;
+            cbAuthor.TextChanged += cbAuthor_TextChanged;
             // 
             // label4
             // 
@@ -136,6 +137,7 @@
             cbCarName.Name = "cbCarName";
             cbCarName.Size = new Size(244, 33);
             cbCarName.TabIndex = 2;
+            cbCarName.TextChanged += cbCarName_TextChanged;
             // 
             // groupBox1
             // 
