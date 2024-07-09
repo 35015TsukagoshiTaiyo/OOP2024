@@ -54,6 +54,9 @@
             ofdPicFileOpen = new OpenFileDialog();
             ssMassageArea = new StatusStrip();
             tlssMassageArea = new ToolStripStatusLabel();
+            sfdReportFileSave = new SaveFileDialog();
+            ofdReportFIleOpen = new OpenFileDialog();
+            btClear = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).BeginInit();
@@ -266,7 +269,7 @@
             // btAddReport
             // 
             btAddReport.Font = new Font("Yu Gothic UI", 12F);
-            btAddReport.Location = new Point(524, 278);
+            btAddReport.Location = new Point(568, 278);
             btAddReport.Name = "btAddReport";
             btAddReport.Size = new Size(66, 38);
             btAddReport.TabIndex = 5;
@@ -277,7 +280,7 @@
             // btModifyReport
             // 
             btModifyReport.Font = new Font("Yu Gothic UI", 12F);
-            btModifyReport.Location = new Point(607, 278);
+            btModifyReport.Location = new Point(640, 278);
             btModifyReport.Name = "btModifyReport";
             btModifyReport.Size = new Size(66, 38);
             btModifyReport.TabIndex = 5;
@@ -288,7 +291,7 @@
             // btDeleteReport
             // 
             btDeleteReport.Font = new Font("Yu Gothic UI", 12F);
-            btDeleteReport.Location = new Point(690, 278);
+            btDeleteReport.Location = new Point(712, 278);
             btDeleteReport.Name = "btDeleteReport";
             btDeleteReport.Size = new Size(66, 38);
             btDeleteReport.TabIndex = 5;
@@ -331,6 +334,7 @@
             btReportOpen.TabIndex = 5;
             btReportOpen.Text = "開く…";
             btReportOpen.UseVisualStyleBackColor = true;
+            btReportOpen.Click += btReportOpen_Click;
             // 
             // btReportSave
             // 
@@ -341,6 +345,7 @@
             btReportSave.TabIndex = 5;
             btReportSave.Text = "保存…";
             btReportSave.UseVisualStyleBackColor = true;
+            btReportSave.Click += btReportSave_Click;
             // 
             // button8
             // 
@@ -370,6 +375,21 @@
             tlssMassageArea.Name = "tlssMassageArea";
             tlssMassageArea.Size = new Size(0, 17);
             // 
+            // ofdReportFIleOpen
+            // 
+            ofdReportFIleOpen.FileName = "openFileDialog1";
+            // 
+            // btClear
+            // 
+            btClear.Font = new Font("Yu Gothic UI", 12F);
+            btClear.Location = new Point(496, 278);
+            btClear.Name = "btClear";
+            btClear.Size = new Size(66, 38);
+            btClear.TabIndex = 5;
+            btClear.Text = "クリア";
+            btClear.UseVisualStyleBackColor = true;
+            btClear.Click += btClear_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -378,6 +398,7 @@
             Controls.Add(ssMassageArea);
             Controls.Add(dgvCarReport);
             Controls.Add(pbPicture);
+            Controls.Add(btClear);
             Controls.Add(btDeleteReport);
             Controls.Add(btModifyReport);
             Controls.Add(btAddReport);
@@ -446,5 +467,8 @@
         private OpenFileDialog ofdPicFileOpen;
         private StatusStrip ssMassageArea;
         private ToolStripStatusLabel tlssMassageArea;
+        private SaveFileDialog sfdReportFileSave;
+        private OpenFileDialog ofdReportFIleOpen;
+        private Button btClear;
     }
 }
