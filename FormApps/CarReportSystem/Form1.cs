@@ -128,7 +128,7 @@ namespace CarReportSystem {
             catch (Exception) {
                 tlssMassageArea.Text = "画像ファイルが選択されていません。";
             }
-            
+
         }
 
         //削除ボタンで画像の削除
@@ -207,8 +207,8 @@ namespace CarReportSystem {
             tlssMassageArea.Text = "";
         }
 
-        //保存ボタン
-        private void btReportSave_Click(object sender, EventArgs e) {
+        //ファイルセーブ処理
+        private void ReportSaveFIle() {
             if (sfdReportFileSave.ShowDialog() == DialogResult.OK) {
                 try {
                     //バイナリー形式でシリアル化
@@ -226,8 +226,8 @@ namespace CarReportSystem {
             }
         }
 
-        //開くボタン
-        private void btReportOpen_Click(object sender, EventArgs e) {
+        //ファイルオープン処理
+        private void ReportOpenFile() {
             if (ofdReportFIleOpen.ShowDialog() == DialogResult.OK) {
                 try {
                     //逆シリアル化でバイナリ形式を取り込む
@@ -254,8 +254,23 @@ namespace CarReportSystem {
             }
         }
 
+        //クリアボタン
         private void btInputItemsClear_Click(object sender, EventArgs e) {
             inputItemsAllClear();
+        }
+
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e) {
+            ReportOpenFile(); //ファイルオープン処理
+        }
+
+        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
+            ReportSaveFIle(); //ファイルセーブ処理
+        }
+
+        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (MessageBox.Show("本当に終了しますか？", "確認",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                Application.Exit();
         }
     }
 }
