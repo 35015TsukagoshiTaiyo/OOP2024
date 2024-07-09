@@ -56,7 +56,7 @@
             tlssMassageArea = new ToolStripStatusLabel();
             sfdReportFileSave = new SaveFileDialog();
             ofdReportFIleOpen = new OpenFileDialog();
-            btClear = new Button();
+            btInputItemsClear = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).BeginInit();
@@ -379,16 +379,16 @@
             // 
             ofdReportFIleOpen.FileName = "openFileDialog1";
             // 
-            // btClear
+            // btInputItemsClear
             // 
-            btClear.Font = new Font("Yu Gothic UI", 12F);
-            btClear.Location = new Point(496, 278);
-            btClear.Name = "btClear";
-            btClear.Size = new Size(66, 38);
-            btClear.TabIndex = 5;
-            btClear.Text = "クリア";
-            btClear.UseVisualStyleBackColor = true;
-            btClear.Click += btClear_Click;
+            btInputItemsClear.Font = new Font("Yu Gothic UI", 12F);
+            btInputItemsClear.Location = new Point(496, 278);
+            btInputItemsClear.Name = "btInputItemsClear";
+            btInputItemsClear.Size = new Size(66, 38);
+            btInputItemsClear.TabIndex = 5;
+            btInputItemsClear.Text = "クリア";
+            btInputItemsClear.UseVisualStyleBackColor = true;
+            btInputItemsClear.Click += btInputItemsClear_Click;
             // 
             // Form1
             // 
@@ -398,7 +398,7 @@
             Controls.Add(ssMassageArea);
             Controls.Add(dgvCarReport);
             Controls.Add(pbPicture);
-            Controls.Add(btClear);
+            Controls.Add(btInputItemsClear);
             Controls.Add(btDeleteReport);
             Controls.Add(btModifyReport);
             Controls.Add(btAddReport);
@@ -469,6 +469,6 @@
         private ToolStripStatusLabel tlssMassageArea;
         private SaveFileDialog sfdReportFileSave;
         private OpenFileDialog ofdReportFIleOpen;
-        private Button btClear;
+        private Button btInputItemsClear;
     }
 }

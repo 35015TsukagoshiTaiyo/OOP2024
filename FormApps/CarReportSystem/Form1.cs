@@ -228,16 +228,23 @@ namespace CarReportSystem {
                                                      FileMode.Open, FileAccess.Read)) {
                         listCarReports = (BindingList<CarReport>)bf.Deserialize(fs);
                         dgvCarReport.DataSource = listCarReports;
+
+                        //記録者と車名の履歴をコンボボックスへ登録(重複なし)
+                        foreach (var carReport in listCarReports) {
+                            setCbAuthor(carReport.Author);
+                            setCbCarName(carReport.CarName);
+                        }
                     }
                 }
                 catch (Exception) {
 
                     throw;
                 }
+                dgvCarReport.CurrentCell = null; //セレクションを外す
             }
         }
 
-        private void btClear_Click(object sender, EventArgs e) {
+        private void btInputItemsClear_Click(object sender, EventArgs e) {
             inputItemsAllClear();
         }
     }
