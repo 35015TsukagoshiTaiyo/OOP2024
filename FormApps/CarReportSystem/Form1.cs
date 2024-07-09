@@ -45,7 +45,7 @@ namespace CarReportSystem {
             dgvCarReport.CurrentCell = null; //セレクションを外す2
             dtpDate.Value = DateTime.Now;
             cbAuthor.Text = "";
-            setRadioButtonMaker(CarReport.MakerGroup.なし);
+            setRadioButtonMaker(CarReport.MakerGroup.その他);
             cbCarName.Text = "";
             tbReport.Text = "";
             pbPicture.Image = null;
@@ -120,8 +120,15 @@ namespace CarReportSystem {
 
         //開くボタンで画像の追加
         private void btPicOpen_Click(object sender, EventArgs e) {
-            if (ofdPicFileOpen.ShowDialog() == DialogResult.OK)
-                pbPicture.Image = Image.FromFile(ofdPicFileOpen.FileName);
+            try {
+                if (ofdPicFileOpen.ShowDialog() == DialogResult.OK)
+                    pbPicture.Image = Image.FromFile(ofdPicFileOpen.FileName);
+                tlssMassageArea.Text = "";
+            }
+            catch (Exception) {
+                tlssMassageArea.Text = "画像ファイルが選択されていません。";
+            }
+            
         }
 
         //削除ボタンで画像の削除
@@ -132,6 +139,10 @@ namespace CarReportSystem {
         //最初に実行される
         private void Form1_Load(object sender, EventArgs e) {
             dgvCarReport.Columns["Picture"].Visible = false; //画像列の非表示
+
+            //交互に色を設定（データグリッドビュー）
+            dgvCarReport.RowsDefaultCellStyle.BackColor = Color.AliceBlue;
+            dgvCarReport.AlternatingRowsDefaultCellStyle.BackColor = Color.FloralWhite;
         }
 
         //一覧のクリックした行を表示
@@ -210,8 +221,7 @@ namespace CarReportSystem {
                     }
                 }
                 catch (Exception) {
-
-                    throw;
+                    tlssMassageArea.Text = "書き込みエラー";
                 }
             }
         }
@@ -234,11 +244,11 @@ namespace CarReportSystem {
                             setCbAuthor(carReport.Author);
                             setCbCarName(carReport.CarName);
                         }
+                        tlssMassageArea.Text = "";
                     }
                 }
-                catch (Exception) {
-
-                    throw;
+                catch (Exception ex) {
+                    tlssMassageArea.Text = "正しい形式のファイルを選択してください。";
                 }
                 dgvCarReport.CurrentCell = null; //セレクションを外す
             }

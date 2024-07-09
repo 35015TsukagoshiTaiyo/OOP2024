@@ -238,27 +238,29 @@
             // 
             // btPicOpen
             // 
+            btPicOpen.BackColor = Color.AliceBlue;
             btPicOpen.Location = new Point(574, 24);
             btPicOpen.Name = "btPicOpen";
             btPicOpen.Size = new Size(88, 25);
             btPicOpen.TabIndex = 5;
             btPicOpen.Text = "開く…";
-            btPicOpen.UseVisualStyleBackColor = true;
+            btPicOpen.UseVisualStyleBackColor = false;
             btPicOpen.Click += btPicOpen_Click;
             // 
             // btPicDelete
             // 
+            btPicDelete.BackColor = SystemColors.ActiveCaption;
             btPicDelete.Location = new Point(668, 24);
             btPicDelete.Name = "btPicDelete";
             btPicDelete.Size = new Size(88, 25);
             btPicDelete.TabIndex = 5;
             btPicDelete.Text = "削除";
-            btPicDelete.UseVisualStyleBackColor = true;
+            btPicDelete.UseVisualStyleBackColor = false;
             btPicDelete.Click += btPicDelete_Click;
             // 
             // pbPicture
             // 
-            pbPicture.BackColor = SystemColors.ControlLight;
+            pbPicture.BackColor = Color.White;
             pbPicture.Location = new Point(513, 56);
             pbPicture.Name = "pbPicture";
             pbPicture.Size = new Size(243, 205);
@@ -268,35 +270,38 @@
             // 
             // btAddReport
             // 
+            btAddReport.BackColor = Color.Azure;
             btAddReport.Font = new Font("Yu Gothic UI", 12F);
-            btAddReport.Location = new Point(568, 278);
+            btAddReport.Location = new Point(496, 278);
             btAddReport.Name = "btAddReport";
             btAddReport.Size = new Size(66, 38);
             btAddReport.TabIndex = 5;
             btAddReport.Text = "追加";
-            btAddReport.UseVisualStyleBackColor = true;
+            btAddReport.UseVisualStyleBackColor = false;
             btAddReport.Click += btAddReport_Click;
             // 
             // btModifyReport
             // 
+            btModifyReport.BackColor = Color.Azure;
             btModifyReport.Font = new Font("Yu Gothic UI", 12F);
-            btModifyReport.Location = new Point(640, 278);
+            btModifyReport.Location = new Point(568, 278);
             btModifyReport.Name = "btModifyReport";
             btModifyReport.Size = new Size(66, 38);
             btModifyReport.TabIndex = 5;
             btModifyReport.Text = "修正";
-            btModifyReport.UseVisualStyleBackColor = true;
+            btModifyReport.UseVisualStyleBackColor = false;
             btModifyReport.Click += btModifyReport_Click;
             // 
             // btDeleteReport
             // 
+            btDeleteReport.BackColor = SystemColors.ActiveCaption;
             btDeleteReport.Font = new Font("Yu Gothic UI", 12F);
             btDeleteReport.Location = new Point(712, 278);
             btDeleteReport.Name = "btDeleteReport";
             btDeleteReport.Size = new Size(66, 38);
             btDeleteReport.TabIndex = 5;
             btDeleteReport.Text = "削除";
-            btDeleteReport.UseVisualStyleBackColor = true;
+            btDeleteReport.UseVisualStyleBackColor = false;
             btDeleteReport.Click += btDeleteReport_Click;
             // 
             // label7
@@ -314,6 +319,7 @@
             dgvCarReport.AllowUserToAddRows = false;
             dgvCarReport.AllowUserToDeleteRows = false;
             dgvCarReport.AllowUserToResizeRows = false;
+            dgvCarReport.BackgroundColor = Color.White;
             dgvCarReport.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCarReport.Location = new Point(102, 333);
             dgvCarReport.MultiSelect = false;
@@ -362,6 +368,7 @@
             // 
             // ssMassageArea
             // 
+            ssMassageArea.BackColor = Color.White;
             ssMassageArea.Items.AddRange(new ToolStripItem[] { tlssMassageArea });
             ssMassageArea.Location = new Point(0, 533);
             ssMassageArea.Name = "ssMassageArea";
@@ -381,19 +388,22 @@
             // 
             // btInputItemsClear
             // 
+            btInputItemsClear.BackColor = Color.Azure;
             btInputItemsClear.Font = new Font("Yu Gothic UI", 12F);
-            btInputItemsClear.Location = new Point(496, 278);
+            btInputItemsClear.ForeColor = SystemColors.ActiveCaptionText;
+            btInputItemsClear.Location = new Point(640, 278);
             btInputItemsClear.Name = "btInputItemsClear";
             btInputItemsClear.Size = new Size(66, 38);
             btInputItemsClear.TabIndex = 5;
             btInputItemsClear.Text = "クリア";
-            btInputItemsClear.UseVisualStyleBackColor = true;
+            btInputItemsClear.UseVisualStyleBackColor = false;
             btInputItemsClear.Click += btInputItemsClear_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(785, 555);
             Controls.Add(ssMassageArea);
             Controls.Add(dgvCarReport);
