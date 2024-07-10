@@ -48,7 +48,6 @@
             btDeleteReport = new Button();
             label7 = new Label();
             dgvCarReport = new DataGridView();
-            button8 = new Button();
             ofdPicFileOpen = new OpenFileDialog();
             ssMassageArea = new StatusStrip();
             tlssMassageArea = new ToolStripStatusLabel();
@@ -338,15 +337,6 @@
             dgvCarReport.TabIndex = 7;
             dgvCarReport.Click += dgvCarReport_Click;
             // 
-            // button8
-            // 
-            button8.Location = new Point(668, 515);
-            button8.Name = "button8";
-            button8.Size = new Size(88, 25);
-            button8.TabIndex = 5;
-            button8.Text = "終了";
-            button8.UseVisualStyleBackColor = true;
-            // 
             // ofdPicFileOpen
             // 
             ofdPicFileOpen.FileName = "openFileDialog1";
@@ -355,9 +345,9 @@
             // 
             ssMassageArea.BackColor = Color.White;
             ssMassageArea.Items.AddRange(new ToolStripItem[] { tlssMassageArea });
-            ssMassageArea.Location = new Point(0, 552);
+            ssMassageArea.Location = new Point(0, 522);
             ssMassageArea.Name = "ssMassageArea";
-            ssMassageArea.Size = new Size(785, 22);
+            ssMassageArea.Size = new Size(784, 22);
             ssMassageArea.SizingGrip = false;
             ssMassageArea.TabIndex = 8;
             ssMassageArea.Text = "statusStrip1";
@@ -389,7 +379,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { ファイルToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(785, 24);
+            menuStrip1.Size = new Size(784, 24);
             menuStrip1.TabIndex = 9;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -403,37 +393,37 @@
             // 開くToolStripMenuItem
             // 
             開くToolStripMenuItem.Name = "開くToolStripMenuItem";
-            開くToolStripMenuItem.Size = new Size(180, 22);
+            開くToolStripMenuItem.Size = new Size(119, 22);
             開くToolStripMenuItem.Text = "開く…";
             開くToolStripMenuItem.Click += 開くToolStripMenuItem_Click;
             // 
             // 保存ToolStripMenuItem
             // 
             保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            保存ToolStripMenuItem.Size = new Size(180, 22);
+            保存ToolStripMenuItem.Size = new Size(119, 22);
             保存ToolStripMenuItem.Text = "保存…";
             保存ToolStripMenuItem.Click += 保存ToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(177, 6);
+            toolStripSeparator1.Size = new Size(116, 6);
             // 
             // 色設定ToolStripMenuItem
             // 
             色設定ToolStripMenuItem.Name = "色設定ToolStripMenuItem";
-            色設定ToolStripMenuItem.Size = new Size(180, 22);
+            色設定ToolStripMenuItem.Size = new Size(119, 22);
             色設定ToolStripMenuItem.Text = "色設定…";
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(177, 6);
+            toolStripSeparator2.Size = new Size(116, 6);
             // 
             // 終了ToolStripMenuItem
             // 
             終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            終了ToolStripMenuItem.Size = new Size(180, 22);
+            終了ToolStripMenuItem.Size = new Size(119, 22);
             終了ToolStripMenuItem.Text = "終了";
             終了ToolStripMenuItem.Click += 終了ToolStripMenuItem_Click;
             // 
@@ -442,7 +432,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(785, 574);
+            ClientSize = new Size(784, 544);
             Controls.Add(ssMassageArea);
             Controls.Add(menuStrip1);
             Controls.Add(dgvCarReport);
@@ -452,7 +442,6 @@
             Controls.Add(btModifyReport);
             Controls.Add(btAddReport);
             Controls.Add(btPicDelete);
-            Controls.Add(button8);
             Controls.Add(btPicOpen);
             Controls.Add(tbReport);
             Controls.Add(groupBox1);
@@ -511,7 +500,6 @@
         private Button btDeleteReport;
         private Label label7;
         private DataGridView dgvCarReport;
-        private Button button8;
         private OpenFileDialog ofdPicFileOpen;
         private StatusStrip ssMassageArea;
         private ToolStripStatusLabel tlssMassageArea;
