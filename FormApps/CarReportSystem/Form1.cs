@@ -12,7 +12,7 @@ namespace CarReportSystem {
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
 
         //設定のインスタンス生成
-        Settings settings = new Settings();
+        Settings settings = Settings.getInstance();
 
         //コンストラクタ
         public Form1() {
