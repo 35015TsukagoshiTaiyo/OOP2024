@@ -153,19 +153,22 @@ namespace CarReportSystem {
             ReadSettingsFileXml();
 
         }
-        //xmlファイルを逆シリアル化してBackColorに色をセット
+        //設定ファイルを逆シリアル化して背景を設定するメソッド
         private void ReadSettingsFileXml() {
-            try {
-                using (var reader = XmlReader.Create("settings.xml")) {
-                    var serializer = new XmlSerializer(typeof(Settings));
-                    settings = serializer.Deserialize(reader) as Settings;
-                    if (settings.MainFormColor != null && settings.MainFormColor != 0) {
+            if (File.Exists("settings.xml")) {
+                try {
+                    using (var reader = XmlReader.Create("settings.xml")) {
+                        var serializer = new XmlSerializer(typeof(Settings));
+                        var settings = serializer.Deserialize(reader) as Settings;
                         BackColor = Color.FromArgb(settings.MainFormColor);
+                        settings.MainFormColor = BackColor.ToArgb();
                     }
                 }
-            }
-            catch (Exception) {
-                MessageBox.Show("読み込みエラーです");
+                catch (Exception) {
+                    tlssMassageArea.Text = "色情報ファイルエラー";
+                }
+            } else {
+                tlssMassageArea.Text = "色情報ファイルがありません";
             }
         }
 
@@ -271,7 +274,7 @@ namespace CarReportSystem {
                         tlssMassageArea.Text = "";
                     }
                 }
-                catch (Exception ex) {
+                catch (Exception) {
                     tlssMassageArea.Text = "正しい形式のファイルを選択してください。";
                 }
                 dgvCarReport.CurrentCell = null; //セレクションを外す
@@ -301,17 +304,17 @@ namespace CarReportSystem {
 
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
             if (cdColor.ShowDialog() == DialogResult.OK) {
-                BackColor = cdColor.Color;
-                settings.MainFormColor = cdColor.Color.ToArgb();
+                BackColor = cdColor.Color; //背景色設定
+                settings.MainFormColor = cdColor.Color.ToArgb(); //背景色保存
             }
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
             //設定ファイルのシリアル化
             try {
-                using (var color = XmlWriter.Create("settings.xml")) {
+                using (var writer = XmlWriter.Create("settings.xml")) {
                     var serializer = new XmlSerializer(settings.GetType());
-                    serializer.Serialize(color, settings);
+                    serializer.Serialize(writer, settings);
                 }
             }
             catch (Exception) {
