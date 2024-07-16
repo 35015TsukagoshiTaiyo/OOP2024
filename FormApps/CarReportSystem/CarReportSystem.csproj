@@ -6,6 +6,10 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Title>CarReportSystem</Title>
+	  <Company>(株)太陽自動車店</Company>
+    <AssemblyVersion>1.2.34.0</AssemblyVersion>
+    <Copyright>1990-2024</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

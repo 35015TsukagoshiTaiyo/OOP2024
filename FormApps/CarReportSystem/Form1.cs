@@ -159,7 +159,7 @@ namespace CarReportSystem {
                 try {
                     using (var reader = XmlReader.Create("settings.xml")) {
                         var serializer = new XmlSerializer(typeof(Settings));
-                        var settings = serializer.Deserialize(reader) as Settings;
+                        settings = serializer.Deserialize(reader) as Settings;
                         BackColor = Color.FromArgb(settings.MainFormColor);
                         settings.MainFormColor = BackColor.ToArgb();
                     }
@@ -320,6 +320,11 @@ namespace CarReportSystem {
             catch (Exception) {
                 MessageBox.Show("設定ファイル書き込みエラー");
             }
+        }
+
+        private void このアプリについてToolStripMenuItem_Click(object sender, EventArgs e) {
+            var fmversion = new fmVersion();
+            fmversion.ShowDialog();
         }
     }
 }
