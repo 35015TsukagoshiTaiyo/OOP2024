@@ -26,12 +26,13 @@
             btVersionOK = new Button();
             lbTitle = new Label();
             lbVersion = new Label();
+            lbCopyRight = new Label();
             lbCompany = new Label();
             SuspendLayout();
             // 
             // btVersionOK
             // 
-            btVersionOK.Location = new Point(271, 183);
+            btVersionOK.Location = new Point(312, 183);
             btVersionOK.Name = "btVersionOK";
             btVersionOK.Size = new Size(76, 25);
             btVersionOK.TabIndex = 0;
@@ -59,22 +60,33 @@
             lbVersion.TabIndex = 2;
             lbVersion.Text = "Ver.0.0.1";
             // 
+            // lbCopyRight
+            // 
+            lbCopyRight.AutoSize = true;
+            lbCopyRight.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            lbCopyRight.Location = new Point(22, 135);
+            lbCopyRight.Name = "lbCopyRight";
+            lbCopyRight.Size = new Size(69, 25);
+            lbCopyRight.TabIndex = 3;
+            lbCopyRight.Text = "著作権";
+            // 
             // lbCompany
             // 
             lbCompany.AutoSize = true;
             lbCompany.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            lbCompany.Location = new Point(22, 135);
+            lbCompany.Location = new Point(235, 135);
             lbCompany.Name = "lbCompany";
             lbCompany.Size = new Size(69, 25);
-            lbCompany.TabIndex = 3;
+            lbCompany.TabIndex = 4;
             lbCompany.Text = "会社名";
             // 
             // fmVersion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(385, 220);
+            ClientSize = new Size(400, 220);
             Controls.Add(lbCompany);
+            Controls.Add(lbCopyRight);
             Controls.Add(lbVersion);
             Controls.Add(lbTitle);
             Controls.Add(btVersionOK);
@@ -91,6 +103,7 @@
         private Button btVersionOK;
         private Label lbTitle;
         private Label lbVersion;
+        private Label lbCopyRight;
         private Label lbCompany;
     }
 }

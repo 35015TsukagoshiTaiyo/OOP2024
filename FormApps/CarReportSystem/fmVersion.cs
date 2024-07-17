@@ -30,10 +30,10 @@ namespace CarReportSystem {
 
             lbVersion.Text = $"Version {asmVersion}";
 
-            lbCompany.Text = "copyright(c) "+
-                          asmCopyRightAttr.Copyright +" "+ 
-                          Application.CompanyName;
-            //lbCompany.Text = $"Copyright (c) {asmCopyRightAttr?.Copyright}";
+            lbCopyRight.Text = $"Copyright (c) {asmCopyRightAttr?.Copyright}";
+
+            lbCompany.Text = Application.CompanyName;
+
         }
 
 
