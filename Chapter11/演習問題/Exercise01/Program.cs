@@ -19,9 +19,6 @@ namespace Exercise01 {
 
             var newfile = "sports.xml";
             Exercise1_4(file, newfile);
-
-
-
         }
 
         private static void Exercise1_1(string file) {
@@ -30,7 +27,7 @@ namespace Exercise01 {
                 Name = (string)x.Element("name"),
                 teamMembers = (int)x.Element("teammembers"),
             });
-            
+
             foreach (var xelement in xelements) {
                 Console.WriteLine("{0} {1}", xelement.Name, xelement.teamMembers);
             }
@@ -39,16 +36,24 @@ namespace Exercise01 {
         private static void Exercise1_2(string file) {
             var xdoc = XDocument.Load(file);
             var xelements = xdoc.Root.Elements()
-                                .OrderBy(x=> (string)x.Element("firstplayed"));
+                                .OrderBy(x => (string)x.Element("firstplayed"));
             foreach (var xelement in xelements) {
                 var xname = xelement.Element("name");
                 var xkanji = xname.Attribute("kanji");
                 var xFirstPlayed = xelement.Element("firstplayed");
-                Console.WriteLine("{0}({1})",xkanji.Value,xFirstPlayed.Value);
+                Console.WriteLine("{0}({1})", xkanji.Value, xFirstPlayed.Value);
             }
         }
 
         private static void Exercise1_3(string file) {
+            var xdoc = XDocument.Load(file);
+            var xelements = xdoc.Root.Elements().Select(x => new {
+                Name = (string)(x.Element("name")),
+                teamMembers = (int)x.Element("teammembers")
+            });
+
+
+            Console.WriteLine();
 
         }
 
