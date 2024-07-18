@@ -52,9 +52,13 @@ namespace Exercise01 {
                 teamMembers = (int)x.Element("teammembers")
             });
 
+            var maxTeamMembers = xelements.Max(x => x.teamMembers);
 
-            Console.WriteLine();
-
+            foreach (var item in xelements) {
+                if (item.teamMembers == maxTeamMembers) {
+                    Console.WriteLine("{0}:{1}",item.Name,item.teamMembers);
+                }
+            }
         }
 
         private static void Exercise1_4(string file, string newfile) {
