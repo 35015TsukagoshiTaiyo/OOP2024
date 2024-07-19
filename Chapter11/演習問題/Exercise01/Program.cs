@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -34,8 +35,8 @@ namespace Exercise01 {
             //模範解答
             //var sports = xdoc.Root.Elements()
             //                 .Select(x => new {
-            //                     Name = x.Element("name").Value,
-            //                     Teammembers = x.Element("teammembers").Value
+            //                     Name = x.element("name").Value,
+            //                     Teammembers = x.element("teammembers").Value
             //                 });
             //foreach (var sports in sports) {
             //    Console.WriteLine("{0} {1}", sports.Name, sports.Teammembers);
@@ -54,8 +55,8 @@ namespace Exercise01 {
             //模範解答
             //var sports = xdoc.Root.Elements()
             //                .Select(x => new {
-            //                    Name = x.Element("name").Attribute("kanji").Value,
-            //                    Firstplayed = x.Element("firstplayed").Value,
+            //                    Name = x.element("name").Attribute("kanji").Value,
+            //                    Firstplayed = x.element("firstplayed").Value,
             //                }).OrderBy(x => x.Firstplayed);
 
             //foreach (var sports in sports) {
@@ -78,27 +79,48 @@ namespace Exercise01 {
             }
             //模範解答
             //var sports = xdoc.Root.Elements()
-            //    .OrderByDescending(x => x.Element("teammembers").Value)
+            //    .OrderByDescending(x => x.element("teammembers").Value)
             //    .First();
-            //Console.WriteLine($"{sports.Element("name").Value}");
+            //Console.WriteLine($"{sports.element("name").Value}");
         }
 
         private static void Exercise1_4(string file, string newfile) {
-            var soccerElement = new XElement("ballSports",
-                            new XElement("name", "サッカー", new XAttribute("kanji", "蹴球")),
-                            new XElement("teammembers", "11"),
-                            new XElement("firstplayed", "1863")
-                            );
-            var rugbyElement = new XElement("ballSports",
-                            new XElement("name", "ラグビー", new XAttribute("kanji", "闘球")),
-                            new XElement("teammembers", "15"),
-                            new XElement("firstplayed", "1823")
-                            );
-            var xdoc = XDocument.Load(file);
-            xdoc.Root.Add(soccerElement);
-            xdoc.Root.Add(rugbyElement);
+            List<XElement> xElements = new List<XElement>();
 
-            xdoc.Save(newfile);
+            var xdoc = XDocument.Load(file); //１回だけロード
+            var flag = true;
+
+            while (flag) {
+                //入力処理
+                Console.Write("名称：");
+                var name = Console.ReadLine();
+                Console.Write("漢字：");
+                var kanji = Console.ReadLine();
+                Console.Write("プレイ人数：");
+                var teamMember = Console.ReadLine();
+                Console.Write("起源：");
+                var firstPlayd = Console.ReadLine();
+                //１件分の要素作成
+                var element = new XElement("ballSports",
+                                new XElement("name", name, new XAttribute("kanji", kanji)),
+                                new XElement("teammembers", teamMember),
+                                new XElement("firstplayed", firstPlayd)
+                );
+                //要素をListに追加
+                xElements.Add(element);
+
+                Console.WriteLine("追加[1]  保存[2]");
+                Console.Write(">");
+                var select = Console.ReadLine();
+
+                if (select == "2")
+                    flag = false; //無限ループを抜ける
+            }
+
+            xdoc.Root.Add(xElements);
+            xdoc.Save(newfile); //保存
+
+
         }
     }
 }
