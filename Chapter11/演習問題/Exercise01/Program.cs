@@ -84,9 +84,21 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_4(string file, string newfile) {
-            
+            var soccerElement = new XElement("ballSports",
+                            new XElement("name", "サッカー", new XAttribute("kanji", "蹴球")),
+                            new XElement("teammembers", "11"),
+                            new XElement("firstplayed", "1863")
+                            );
+            var rugbyElement = new XElement("ballSports",
+                            new XElement("name", "ラグビー", new XAttribute("kanji", "闘球")),
+                            new XElement("teammembers", "15"),
+                            new XElement("firstplayed", "1823")
+                            );
+            var xdoc = XDocument.Load(file);
+            xdoc.Root.Add(soccerElement);
+            xdoc.Root.Add(rugbyElement);
 
-
+            xdoc.Save(newfile);
         }
     }
 }
