@@ -19,13 +19,12 @@ namespace Exercise01 {
 
             Exercise1_2("employees.xml");
             Exercise1_3("employees.xml");
-            Console.WriteLine(File.ReadAllText("employees.xml"));
             Console.WriteLine();
 
-            //Exercise1_4("employees.json");
+            Exercise1_4("employees.json");
 
             //// これは確認用
-            //Console.WriteLine(File.ReadAllText("employees.json"));
+            Console.WriteLine(File.ReadAllText("employees.json"));
 
 
         }
@@ -42,7 +41,7 @@ namespace Exercise01 {
                 Indent = true,
                 IndentChars = " ",
             };
-            using (var writer = XmlWriter.Create(outfile,settings)) {
+            using (var writer = XmlWriter.Create(outfile, settings)) {
                 var serializer = new XmlSerializer(employee.GetType());
                 serializer.Serialize(writer, employee);
             }
@@ -82,17 +81,33 @@ namespace Exercise01 {
 
         private static void Exercise1_3(string file) {
             //逆シリアル化
-            using (var reader = XmlReader.Create(file)) { 
+            using (var reader = XmlReader.Create(file)) {
                 var serializer = new DataContractSerializer(typeof(Employee[]));
                 var emps = serializer.ReadObject(reader) as Employee[];
                 foreach (var emp in emps) {
-                    Console.WriteLine(emp);
+                    Console.WriteLine("{0} {1} {2}",emp.Id,emp.Name,emp.HireDate);
                 }
             }
         }
 
-        private static void Exercise1_4(string v) {
-
+        private static void Exercise1_4(string file) {
+            var emps = new Employee[] {
+                new Employee{
+                    Id = 123,
+                    Name = "出井 秀行",
+                    HireDate = new DateTime(2001,5,10),
+                },
+                new Employee {
+                    Id = 139,
+                    Name = "大橋 孝仁",
+                    HireDate = new DateTime(2004,12,1),
+                }
+            };
+            using (var stream = new FileStream(file, FileMode.Create,
+                                               FileAccess.Write)) {
+                var serializer = new DataContractSerializer(emps.GetType());
+                serializer.WriteObject(stream, emps);
+            }
         }
     }
 }
