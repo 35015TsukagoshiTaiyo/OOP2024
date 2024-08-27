@@ -19,27 +19,33 @@ namespace Exercise01 {
 
             Exercise1_2("employees.xml");
             Exercise1_3("employees.xml");
+            Console.WriteLine(File.ReadAllText("employees.xml"));
             Console.WriteLine();
 
-            Exercise1_4("employees.json");
+            //Exercise1_4("employees.json");
 
-            // これは確認用
-            Console.WriteLine(File.ReadAllText("employees.json"));
+            //// これは確認用
+            //Console.WriteLine(File.ReadAllText("employees.json"));
 
 
         }
 
         private static void Exercise1_1(string outfile) {
             //シリアル化
-            //var employee = new Employee {
-            //    Id = 1,
-            //    Name = "佐藤",
-            //    HireDate = DateTime.Today,
-            //};
-            //using (var writer = XmlWriter.Create(outfile)) {
-            //    var serializer = new XmlSerializer(employee.GetType());
-            //    serializer.Serialize(writer, employee);
-            //}
+            var employee = new Employee {
+                Id = 1,
+                Name = "佐藤",
+                HireDate = new DateTime(2001, 5, 10),
+            };
+            var settings = new XmlWriterSettings {
+                Encoding = new UTF8Encoding(false),
+                Indent = true,
+                IndentChars = " ",
+            };
+            using (var writer = XmlWriter.Create(outfile,settings)) {
+                var serializer = new XmlSerializer(employee.GetType());
+                serializer.Serialize(writer, employee);
+            }
 
             //逆シリアル化
             using (var reader = XmlReader.Create(outfile)) {
@@ -50,6 +56,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(string outfile) {
+            //シリアル化
             var emps = new Employee[] {
                 new Employee{
                     Id = 123,
@@ -73,8 +80,15 @@ namespace Exercise01 {
             }
         }
 
-        private static void Exercise1_3(string v) {
-
+        private static void Exercise1_3(string file) {
+            //逆シリアル化
+            using (var reader = XmlReader.Create(file)) { 
+                var serializer = new DataContractSerializer(typeof(Employee[]));
+                var emps = serializer.ReadObject(reader) as Employee[];
+                foreach (var emp in emps) {
+                    Console.WriteLine(emp);
+                }
+            }
         }
 
         private static void Exercise1_4(string v) {
