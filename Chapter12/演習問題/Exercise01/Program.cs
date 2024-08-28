@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -105,7 +106,7 @@ namespace Exercise01 {
             };
             using (var stream = new FileStream(file, FileMode.Create,
                                                FileAccess.Write)) {
-                var serializer = new DataContractSerializer(emps.GetType());
+                var serializer = new DataContractJsonSerializer(emps.GetType());
                 serializer.WriteObject(stream, emps);
             }
         }
