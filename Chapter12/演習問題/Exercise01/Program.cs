@@ -5,6 +5,9 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
@@ -104,11 +107,17 @@ namespace Exercise01 {
                     HireDate = new DateTime(2004,12,1),
                 }
             };
-            using (var stream = new FileStream(file, FileMode.Create,
-                                               FileAccess.Write)) {
-                var serializer = new DataContractJsonSerializer(emps.GetType());
-                serializer.WriteObject(stream, emps);
-            }
+
+            var options = new JsonSerializerOptions {
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                WriteIndented = true,
+            };
+
+
+            string jsonString = JsonSerializer.Serialize(emps, options);
+            //Console.WriteLine(jsonString); //画面へ出力
+            File.WriteAllText(file,jsonString);
+
         }
     }
 }
