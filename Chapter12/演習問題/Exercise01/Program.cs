@@ -108,16 +108,28 @@ namespace Exercise01 {
                 }
             };
 
+#if false
             var options = new JsonSerializerOptions {
                 Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
                 WriteIndented = true,
             };
 
-
             string jsonString = JsonSerializer.Serialize(emps, options);
-            //Console.WriteLine(jsonString); //画面へ出力
+            Console.WriteLine(jsonString); //画面へ出力
             File.WriteAllText(file,jsonString);
+#else
+            //模範解答
+            using (var stream = new FileStream("employees.json", FileMode.Create, FileAccess.Write)) {
 
+                var options = new JsonSerializerOptions {
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                    WriteIndented = true,
+                };
+
+                JsonSerializer.Serialize(stream, emps, options);
+                
+            }
+#endif
         }
     }
 }
