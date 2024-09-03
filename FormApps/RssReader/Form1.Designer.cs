@@ -54,7 +54,7 @@
             this.lbRssTitle.Name = "lbRssTitle";
             this.lbRssTitle.Size = new System.Drawing.Size(587, 160);
             this.lbRssTitle.TabIndex = 2;
-            this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
+            this.lbRssTitle.Click += new System.EventHandler(this.lbRssTitle_Click);
             // 
             // webBrowser1
             // 

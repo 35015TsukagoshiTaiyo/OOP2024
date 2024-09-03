@@ -23,18 +23,18 @@ namespace RssReader {
                 var xdoc = XDocument.Load(url);
 
                 
-
-
-                var titles = xdoc.Descendants("item").Select(x=> x.Element("title").Value);
-                foreach (var title in titles) {
-                    lbRssTitle.Items.Add(title);
+                var items = xdoc.Descendants("item").Select(x => new {
+                    title = x.Element("title").Value,
+                    link = x.Element("link").Value,
+                });
+                foreach (var item in items) {
+                    lbRssTitle.Items.Add(item.title);
                 }
             }
         }
 
-        private void lbRssTitle_SelectedIndexChanged(object sender, EventArgs e) {
-            //webBrowser1.Navigate();
-            
+        private void lbRssTitle_Click(object sender, EventArgs e) {
+            var value = lbRssTitle.SelectedItem;
         }
     }
 }
