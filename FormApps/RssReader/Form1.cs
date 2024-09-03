@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Xml.Schema;
 
 namespace RssReader {
     public partial class Form1 : Form {
@@ -21,19 +22,18 @@ namespace RssReader {
                 var url = wc.OpenRead(tbRssUrl.Text);
                 var xdoc = XDocument.Load(url);
 
-
-                var items = xdoc.Descendants("item");
-                foreach ( var item in items ) {
-                    var title = item.Element("title").Value;
-                    lbRssTitle.Items.Add(title);
-                }
                 
 
 
+                var titles = xdoc.Descendants("item").Select(x=> x.Element("title").Value);
+                foreach (var title in titles) {
+                    lbRssTitle.Items.Add(title);
+                }
             }
         }
 
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
+        private void lbRssTitle_SelectedIndexChanged(object sender, EventArgs e) {
+            //webBrowser1.Navigate();
             
         }
     }
