@@ -13,6 +13,7 @@ using System.Xml.Schema;
 
 namespace RssReader {
     public partial class Form1 : Form {
+        List<string> links = new List<string>();
         public Form1() {
             InitializeComponent();
         }
@@ -28,13 +29,16 @@ namespace RssReader {
                     link = x.Element("link").Value,
                 });
                 foreach (var item in items) {
+                    links.Add(item.link);
                     lbRssTitle.Items.Add(item.title);
                 }
             }
         }
 
         private void lbRssTitle_Click(object sender, EventArgs e) {
-            var value = lbRssTitle.SelectedItem;
+            //リストボックスの選択行をウェブブラウザで表示
+            webBrowser1.ScriptErrorsSuppressed = true;
+            webBrowser1.Navigate(links[lbRssTitle.SelectedIndex]);
         }
     }
 }
