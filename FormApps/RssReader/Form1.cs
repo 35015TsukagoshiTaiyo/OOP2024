@@ -12,33 +12,37 @@ using System.Xml.Linq;
 using System.Xml.Schema;
 
 namespace RssReader {
+    public class ItemData {
+        public string Title { get; set; }
+        public string Link { get; set; }
+    }
     public partial class Form1 : Form {
-        List<string> links = new List<string>();
+        List<ItemData> items;
         public Form1() {
             InitializeComponent();
         }
 
         private void btGet_Click(object sender, EventArgs e) {
             using (var wc = new WebClient()) {
-                var url = wc.OpenRead(tbRssUrl.Text);
+                var url = wc.OpenRead(cbRssUrl.Text);
                 var xdoc = XDocument.Load(url);
 
-                
-                var items = xdoc.Descendants("item").Select(x => new {
-                    title = x.Element("title").Value,
-                    link = x.Element("link").Value,
-                });
+                items = xdoc.Root.Descendants("item").Select(x => new ItemData {
+                    Title = x.Element("title").Value,
+                    Link = x.Element("link").Value,
+                }).ToList();
                 foreach (var item in items) {
-                    links.Add(item.link);
-                    lbRssTitle.Items.Add(item.title);
+                    lbRssTitle.Items.Add(item.Title);
                 }
             }
         }
 
-        private void lbRssTitle_Click(object sender, EventArgs e) {
-            //リストボックスの選択行をウェブブラウザで表示
-            webBrowser1.ScriptErrorsSuppressed = true;
-            webBrowser1.Navigate(links[lbRssTitle.SelectedIndex]);
+        private void lbRssTitle_SelectedIndexChanged(object sender, EventArgs e) {
+            webView1.Navigate(items[lbRssTitle.SelectedIndex].Link);
+        }
+
+        private void btFavorite_Click(object sender, EventArgs e) {
+            
         }
     }
 }
