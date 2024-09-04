@@ -12,10 +12,6 @@ using System.Xml.Linq;
 using System.Xml.Schema;
 
 namespace RssReader {
-    public class ItemData {
-        public string Title { get; set; }
-        public string Link { get; set; }
-    }
     public partial class Form1 : Form {
         List<ItemData> items;
         public Form1() {
@@ -23,6 +19,7 @@ namespace RssReader {
         }
 
         private void btGet_Click(object sender, EventArgs e) {
+            lbRssTitle.Items.Clear();
             using (var wc = new WebClient()) {
                 var url = wc.OpenRead(cbRssUrl.Text);
                 var xdoc = XDocument.Load(url);
@@ -42,7 +39,17 @@ namespace RssReader {
         }
 
         private void btFavorite_Click(object sender, EventArgs e) {
+            //var item = new ItemData {
+            //    Title = tbFavorite.Text,
+            //    Link = cbRssUrl.Text,
+            //};
+            //cbRssUrl.Items.Add(item.Title);
             
         }
+    }
+
+    public class ItemData {
+        public string Title { get; set; }
+        public string Link { get; set; }
     }
 }

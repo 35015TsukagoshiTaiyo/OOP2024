@@ -27,7 +27,7 @@
             this.lbRssTitle = new System.Windows.Forms.ListBox();
             this.webView1 = new Microsoft.Toolkit.Forms.UI.Controls.WebView();
             this.cbRssUrl = new System.Windows.Forms.ComboBox();
-            this.tbFavoriteUrl = new System.Windows.Forms.TextBox();
+            this.tbFavorite = new System.Windows.Forms.TextBox();
             this.btFavorite = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.webView1)).BeginInit();
             this.SuspendLayout();
@@ -68,12 +68,12 @@
             this.cbRssUrl.Size = new System.Drawing.Size(560, 20);
             this.cbRssUrl.TabIndex = 5;
             // 
-            // tbFavoriteUrl
+            // tbFavorite
             // 
-            this.tbFavoriteUrl.Location = new System.Drawing.Point(31, 47);
-            this.tbFavoriteUrl.Name = "tbFavoriteUrl";
-            this.tbFavoriteUrl.Size = new System.Drawing.Size(392, 19);
-            this.tbFavoriteUrl.TabIndex = 6;
+            this.tbFavorite.Location = new System.Drawing.Point(31, 47);
+            this.tbFavorite.Name = "tbFavorite";
+            this.tbFavorite.Size = new System.Drawing.Size(392, 19);
+            this.tbFavorite.TabIndex = 6;
             // 
             // btFavorite
             // 
@@ -91,7 +91,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 651);
             this.Controls.Add(this.btFavorite);
-            this.Controls.Add(this.tbFavoriteUrl);
+            this.Controls.Add(this.tbFavorite);
             this.Controls.Add(this.cbRssUrl);
             this.Controls.Add(this.webView1);
             this.Controls.Add(this.lbRssTitle);
@@ -109,7 +109,7 @@
         private System.Windows.Forms.ListBox lbRssTitle;
         private Microsoft.Toolkit.Forms.UI.Controls.WebView webView1;
         private System.Windows.Forms.ComboBox cbRssUrl;
-        private System.Windows.Forms.TextBox tbFavoriteUrl;
+        private System.Windows.Forms.TextBox tbFavorite;
         private System.Windows.Forms.Button btFavorite;
     }
 }
