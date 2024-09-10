@@ -60,7 +60,6 @@ namespace RssReader {
         private void btGet_Click(object sender, EventArgs e) {
             lbRssTitle.Items.Clear();
 
-
             try {
                 using (var wc = new WebClient()) {
                     var url = wc.OpenRead(getLink(cbRssUrl.Text));
@@ -76,10 +75,9 @@ namespace RssReader {
                 }
             }
             catch (Exception) {
-                MessageBox.Show($"入力形式が正しくありません。", "エラー",
+                MessageBox.Show("入力形式が正しくありません。", "エラー",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         //リストボックス選択
@@ -90,27 +88,38 @@ namespace RssReader {
             catch (Exception) {
                 //何もしない
             }
-            
+
         }
 
         //お気に入りボタン
         private void btFavorite_Click(object sender, EventArgs e) {
-            if (tbFavorite.Text == "") {
-                MessageBox.Show("何も入力されていません","エラー",
-                                MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return;
+            try {
+                if (tbFavorite.Text == "" || cbRssUrl.Text == "") {
+                    MessageBox.Show("正しいURL又はお気に入り名称が入力されていません。", "エラー",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var distinct_topic = topics.FirstOrDefault(x => x.Title == tbFavorite.Text);
+                if (distinct_topic != null) {
+                    MessageBox.Show("既に同じ名前でお気に入り追加されています。同じ名前でお気に入り追加は出来ません。", "エラー",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var item = new ItemData {
+                    Title = tbFavorite.Text,
+                    Link = getLink(cbRssUrl.Text),
+                };
+                topics.Add(item);
+                cbRssUrl.Items.Add(item.Title);
+                clear();
             }
-            if (cbRssUrl.Text == "") {
-                MessageBox.Show("正しいURL又はお気に入り名称が入力されていません。", "エラー",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception) {
+                MessageBox.Show("エラーが発生しました。", "エラー",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            var item = new ItemData {
-                Title = tbFavorite.Text,
-                Link = getLink(cbRssUrl.Text),
-            };
-            topics.Add(item);
-            cbRssUrl.Items.Add(item.Title);
-            clear();
+            
         }
 
         //画面のクリア
@@ -125,6 +134,24 @@ namespace RssReader {
 
         }
 
+        private void btDelete_Click(object sender, EventArgs e) {
+            try {
+                var item = topics.FirstOrDefault(x => x.Title == tbFavorite.Text);
+                if (item != null) {
+                    cbRssUrl.Items.Remove(item.Title);
+                    topics.Remove(item);
+                    clear();
+                } else {
+                    MessageBox.Show("お気に入り追加されていないか、正しくお気に入り名称が入力されていません。", "エラー",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception) {
+                MessageBox.Show("エラーが発生しました。", "エラー",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
     public class ItemData {
         public string Title { get; set; }
