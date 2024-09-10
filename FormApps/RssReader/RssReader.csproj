@@ -64,18 +64,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -91,25 +91,13 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\sky_00576.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\water_00005.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cherry-blossom_00041.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\watercolor_00324.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\twinkle_00029.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\stone_00007.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\white_00114.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black_00103.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black_001031.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

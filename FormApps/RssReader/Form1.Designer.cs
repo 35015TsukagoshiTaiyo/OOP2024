@@ -39,7 +39,7 @@ namespace RssReader {
             // btGet
             // 
             this.btGet.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btGet.Location = new System.Drawing.Point(906, 27);
+            this.btGet.Location = new System.Drawing.Point(912, 27);
             this.btGet.Name = "btGet";
             this.btGet.Size = new System.Drawing.Size(86, 27);
             this.btGet.TabIndex = 1;
@@ -73,13 +73,13 @@ namespace RssReader {
             this.tbFavorite.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tbFavorite.Location = new System.Drawing.Point(328, 79);
             this.tbFavorite.Name = "tbFavorite";
-            this.tbFavorite.Size = new System.Drawing.Size(392, 26);
+            this.tbFavorite.Size = new System.Drawing.Size(319, 26);
             this.tbFavorite.TabIndex = 6;
             // 
             // btFavorite
             // 
             this.btFavorite.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btFavorite.Location = new System.Drawing.Point(740, 79);
+            this.btFavorite.Location = new System.Drawing.Point(669, 79);
             this.btFavorite.Name = "btFavorite";
             this.btFavorite.Size = new System.Drawing.Size(123, 26);
             this.btFavorite.TabIndex = 7;

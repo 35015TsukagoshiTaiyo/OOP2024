@@ -125,7 +125,6 @@ namespace RssReader {
 
         }
 
-
     }
     public class ItemData {
         public string Title { get; set; }
