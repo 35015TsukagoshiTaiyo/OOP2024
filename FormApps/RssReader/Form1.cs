@@ -17,16 +17,20 @@ namespace RssReader {
         List<ItemData> topics;
         public Form1() {
             InitializeComponent();
-            //lbRssTitle.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             InitializeWebView();
+            //リストボックスサイズ調整
+            lbRssTitle.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom;
             topics_data();
         }
+
         private async void InitializeWebView() {
+            //WebViewサイズ調整
             webView21.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             // WebView2 コントロールを初期化します
             await webView21.EnsureCoreWebView2Async(null);
         }
 
+        //コンボボックスにトピックスを追加
         private void topics_data() {
             topics = new List<ItemData> {
                 new ItemData { Title = "主要", Link = "https://news.yahoo.co.jp/rss/topics/top-picks.xml" },
@@ -43,6 +47,8 @@ namespace RssReader {
                 cbRssUrl.Items.Add(item.Title);
             }
         }
+
+        //リンク取得メソッド
         private string getLink(string element) {
             var topic = topics.FirstOrDefault(x => x.Title == element);
             if (topic == null) {
@@ -50,9 +56,10 @@ namespace RssReader {
             }
             return topic.Link;
         }
-
+        //取得ボタン
         private void btGet_Click(object sender, EventArgs e) {
             lbRssTitle.Items.Clear();
+
 
             try {
                 using (var wc = new WebClient()) {
@@ -75,13 +82,22 @@ namespace RssReader {
 
         }
 
+        //リストボックス選択
         private void lbRssTitle_SelectedIndexChanged(object sender, EventArgs e) {
-            webView21.CoreWebView2.Navigate(items[lbRssTitle.SelectedIndex].Link);
+            try {
+                webView21.CoreWebView2.Navigate(items[lbRssTitle.SelectedIndex].Link);
+            }
+            catch (Exception) {
+                //何もしない
+            }
+            
         }
 
+        //お気に入りボタン
         private void btFavorite_Click(object sender, EventArgs e) {
             if (tbFavorite.Text == "") {
-                MessageBox.Show("何も入力されていません");
+                MessageBox.Show("何も入力されていません","エラー",
+                                MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
             if (cbRssUrl.Text == "") {
@@ -90,13 +106,14 @@ namespace RssReader {
             }
             var item = new ItemData {
                 Title = tbFavorite.Text,
-                Link = cbRssUrl.Text,
+                Link = getLink(cbRssUrl.Text),
             };
             topics.Add(item);
             cbRssUrl.Items.Add(item.Title);
             clear();
         }
 
+        //画面のクリア
         private void clear() {
             cbRssUrl.Text = null;
             tbFavorite.Clear();
@@ -107,6 +124,8 @@ namespace RssReader {
         private void Form1_Resize(object sender, EventArgs e) {
 
         }
+
+
     }
     public class ItemData {
         public string Title { get; set; }

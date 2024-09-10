@@ -70,6 +70,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -88,6 +89,27 @@
     <PackageReference Include="Microsoft.Web.WebView2">
       <Version>1.0.2739.15</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sky_00576.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\water_00005.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cherry-blossom_00041.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\watercolor_00324.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\twinkle_00029.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stone_00007.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white_00114.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

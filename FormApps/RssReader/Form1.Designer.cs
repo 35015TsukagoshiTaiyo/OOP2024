@@ -38,9 +38,10 @@ namespace RssReader {
             // 
             // btGet
             // 
-            this.btGet.Location = new System.Drawing.Point(850, 6);
+            this.btGet.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btGet.Location = new System.Drawing.Point(906, 27);
             this.btGet.Name = "btGet";
-            this.btGet.Size = new System.Drawing.Size(99, 23);
+            this.btGet.Size = new System.Drawing.Size(86, 27);
             this.btGet.TabIndex = 1;
             this.btGet.Text = "取得";
             this.btGet.UseVisualStyleBackColor = true;
@@ -48,34 +49,39 @@ namespace RssReader {
             // 
             // lbRssTitle
             // 
+            this.lbRssTitle.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lbRssTitle.FormattingEnabled = true;
-            this.lbRssTitle.ItemHeight = 12;
-            this.lbRssTitle.Location = new System.Drawing.Point(16, 91);
+            this.lbRssTitle.ItemHeight = 16;
+            this.lbRssTitle.Location = new System.Drawing.Point(12, 131);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(241, 544);
+            this.lbRssTitle.Size = new System.Drawing.Size(310, 564);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
             // 
             // cbRssUrl
             // 
+            this.cbRssUrl.BackColor = System.Drawing.Color.White;
+            this.cbRssUrl.Font = new System.Drawing.Font("HGS創英角ﾎﾟｯﾌﾟ体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cbRssUrl.FormattingEnabled = true;
-            this.cbRssUrl.Location = new System.Drawing.Point(275, 9);
+            this.cbRssUrl.Location = new System.Drawing.Point(328, 27);
             this.cbRssUrl.Name = "cbRssUrl";
-            this.cbRssUrl.Size = new System.Drawing.Size(560, 20);
+            this.cbRssUrl.Size = new System.Drawing.Size(560, 27);
             this.cbRssUrl.TabIndex = 5;
             // 
             // tbFavorite
             // 
-            this.tbFavorite.Location = new System.Drawing.Point(275, 47);
+            this.tbFavorite.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbFavorite.Location = new System.Drawing.Point(328, 79);
             this.tbFavorite.Name = "tbFavorite";
-            this.tbFavorite.Size = new System.Drawing.Size(392, 19);
+            this.tbFavorite.Size = new System.Drawing.Size(392, 26);
             this.tbFavorite.TabIndex = 6;
             // 
             // btFavorite
             // 
-            this.btFavorite.Location = new System.Drawing.Point(682, 45);
+            this.btFavorite.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btFavorite.Location = new System.Drawing.Point(740, 79);
             this.btFavorite.Name = "btFavorite";
-            this.btFavorite.Size = new System.Drawing.Size(99, 23);
+            this.btFavorite.Size = new System.Drawing.Size(123, 26);
             this.btFavorite.TabIndex = 7;
             this.btFavorite.Text = "お気に入り";
             this.btFavorite.UseVisualStyleBackColor = true;
@@ -84,31 +90,35 @@ namespace RssReader {
             // webView21
             // 
             this.webView21.AllowExternalDrop = true;
+            this.webView21.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.webView21.CreationProperties = null;
             this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView21.Location = new System.Drawing.Point(275, 91);
+            this.webView21.Location = new System.Drawing.Point(328, 131);
             this.webView21.Name = "webView21";
-            this.webView21.Size = new System.Drawing.Size(784, 544);
+            this.webView21.Size = new System.Drawing.Size(802, 564);
             this.webView21.TabIndex = 8;
             this.webView21.ZoomFactor = 1D;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(12, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(257, 21);
+            this.label1.Size = new System.Drawing.Size(310, 24);
             this.label1.TabIndex = 9;
             this.label1.Text = "URLまたはお気に入り名称：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(108, 42);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("HG創英角ﾎﾟｯﾌﾟ体", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(120, 81);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(161, 21);
+            this.label2.Size = new System.Drawing.Size(202, 24);
             this.label2.TabIndex = 10;
             this.label2.Text = "お気に入り追加：";
             // 
@@ -116,7 +126,9 @@ namespace RssReader {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 651);
+            this.BackColor = System.Drawing.Color.MistyRose;
+            this.BackgroundImage = global::RssReader.Properties.Resources.white_00114;
+            this.ClientSize = new System.Drawing.Size(1145, 703);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.webView21);
