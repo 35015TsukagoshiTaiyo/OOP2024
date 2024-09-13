@@ -13,9 +13,11 @@ namespace SampleEntityFramework {
             //AddBooks();
             //UpdateBook();
             //DeleteBook();
-            DisplayAllBooks();
+            //DisplayAllBooks();
+            DisplayAllBooks2();
         }
-        
+
+        //bookの追加
         static void InsertBooks() {
             using (var db = new BooksDbContext()) {
                 var book1 = new Book {
@@ -43,6 +45,8 @@ namespace SampleEntityFramework {
 
             }
         }
+
+        //authorの追加
         private static void AddAuthors() {
             using (var db = new BooksDbContext()) {
                 var author1 = new Author {
@@ -61,6 +65,7 @@ namespace SampleEntityFramework {
             }
         }
 
+        //登録済みのAuthorを使い書籍を追加
         private static void AddBooks() {
             using (var db = new BooksDbContext()) {
                 //Authorから該当するデータを取得する
@@ -99,6 +104,7 @@ namespace SampleEntityFramework {
                 db.SaveChanges();
             }
         }
+
         //データの変更
         private static void UpdateBook() {
             using (var db = new BooksDbContext()) {
@@ -107,6 +113,7 @@ namespace SampleEntityFramework {
                 db.SaveChanges();
             }
         }
+
         //データの削除
         private static void DeleteBook() {
             using(var db = new BooksDbContext()) {
@@ -118,6 +125,7 @@ namespace SampleEntityFramework {
             }
         }
 
+        //データを取得
         static IEnumerable<Book> GetBooks() {
             using (var db = new BooksDbContext()) {
                 return db.Books
@@ -125,10 +133,23 @@ namespace SampleEntityFramework {
                     .ToList();
             }
         }
+
+        //データの読み取り
         static void DisplayAllBooks() {
             var books = GetBooks();
             foreach (var book in books) {
                 Console.WriteLine($"{book.Title}　{book.PublishedYear}");
+            }
+        }
+        //演習問題13.2
+        static void DisplayAllBooks2() {
+            using(var db = new BooksDbContext()) {
+                foreach (var book in db.Books.ToList()) {
+                    Console.WriteLine("{0} {1} {2} ({3:yyyy/MM/dd})",
+                        book.Title, book.PublishedYear,
+                        book.Author.Name, book.Author.Birthday
+                    );
+                }
             }
         }
 
