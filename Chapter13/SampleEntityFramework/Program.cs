@@ -32,12 +32,12 @@ namespace SampleEntityFramework {
                 db.Books.Add(book1);
 
                 var book2 = new Book {
-                    Title = "人間失格",
-                    PublishedYear = 1990,
+                    Title = "銀河鉄道の夜",
+                    PublishedYear = 1989,
                     Author = new Author {
-                        Birthday = new DateTime(1909, 6, 19),
+                        Birthday = new DateTime(1896, 8, 27),
                         Gender = "M",
-                        Name = "太宰治",
+                        Name = "宮沢賢治",
                     }
                 };
                 db.Books.Add(book2);
