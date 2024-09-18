@@ -15,7 +15,32 @@ namespace SampleEntityFramework {
             //DeleteBook();
             //DisplayAllBooks();
             //DisplayAllBooks2();
+            Console.WriteLine("# 1.3");
             DisplayAllBooks3();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.4");
+            Exercise1_4();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.5");
+            Exercise1_5();
+
+            Console.ReadLine(); //コンソールアプリだが F5 でデバッグ実行したいために記述
+
+        }
+
+        private static void Exercise1_4() {
+            using (var db = new BooksDbContext()) {
+                var books_year = db.Books.ToList().OrderBy(x=> x.PublishedYear).Take(3);       
+                foreach (var book in books_year) { 
+                    Console.WriteLine("{0} {1}",book.Title,book.Author.Name);
+                }
+            }
+        }
+
+        private static void Exercise1_5() {
+            
         }
 
         //bookの追加
@@ -164,6 +189,5 @@ namespace SampleEntityFramework {
                 }
             }
         }
-
     }
 }
