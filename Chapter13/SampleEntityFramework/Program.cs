@@ -14,7 +14,8 @@ namespace SampleEntityFramework {
             //UpdateBook();
             //DeleteBook();
             //DisplayAllBooks();
-            DisplayAllBooks2();
+            //DisplayAllBooks2();
+            DisplayAllBooks3();
         }
 
         //bookの追加
@@ -152,7 +153,17 @@ namespace SampleEntityFramework {
                 }
             }
         }
-
+        //演習問題13.3
+        static void DisplayAllBooks3() {
+            using (var db = new BooksDbContext()) {
+                var book_length = db.Books.Max(x => x.Title.Length);
+                foreach (var book in db.Books.ToList()) {
+                    if (book.Title.Length == book_length) {
+                        Console.WriteLine(book.Title);
+                    }
+                }
+            }
+        }
 
     }
 }
