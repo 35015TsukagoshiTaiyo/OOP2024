@@ -1,6 +1,7 @@
 ﻿using SampleEntityFramework.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,20 +33,34 @@ namespace SampleEntityFramework {
 
         private static void Exercise1_4() {
             using (var db = new BooksDbContext()) {
-                var books_year = db.Books.ToList().OrderBy(x=> x.PublishedYear).Take(3);       
-                foreach (var book in books_year) { 
+                var books = db.Books.ToList().OrderBy(x=> x.PublishedYear).Take(3);
+                //var books = db.Books.OrderBy(x => x.PublishedYear).Include(nameof(Author)).Take(3);
+                foreach (var book in books) { 
                     Console.WriteLine("{0} {1} {2}",book.PublishedYear,book.Title,book.Author.Name);
                 }
             }
         }
 
         private static void Exercise1_5() {
+#if false
             using (var db = new BooksDbContext()) {
-                var books_birthday = db.Books.ToList().OrderByDescending(x => x.Author.Birthday);
-                foreach (var book in books_birthday) {
-                    Console.WriteLine("{0} {1} {2}",book.Author.Birthday,book.Title,book.PublishedYear);
+                var books = db.Books.ToList().OrderByDescending(x => x.Author.Birthday);
+                foreach (var book in books) {
+                    Console.WriteLine("{0} {1} {2} {3}",book.Author.Birthday,book.Author.Name,book.Title,book.PublishedYear);
                 }
             }
+#else//模範解答
+            using (var db = new BooksDbContext()) {
+                var authors = db.Authors.ToList().OrderByDescending(x=>x.Birthday);
+                foreach (var author in authors) {
+                    Console.WriteLine("{0}",author.Name);
+                    foreach (var book in author.Books) {
+                        Console.WriteLine("{0} {1}", book.Title, book.PublishedYear);
+                    }
+                    Console.WriteLine();
+                }
+            }
+#endif
         }
 
         //bookの追加
