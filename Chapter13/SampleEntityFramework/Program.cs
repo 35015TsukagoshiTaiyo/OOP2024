@@ -34,13 +34,18 @@ namespace SampleEntityFramework {
             using (var db = new BooksDbContext()) {
                 var books_year = db.Books.ToList().OrderBy(x=> x.PublishedYear).Take(3);       
                 foreach (var book in books_year) { 
-                    Console.WriteLine("{0} {1}",book.Title,book.Author.Name);
+                    Console.WriteLine("{0} {1} {2}",book.PublishedYear,book.Title,book.Author.Name);
                 }
             }
         }
 
         private static void Exercise1_5() {
-            
+            using (var db = new BooksDbContext()) {
+                var books_birthday = db.Books.ToList().OrderByDescending(x => x.Author.Birthday);
+                foreach (var book in books_birthday) {
+                    Console.WriteLine("{0} {1} {2}",book.Author.Birthday,book.Title,book.PublishedYear);
+                }
+            }
         }
 
         //bookの追加
@@ -180,6 +185,7 @@ namespace SampleEntityFramework {
         }
         //演習問題13.3
         static void DisplayAllBooks3() {
+#if true
             using (var db = new BooksDbContext()) {
                 var book_length = db.Books.Max(x => x.Title.Length);
                 foreach (var book in db.Books.ToList()) {
@@ -188,6 +194,14 @@ namespace SampleEntityFramework {
                     }
                 }
             }
+#else //模範解答
+            using (var db = new BooksDbContext()) {
+                var book = db.Books.Where(b => b.Title.Length == db.Books.Max(x => x.Title.Length));
+                foreach (var item in book) {
+                    Console.WriteLine(item.Title);
+                }
+            }
+#endif
         }
     }
 }
