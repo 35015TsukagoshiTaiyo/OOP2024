@@ -32,27 +32,32 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3() {
-        
+            var groups = Library.Books
+                .GroupBy(b => b.PublishedYear)
+                .OrderBy(g => g.Key);
+            foreach (var group in groups) {
+                Console.WriteLine("{0}年 {1}冊", group.Key, group.Count());
+            }
         }
 
         private static void Exercise1_4() {
-        
+
         }
 
         private static void Exercise1_5() {
-        
+
         }
 
         private static void Exercise1_6() {
-        
+
         }
 
         private static void Exercise1_7() {
-        
+
         }
 
         private static void Exercise1_8() {
-        
+
         }
     }
 }
