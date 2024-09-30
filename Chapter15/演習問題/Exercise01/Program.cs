@@ -52,8 +52,6 @@ namespace Exercise01 {
 
         private static void Exercise1_4() {
             var books = Library.Books
-                .OrderByDescending(b => b.PublishedYear)
-                .ThenByDescending(b => b.Price)
                 .Join(Library.Categories, //結合する２番目のシーケンス
                         book => book.CategoryId, //対象シーケンスの結合キー
                         category => category.Id, //２番目のシーケンスの結合キー
@@ -63,7 +61,9 @@ namespace Exercise01 {
                             book.Title,
                             CategoryName =category.Name,
                         }
-                    );
+                    )
+                .OrderByDescending(b => b.PublishedYear)
+                .ThenByDescending(b => b.Price);
             foreach (var book in books) {
                 Console.WriteLine($"{book.PublishedYear}年 {book.Price}円 {book.Title} ({book.CategoryName})  ");
             }
@@ -98,7 +98,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_7() {
-
+            
         }
 
         private static void Exercise1_8() {
