@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Section01 {
+namespace Exercise01 {
 	// List 15-11
     public class Category {
         public int Id { get; set; }
