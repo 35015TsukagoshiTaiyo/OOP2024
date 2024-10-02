@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Exercise01 {
@@ -83,11 +84,12 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_6() {
+#if true
             var groups = Library.Categories
                 .OrderBy(c => c.Name)
                 .GroupJoin(Library.Books,
-                            c => c.Id,
-                            d => d.CategoryId,
+                            category => category.Id,
+                            book => book.CategoryId,
                             (c, books) => new { category = c.Name, Books = books });
             foreach (var group in groups) {
                 Console.WriteLine($"#{group.category}");
@@ -95,31 +97,68 @@ namespace Exercise01 {
                     Console.WriteLine($"  {book.Title}");
                 }
             }
+#else //模範解答
+            var query = Library.Books
+                            .Join(Library.Categories,
+                                book => book.CategoryId,
+                                category => category.Id,
+                                (book, category) => new { book.Title, categoryName = category.Name })
+                            .GroupBy(x => x.categoryName)
+                            .OrderBy(x => x.Key);
+            foreach (var group in query) {
+                Console.WriteLine($"#{group.Key}");
+                foreach (var book in group) {
+                    Console.WriteLine($"  {book.Title}");
+                }
+            }
+#endif
         }
 
         private static void Exercise1_7() {
+#if false //無駄が多い
             var groups = Library.Categories
                 .OrderBy(c => c.Name)
                 .GroupJoin(Library.Books,
                             c => c.Id,
                             d => d.CategoryId,
                             (c, books) => new { category = c.Name, Books = books });
-            
+
             foreach (var group in groups) {
                 if (group.category == "Development") {
                     var g = group.Books.GroupBy(b => b.PublishedYear).OrderBy(x => x.Key);
                     foreach (var book in g) {
-                        Console.WriteLine($"{book.Key}");
+                        Console.WriteLine($"#{book.Key}");
                         foreach (var b in book) {
-                            Console.WriteLine(b.Title);
+                            Console.WriteLine($"  {b.Title}");
                         }
                     }
                 }
             }
+#else //模範解答
+            var categorysId = Library.Categories.Single(c => c.Name == "Development").Id;
+            var query = Library.Books.Where(b => b.CategoryId == categorysId)
+                                     .GroupBy(b => b.PublishedYear)
+                                     .OrderBy(x => x.Key);
+            foreach (var group in query) {
+                Console.WriteLine($"#{group.Key}");
+                foreach (var book in group) {
+                    Console.WriteLine($"  {book.Title}");
+                }
+            }
+#endif
         }
 
         private static void Exercise1_8() {
-
+            var groups = Library.Categories
+                .OrderBy(c => c.Name)
+                .GroupJoin(Library.Books,
+                            c => c.Id,
+                            d => d.CategoryId,
+                            (c, books) => new { category = c.Name, Books = books })
+                .Where(b => b.Books.Count() >= 4);
+            foreach (var group in groups) {
+                Console.WriteLine(group.category);
+            }
         }
     }
 }
