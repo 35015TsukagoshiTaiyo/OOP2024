@@ -149,8 +149,8 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_8() {
+#if false
             var groups = Library.Categories
-                .OrderBy(c => c.Name)
                 .GroupJoin(Library.Books,
                             c => c.Id,
                             d => d.CategoryId,
@@ -159,6 +159,17 @@ namespace Exercise01 {
             foreach (var group in groups) {
                 Console.WriteLine(group.category);
             }
+#else // 模範解答
+            var query = Library.Categories
+                            .GroupJoin(Library.Books,
+                                category => category.Id,
+                                book => book.CategoryId,
+                                (category, books) => new { CategoryName = category.Name,Count = books.Count() })
+                            .Where(x=>x.Count >= 4);
+            foreach (var group in query) {
+                Console.WriteLine($"{group.CategoryName} {group.Count}冊");
+            }
+#endif
         }
     }
 }
