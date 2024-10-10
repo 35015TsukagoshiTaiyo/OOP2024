@@ -14,7 +14,7 @@ namespace DistanceConverter {
             To = to;
         }
 
-        public double Converter(double value) {
+        public double Convert(double value) {
             var meter = From.ToMeter(value);
             return To.FromMeter(meter);
         }
