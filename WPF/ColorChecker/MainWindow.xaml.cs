@@ -21,5 +21,17 @@ namespace ColorChecker {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            var rvalue = (int)rSlider.Value;
+            var gvalue = (int)gSlider.Value;
+            var bvalue = (int)bSlider.Value;
+            colorArea.Background = new SolidColorBrush(Color.FromRgb((byte)rvalue, (byte)gvalue, (byte)bvalue));
+        }
+
+        private void stockButton_Click(object sender, RoutedEventArgs e) {
+            stockList.Items.Add("R:" + (int)rSlider.Value + " G:" + (int)gSlider.Value + " B:" + (int)bSlider.Value);
+
+        }
     }
 }

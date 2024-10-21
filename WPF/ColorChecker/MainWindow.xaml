@@ -29,7 +29,8 @@
             <!--R-->
             <TextBlock Text="R" FontSize="40" 
                        VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Slider x:Name="rSlider" Grid.Column="1" VerticalAlignment="Center" Maximum="255"/>
+            <Slider x:Name="rSlider" Grid.Column="1" VerticalAlignment="Center"
+                    Maximum="255" ValueChanged="Slider_ValueChanged"/>
             <TextBox x:Name="rValue" Grid.Column="2" 
                      Text="{Binding ElementName=rSlider,Path=Value, Mode=TwoWay,
                      UpdateSourceTrigger=PropertyChanged}"
@@ -38,7 +39,7 @@
             <TextBlock Text="G" FontSize="40" Grid.Row="1"
                        VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Slider x:Name="gSlider" Grid.Column="1" Grid.Row="1" 
-                    VerticalAlignment="Center" Maximum="255"/>
+                    VerticalAlignment="Center" Maximum="255" ValueChanged="Slider_ValueChanged"/>
             <TextBox x:Name="gValue" Grid.Column="2" Grid.Row="1" 
                      Text="{Binding ElementName=gSlider,Path=Value, Mode=TwoWay,
                      UpdateSourceTrigger=PropertyChanged}"
@@ -47,7 +48,7 @@
             <TextBlock Text="B" FontSize="40" Grid.Row="2"
                        VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Slider x:Name="bSlider" Grid.Column="1" Grid.Row="2"
-                    VerticalAlignment="Center" Maximum="255"/>
+                    VerticalAlignment="Center" Maximum="255" ValueChanged="Slider_ValueChanged"/>
             <TextBox x:Name="bValue" Grid.Column="2" Grid.Row="2" 
                      Text="{Binding ElementName=bSlider,Path=Value, Mode=TwoWay,
                      UpdateSourceTrigger=PropertyChanged}"
@@ -63,8 +64,8 @@
                 <RowDefinition/>
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="stockButton" Content="STOCK" FontSize="25" Background="#FFF5F3BA" Margin="5"/>
-            <ListBox x:Name="stockList" Grid.Row="1" Background="#FFF7F4E0" Margin="10"/>
+            <Button x:Name="stockButton" Content="STOCK" FontSize="20" Background="#FFF5F3BA" Margin="7,7,7,0" Click="stockButton_Click"/>
+            <ListBox x:Name="stockList" Grid.Row="1" Background="#FFF7F4E0" Margin="7"/>
         </Grid>
 
 
