@@ -30,32 +30,31 @@
             <TextBlock Text="R" FontSize="40" 
                        VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Slider x:Name="rSlider" Grid.Column="1" VerticalAlignment="Center"
-                    Maximum="255" ValueChanged="Slider_ValueChanged"
-                    IsSnapToTickEnabled="True" />
+                    Maximum="255" ValueChanged="Slider_ValueChanged"/>
             <TextBox x:Name="rValue" Grid.Column="2" 
                      Text="{Binding ElementName=rSlider,Path=Value, Mode=TwoWay,
-                     UpdateSourceTrigger=PropertyChanged}"
-                     FontSize="14" VerticalAlignment="Center"/>
+                     UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}"
+                     FontSize="16" VerticalAlignment="Center"/>
             <!--G-->
             <TextBlock Text="G" FontSize="40" Grid.Row="1"
                        VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Slider x:Name="gSlider" Grid.Column="1" Grid.Row="1" 
                     VerticalAlignment="Center" Maximum="255" 
-                    ValueChanged="Slider_ValueChanged" IsSnapToTickEnabled="True"/>
+                    ValueChanged="Slider_ValueChanged"/>
             <TextBox x:Name="gValue" Grid.Column="2" Grid.Row="1" 
                      Text="{Binding ElementName=gSlider,Path=Value, Mode=TwoWay,
-                     UpdateSourceTrigger=PropertyChanged}"
-                     FontSize="14" VerticalAlignment="Center"/>
+                     UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}"
+                     FontSize="16" VerticalAlignment="Center"/>
             <!--B-->
             <TextBlock Text="B" FontSize="40" Grid.Row="2"
                        VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Slider x:Name="bSlider" Grid.Column="1" Grid.Row="2"
                     VerticalAlignment="Center" Maximum="255" 
-                    ValueChanged="Slider_ValueChanged" IsSnapToTickEnabled="True" />
+                    ValueChanged="Slider_ValueChanged" />
             <TextBox x:Name="bValue" Grid.Column="2" Grid.Row="2" 
                      Text="{Binding ElementName=bSlider,Path=Value, Mode=TwoWay,
-                     UpdateSourceTrigger=PropertyChanged}"
-                     FontSize="14" VerticalAlignment="Center"/>
+                     UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}"
+                     FontSize="16" VerticalAlignment="Center"/>
             <!--ComboBox-->
             <ComboBox x:Name="colorSelectComboBox" Grid.Column="1" Grid.Row="3"
                        VerticalAlignment="Center" Margin="10"/>
@@ -68,7 +67,9 @@
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
             <Button x:Name="stockButton" Content="STOCK" FontSize="20" Background="#FFF5F3BA" Margin="7,7,7,0" Click="stockButton_Click"/>
-            <ListBox x:Name="stockList" Grid.Row="1" Background="#FFF7F4E0" Margin="7" SelectionChanged="stockList_SelectionChanged" />
+            <ListBox x:Name="stockList" Grid.Row="1" Background="#FFF7F4E0" 
+                     Margin="7" SelectionChanged="stockList_SelectionChanged"
+                     FontSize="16"/>
         </Grid>
 
 

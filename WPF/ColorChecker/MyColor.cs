@@ -11,7 +11,8 @@ namespace ColorChecker {
         public Color Color { get; set; }
         public string Name { get; set; } = string.Empty;
         public override string ToString() {
-            return "R:" + Color.R + " G:" + Color.G + " B:" + Color.B;
+            //return "R:" + Color.R + " G:" + Color.G + " B:" + Color.B;
+            return $"R:{Color.R}  G:{Color.G}  B:{Color.B}";
         }
 
     }
