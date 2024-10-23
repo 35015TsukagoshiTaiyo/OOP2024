@@ -21,6 +21,8 @@ namespace ColorChecker {
         public MainWindow() {
             InitializeComponent();
         }
+        private List<MyColor> stockColor = new List<MyColor>();
+
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
             var rvalue = (int)rSlider.Value;
@@ -30,8 +32,17 @@ namespace ColorChecker {
         }
 
         private void stockButton_Click(object sender, RoutedEventArgs e) {
-            stockList.Items.Add("R:" + (int)rSlider.Value + " G:" + (int)gSlider.Value + " B:" + (int)bSlider.Value);
+            MyColor color = new MyColor {
+                Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value),
+            };
+            stockList.Items.Add(color.ToString());
+            stockColor.Add(color);
+        }
 
+        private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            rSlider.Value = stockColor[stockList.SelectedIndex].Color.R;
+            gSlider.Value = stockColor[stockList.SelectedIndex].Color.G;
+            bSlider.Value = stockColor[stockList.SelectedIndex].Color.B;
         }
     }
 }
