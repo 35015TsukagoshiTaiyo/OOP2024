@@ -21,14 +21,13 @@ namespace ColorChecker {
         public MainWindow() {
             InitializeComponent();
         }
+        MyColor currentColor = new MyColor();
         private List<MyColor> stockColors = new List<MyColor>();
 
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
-            var rvalue = (int)rSlider.Value;
-            var gvalue = (int)gSlider.Value;
-            var bvalue = (int)bSlider.Value;
-            colorArea.Background = new SolidColorBrush(Color.FromRgb((byte)rvalue, (byte)gvalue, (byte)bvalue));
+            currentColor.Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value);
+            colorArea.Background = new SolidColorBrush(currentColor.Color);
         }
 
         private void stockButton_Click(object sender, RoutedEventArgs e) {
@@ -37,7 +36,7 @@ namespace ColorChecker {
             };
             //同じ要素が存在したら追加できない処理
             if (!stockList.Items.Contains(color.ToString())) {
-                stockList.Items.Add(color.ToString());
+                stockList.Items.Insert(0,color.ToString());
                 stockColors.Add(color);
             }
         }

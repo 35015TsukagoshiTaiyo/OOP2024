@@ -69,7 +69,7 @@
             <Button x:Name="stockButton" Content="STOCK" FontSize="20" Background="#FFF5F3BA" Margin="7,7,7,0" Click="stockButton_Click"/>
             <ListBox x:Name="stockList" Grid.Row="1" Background="#FFF7F4E0" 
                      Margin="7" SelectionChanged="stockList_SelectionChanged"
-                     FontSize="16"/>
+                     FontSize="15" FontFamily="Courier New"/>
         </Grid>
 
 
