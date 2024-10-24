@@ -71,7 +71,6 @@ namespace ColorChecker {
             gSlider.Value = myColor.Color.G;
             bSlider.Value = myColor.Color.B;
 
-
             //var color = myColor.Color;
             //var name = myColor.Name;
         }

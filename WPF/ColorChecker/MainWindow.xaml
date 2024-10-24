@@ -56,8 +56,8 @@
                      UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}"
                      FontSize="16" VerticalAlignment="Center"/>
             <!--ComboBox-->
-            <ComboBox x:Name="colorSelectComboBox" Grid.Column="1" Grid.Row="3"
-                      VerticalAlignment="Center" Margin="10"
+            <ComboBox x:Name="colorSelectComboBox" Grid.Row="3"
+                      VerticalAlignment="Center" Margin="20" Grid.ColumnSpan="3"
                       ItemsSource="{Binding}" SelectedValue="{Binding Color}" SelectionChanged="colorSelectComboBox_SelectionChanged" >
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
