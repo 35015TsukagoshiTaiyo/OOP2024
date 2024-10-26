@@ -26,7 +26,7 @@ namespace ColorChecker {
 
             colorSelectComboBox.DataContext = GetColorList();
         }
-        MyColor currentColor = new MyColor();
+        MyColor currentColor /*= new MyColor()*/;
         //private List<MyColor> stockColors = new List<MyColor>();
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
@@ -35,13 +35,14 @@ namespace ColorChecker {
         }
 
         private void stockButton_Click(object sender, RoutedEventArgs e) {
-            MyColor color = new MyColor {
-                Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value),
-                Name = "",
-            };
+            //MyColor color = new MyColor {
+            //    Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value),
+            //    Name = "",
+            //};
+
             //同じ要素が存在したら追加できない処理
-            if (!stockList.Items.Contains(color)) {
-                stockList.Items.Insert(0, color);
+            if (!stockList.Items.Contains(currentColor)) {
+                stockList.Items.Insert(0, currentColor);
                 //stockColors.Insert(0, color);
             }
         }
@@ -71,8 +72,8 @@ namespace ColorChecker {
             gSlider.Value = myColor.Color.G;
             bSlider.Value = myColor.Color.B;
 
-            var color = myColor.Color;
-            var name = myColor.Name;
+            //var color = myColor.Color;
+            currentColor.Name= myColor.Name;
         }
     }
 }
