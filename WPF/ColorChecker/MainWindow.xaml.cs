@@ -27,7 +27,7 @@ namespace ColorChecker {
             colorSelectComboBox.DataContext = GetColorList();
         }
         MyColor currentColor = new MyColor();
-        private List<MyColor> stockColors = new List<MyColor>();
+        //private List<MyColor> stockColors = new List<MyColor>();
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
             currentColor.Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value);
@@ -40,22 +40,22 @@ namespace ColorChecker {
                 Name = "",
             };
             //同じ要素が存在したら追加できない処理
-            if (!stockList.Items.Contains(color.ToString())) {
-                stockList.Items.Insert(0, color.ToString());
-                stockColors.Insert(0, color);
+            if (!stockList.Items.Contains(color)) {
+                stockList.Items.Insert(0, color);
+                //stockColors.Insert(0, color);
             }
         }
 
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             //模範解答
-            //colorArea.Background = new SolidColorBrush(((MyColor)stockList.Items[stockList.SelectedIndex]).Color);
-            //rSlider.Value = ((MyColor)stockList.Items[stockList.SelectedIndex]).Color.R;
-            //gSlider.Value = ((MyColor)stockList.Items[stockList.SelectedIndex]).Color.G;
-            //bSlider.Value = ((MyColor)stockList.Items[stockList.SelectedIndex]).Color.B;
+            colorArea.Background = new SolidColorBrush(((MyColor)stockList.Items[stockList.SelectedIndex]).Color);
+            rSlider.Value = ((MyColor)stockList.Items[stockList.SelectedIndex]).Color.R;
+            gSlider.Value = ((MyColor)stockList.Items[stockList.SelectedIndex]).Color.G;
+            bSlider.Value = ((MyColor)stockList.Items[stockList.SelectedIndex]).Color.B;
 
-            rSlider.Value = stockColors[stockList.SelectedIndex].Color.R;
-            gSlider.Value = stockColors[stockList.SelectedIndex].Color.G;
-            bSlider.Value = stockColors[stockList.SelectedIndex].Color.B;
+            //rSlider.Value = stockColors[stockList.SelectedIndex].Color.R;
+            //gSlider.Value = stockColors[stockList.SelectedIndex].Color.G;
+            //bSlider.Value = stockColors[stockList.SelectedIndex].Color.B;
         }
 
         // すべての色を取得するメソッド
@@ -71,8 +71,8 @@ namespace ColorChecker {
             gSlider.Value = myColor.Color.G;
             bSlider.Value = myColor.Color.B;
 
-            //var color = myColor.Color;
-            //var name = myColor.Name;
+            var color = myColor.Color;
+            var name = myColor.Name;
         }
     }
 }
