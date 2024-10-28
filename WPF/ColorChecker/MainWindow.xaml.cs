@@ -26,17 +26,15 @@ namespace ColorChecker {
             DataContext = GetColorList();
         }
         MyColor currentColor /*= new MyColor()*/;
-        //private List<MyColor> stockColors = new List<MyColor>();
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
             currentColor.Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value);
             currentColor.Name = null;
-            colorSelectComboBox.SelectedItem = null;
             colorArea.Background = new SolidColorBrush(currentColor.Color);
+            colorSelectComboBox.SelectedItem = null;
         }
 
         private void stockButton_Click(object sender, RoutedEventArgs e) {
-
             if (currentColor.Name == null) {
                 //同じ要素が存在したら追加できない処理
                 if (!stockList.Items.Contains(currentColor)) {
@@ -51,7 +49,7 @@ namespace ColorChecker {
                     MessageBox.Show("その名前の色は既に登録されています。", "エラー");
                 }
             }
-
+            colorSelectComboBox.SelectedItem = null;
         }
 
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -74,15 +72,15 @@ namespace ColorChecker {
         }
 
         private void colorSelectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            ////if (colorSelectComboBox.SelectedItem != null) {
-            //currentColor = (MyColor)colorSelectComboBox.SelectedItem;
-            //// 各スライダーの値を設定する
+            //currentColor = (MyColor)((ComboBox)sender).SelectedItem;
             //SetSliderValue(currentColor.Color);
-            ////}
+
             if (colorSelectComboBox.SelectedItem != null) {
                 var tempCurrentColor = currentColor = (MyColor)((ComboBox)sender).SelectedItem;
+                // 各スライダーの値を設定する
                 SetSliderValue(currentColor.Color);
                 currentColor.Name = tempCurrentColor.Name; //Nameプロパティの文字列を再設定
+                colorSelectComboBox.SelectedItem = tempCurrentColor; //CbSelectedIndexを再設定
             }
 
         }
