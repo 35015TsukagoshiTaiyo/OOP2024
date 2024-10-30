@@ -35,6 +35,7 @@ namespace ColorChecker {
         }
 
         private void stockButton_Click(object sender, RoutedEventArgs e) {
+            currentColor.Name = GetColorList().FirstOrDefault(c => c.Color.Equals(currentColor.Color)).Name;
             if (currentColor.Name == null) {
                 //同じ要素が存在したら追加できない処理
                 if (!stockList.Items.Contains(currentColor)) {
