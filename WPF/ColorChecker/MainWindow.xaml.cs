@@ -53,9 +53,13 @@ namespace ColorChecker {
         }
 
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            colorArea.Background = new SolidColorBrush(((MyColor)stockList.Items[stockList.SelectedIndex]).Color);
-            //各スライダーの値を設定する
-            SetSliderValue(((MyColor)stockList.Items[stockList.SelectedIndex]).Color);
+            try {
+                colorArea.Background = new SolidColorBrush(((MyColor)stockList.Items[stockList.SelectedIndex]).Color);
+                //各スライダーの値を設定する
+                SetSliderValue(((MyColor)stockList.Items[stockList.SelectedIndex]).Color);
+            }
+            catch (Exception) {
+            }
         }
 
         //各スライダー野値を設定する
@@ -82,7 +86,14 @@ namespace ColorChecker {
                 currentColor.Name = tempCurrentColor.Name; //Nameプロパティの文字列を再設定
                 colorSelectComboBox.SelectedItem = tempCurrentColor; //CbSelectedIndexを再設定
             }
+        }
 
+        private void deleteButton_Click(object sender, RoutedEventArgs e) {
+            if (stockList.Items.Count != 0) {
+                stockList.Items.RemoveAt(stockList.SelectedIndex);
+            } else {
+                MessageBox.Show("削除するレコードが選択されていません。", "エラー");
+            }
         }
     }
 }
