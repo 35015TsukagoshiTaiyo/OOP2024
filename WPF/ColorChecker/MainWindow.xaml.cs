@@ -19,23 +19,37 @@ namespace ColorChecker {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
+
+        MyColor currentColor /*= new MyColor()*/;
+        MyColor[] colorsTable; //色のデータ
+
         public MainWindow() {
             InitializeComponent();
             //αチャンネルの初期値を設定 (起動時にすぐにストックボタンが押された場合の対応)
             currentColor.Color = Color.FromArgb(255, 0, 0, 0);
-            DataContext = GetColorList();
+            DataContext = colorsTable = GetColorList();
         }
-        MyColor currentColor /*= new MyColor()*/;
+
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
             currentColor.Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value);
-            currentColor.Name = null;
+
+            //int i;
+            //for (i = 0; i < colorsTable.Length; i++) {
+            //    if (colorsTable[i].Color.Equals(currentColor.Color)) {
+            //        currentColor.Name = colorsTable[i].Name;
+            //        break;
+            //    }
+            //}
+            //colorSelectComboBox.SelectedIndex = i;
+
             colorArea.Background = new SolidColorBrush(currentColor.Color);
             colorSelectComboBox.SelectedItem = null;
         }
 
         private void stockButton_Click(object sender, RoutedEventArgs e) {
-            currentColor.Name = GetColorList().FirstOrDefault(c => c.Color.Equals(currentColor.Color)).Name;
+            //currentColor.Name = GetColorList().Where(c => c.Color.Equals(currentColor.Color)).Select(x => x.Name).FirstOrDefault();
+            currentColor.Name = colorsTable.FirstOrDefault(c => c.Color.Equals(currentColor.Color)).Name;
             if (currentColor.Name == null) {
                 //同じ要素が存在したら追加できない処理
                 if (!stockList.Items.Contains(currentColor)) {
