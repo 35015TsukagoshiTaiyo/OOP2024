@@ -169,6 +169,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleSlider", "WPF\SampleS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorChecker", "WPF\ColorChecker\ColorChecker.csproj", "{C93E9970-2BC1-47F2-B742-388247919AC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUnitConverter", "WPF\SampleUnitConverter\SampleUnitConverter.csproj", "{7C98447D-5559-4486-AD26-7C94AA413CE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWeightUnitConverter", "WPF\SampleWeightUnitConverter\SampleWeightUnitConverter.csproj", "{306FC79E-AF87-4899-B57C-93B9EAA2F43E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -387,6 +391,14 @@ Global
 		{C93E9970-2BC1-47F2-B742-388247919AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C93E9970-2BC1-47F2-B742-388247919AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C93E9970-2BC1-47F2-B742-388247919AC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C98447D-5559-4486-AD26-7C94AA413CE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C98447D-5559-4486-AD26-7C94AA413CE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C98447D-5559-4486-AD26-7C94AA413CE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C98447D-5559-4486-AD26-7C94AA413CE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{306FC79E-AF87-4899-B57C-93B9EAA2F43E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{306FC79E-AF87-4899-B57C-93B9EAA2F43E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{306FC79E-AF87-4899-B57C-93B9EAA2F43E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{306FC79E-AF87-4899-B57C-93B9EAA2F43E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -458,6 +470,8 @@ Global
 		{6451947C-C2B8-4138-9F6C-3439A5F0AA07} = {3FF0290E-4509-4A0C-9F4A-6A14016B1958}
 		{19EB78A8-DBA9-468E-8944-BC8C929848DD} = {3FF0290E-4509-4A0C-9F4A-6A14016B1958}
 		{C93E9970-2BC1-47F2-B742-388247919AC4} = {3FF0290E-4509-4A0C-9F4A-6A14016B1958}
+		{7C98447D-5559-4486-AD26-7C94AA413CE1} = {3FF0290E-4509-4A0C-9F4A-6A14016B1958}
+		{306FC79E-AF87-4899-B57C-93B9EAA2F43E} = {3FF0290E-4509-4A0C-9F4A-6A14016B1958}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A44D47AA-6067-4388-8A83-636FB27FF96A}
