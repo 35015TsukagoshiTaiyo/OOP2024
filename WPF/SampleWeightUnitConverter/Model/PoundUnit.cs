@@ -17,7 +17,7 @@ namespace SampleWeightUnitConverter {
         /// <summary>
         /// ポンド単位からグラム単位に変換します
         /// </summary>
-        /// <param name="unit">ポンド単位</param>
+        /// <param name="unit">グラム単位</param>
         /// <param name="value">値</param>
         /// <returns></returns>
         public double FromGramUnit(GramUnit unit, double value) {
