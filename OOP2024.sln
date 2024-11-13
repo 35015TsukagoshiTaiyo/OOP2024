@@ -175,6 +175,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWeightUnitConverter",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisibilityConverter", "WPF\VisibilityConverter\VisibilityConverter.csproj", "{303E2A57-EA3B-4404-BE23-194C5821C8DF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLite", "SQLite", "{09C0A373-E8C3-4355-8EB7-6DC329EA3164}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerApp", "SQLite\CustomerApp\CustomerApp.csproj", "{14298B42-3A21-4923-9BAE-CB0DF52FE691}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -405,6 +409,10 @@ Global
 		{303E2A57-EA3B-4404-BE23-194C5821C8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{303E2A57-EA3B-4404-BE23-194C5821C8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{303E2A57-EA3B-4404-BE23-194C5821C8DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14298B42-3A21-4923-9BAE-CB0DF52FE691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14298B42-3A21-4923-9BAE-CB0DF52FE691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14298B42-3A21-4923-9BAE-CB0DF52FE691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14298B42-3A21-4923-9BAE-CB0DF52FE691}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -479,6 +487,7 @@ Global
 		{7C98447D-5559-4486-AD26-7C94AA413CE1} = {3FF0290E-4509-4A0C-9F4A-6A14016B1958}
 		{306FC79E-AF87-4899-B57C-93B9EAA2F43E} = {3FF0290E-4509-4A0C-9F4A-6A14016B1958}
 		{303E2A57-EA3B-4404-BE23-194C5821C8DF} = {3FF0290E-4509-4A0C-9F4A-6A14016B1958}
+		{14298B42-3A21-4923-9BAE-CB0DF52FE691} = {09C0A373-E8C3-4355-8EB7-6DC329EA3164}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A44D47AA-6067-4388-8A83-636FB27FF96A}
