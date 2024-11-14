@@ -23,8 +23,8 @@ namespace CustomerApp.Objects {
         public string Address { get; set; }
 
         public override string ToString() {
-            return string.Format("{0} {1} {2}", Id, Name, Phone);
-            //return $"{Id} {Name} {Phone}";
+            return string.Format("{0} {1} {2} {3}", Id, Name, Phone,Address);
+            //return $"{Id} {Name} {Phone} {Address}";
         }
     }
 }
