@@ -7,29 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="300">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <StackPanel Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="名前"  Margin="5" VerticalAlignment="Center"/>
+                <TextBox x:Name="NameTextBox" Margin="5" Grid.Column="1"/>
 
-        <TextBlock Text="名前"  Margin="5"/>
-        <TextBox x:Name="NameTextBox" Margin="5" Grid.Column="1"/>
-        
-        <TextBlock Text="電話番号" Margin="5" Grid.Row="1"/>
-        <TextBox x:Name="PhoneTextBox" Margin="5" Grid.Column="1" Grid.Row="1"/>
-
-        <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
+                <TextBlock Text="電話番号" Margin="5" Grid.Row="1" VerticalAlignment="Center" />
+                <TextBox x:Name="PhoneTextBox" Margin="5" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
             <Button Content="Save" x:Name="SaveButton"  Margin="5" Click="SaveButton_Click"/>
             <Button Content="Read" x:Name="ReadButton"  Margin="5" Click="ReadButton_Click"/>
         </StackPanel>
-        
-        
-
     </Grid>
 </Window>
