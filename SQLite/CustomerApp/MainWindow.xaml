@@ -6,25 +6,39 @@
         xmlns:local="clr-namespace:CustomerApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="300">
-    <Grid>
-        <StackPanel Margin="5">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="名前"  Margin="5" VerticalAlignment="Center"/>
-                <TextBox x:Name="NameTextBox" Margin="5" Grid.Column="1"/>
+    <StackPanel Margin="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="名前"  Margin="5" VerticalAlignment="Center"/>
+            <TextBox x:Name="NameTextBox" Margin="5" Grid.Column="1"/>
 
-                <TextBlock Text="電話番号" Margin="5" Grid.Row="1" VerticalAlignment="Center" />
-                <TextBox x:Name="PhoneTextBox" Margin="5" Grid.Column="1" Grid.Row="1"/>
-            </Grid>
-            <Button Content="Save" x:Name="SaveButton"  Margin="5" Click="SaveButton_Click"/>
-            <Button Content="Read" x:Name="ReadButton"  Margin="5" Click="ReadButton_Click"/>
-        </StackPanel>
-    </Grid>
+            <TextBlock Text="電話番号" Margin="5" Grid.Row="1" VerticalAlignment="Center" />
+            <TextBox x:Name="PhoneTextBox" Margin="5" Grid.Column="1" Grid.Row="1"/>
+
+            <TextBlock Text="住所" Margin="5" Grid.Row="2" VerticalAlignment="Center" />
+            <TextBox x:Name="AddressTextBox" Margin="5" Grid.Column="1" Grid.Row="2"/>
+        </Grid>
+        <Button Content="Save" x:Name="SaveButton"  Margin="5" Click="SaveButton_Click"/>
+        <Button Content="Read" x:Name="ReadButton"  Margin="5" Click="ReadButton_Click"/>
+        <ListView x:Name="CustomerListView" Margin="5,5,5,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Id}"/>
+                        <TextBlock Text="{Binding Name}" FontSize="20"/>
+                        <TextBlock Text="{Binding Phone}" Foreground="Blue"/>
+                        <TextBlock Text="{Binding Address}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackPanel>
 </Window>

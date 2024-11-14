@@ -17,5 +17,14 @@ namespace CustomerApp.Objects {
         /// 電話番号
         /// </summary>
         public string Phone { get; set; }
+        /// <summary>
+        /// 住所
+        /// </summary>
+        public string Address { get; set; }
+
+        public override string ToString() {
+            return string.Format("{0} {1} {2}", Id, Name, Phone);
+            //return $"{Id} {Name} {Phone}";
+        }
     }
 }
