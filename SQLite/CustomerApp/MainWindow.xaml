@@ -27,8 +27,12 @@
             <TextBox x:Name="AddressTextBox" Margin="2" Grid.Column="1" Grid.Row="2"/>
         </Grid>
         <Button Content="Save" x:Name="SaveButton"  Margin="2" Click="SaveButton_Click"/>
-        <Button Content="Read" x:Name="ReadButton"  Margin="2" Click="ReadButton_Click"/>
-        <ListView x:Name="CustomerListView" Margin="2,5,2,0" Height="310">
+        <Button Content="Delete" x:Name="DeleteButton"  Margin="2" Click="DeleteButton_Click"/>
+        <!--<Button Content="Read" x:Name="ReadButton"  Margin="2" Click="ReadButton_Click"/>-->
+
+        <TextBox x:Name="SearchTextBox" FontSize="20" Margin="2" TextChanged="SearchTextBox_TextChanged"/>
+
+        <ListView x:Name="CustomerListView" Margin="2,5,2,0" Height="280">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

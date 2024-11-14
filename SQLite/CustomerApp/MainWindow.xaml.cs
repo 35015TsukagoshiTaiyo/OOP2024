@@ -20,8 +20,10 @@ namespace CustomerApp {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
+        List<Customer> _customers;
         public MainWindow() {
             InitializeComponent();
+            ReadDatabase(); //ListView更新
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e) {
@@ -35,15 +37,39 @@ namespace CustomerApp {
                 connection.CreateTable<Customer>();
                 connection.Insert(customer);
             }
+            ReadDatabase(); //ListView更新
         }
 
         private void ReadButton_Click(object sender, RoutedEventArgs e) {
+        
+        }
+
+        private void ReadDatabase() {
+            using (var connection = new SQLiteConnection(App.databasePass)) {
+                connection.CreateTable<Customer>();
+                _customers = connection.Table<Customer>().ToList();
+
+                CustomerListView.ItemsSource = _customers;
+            }
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) {
+            var filterList = _customers.Where(x=>x.Name.Contains(SearchTextBox.Text)).ToList();
+            CustomerListView.ItemsSource = filterList;
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e) {
+             var item = CustomerListView.SelectedItem as Customer; //as:参照のキャスト
+            if(item == null) {
+                MessageBox.Show("削除する行を選択してください");
+                return;
+            }
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
-                var customers = connection.Table<Customer>().ToList();
+                connection.Delete(item); //item:消したい場所(参照)
 
-                CustomerListView.ItemsSource = customers;
+                ReadDatabase(); //ListView更新
             }
         }
     }
