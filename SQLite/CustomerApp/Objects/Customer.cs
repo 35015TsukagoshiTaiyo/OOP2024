@@ -23,7 +23,7 @@ namespace CustomerApp.Objects {
         /// </summary>
         public string Address { get; set; }
 
-        public byte[] PictureImage { get; set; }
+        public string PictureImage { get; set; }
 
         public override string ToString() {
             return string.Format("{0} {1} {2} {3}", Id, Name, Phone,Address);
