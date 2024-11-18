@@ -23,9 +23,8 @@ namespace CustomerApp {
         List<Customer> _customers;
         public MainWindow() {
             InitializeComponent();
-            ReadDatabase(); //ListView更新
         }
-
+        //Saveボタン
         private void SaveButton_Click(object sender, RoutedEventArgs e) {
             var customer = new Customer {
                 Name = NameTextBox.Text,
@@ -38,12 +37,35 @@ namespace CustomerApp {
                 connection.Insert(customer);
             }
             ReadDatabase(); //ListView更新
+
+            ClearScrean();
+
         }
 
-        private void ReadButton_Click(object sender, RoutedEventArgs e) {
-        
+        private void ClearScrean() {
+            NameTextBox.Text = "";
+            PhoneTextBox.Text = "";
+            AddressTextBox.Text = "";
+            CustomerListView.SelectedItem = null;
         }
 
+        //updateボタン
+        private void UpdateButton_Click(object sender, RoutedEventArgs e) {
+            var updateItem = CustomerListView.SelectedItem as Customer;
+            if (updateItem != null) { 
+                updateItem.Name = NameTextBox.Text;
+                updateItem.Phone = PhoneTextBox.Text;
+                updateItem.Address = AddressTextBox.Text;
+            }
+            
+            using (var connection = new SQLiteConnection(App.databasePass)) {
+                connection.CreateTable<Customer>();
+                connection.Update(updateItem);
+            }
+            ReadDatabase();
+        }
+
+        //ListView更新
         private void ReadDatabase() {
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
@@ -52,12 +74,13 @@ namespace CustomerApp {
                 CustomerListView.ItemsSource = _customers;
             }
         }
-
+        
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) {
             var filterList = _customers.Where(x=>x.Name.Contains(SearchTextBox.Text)).ToList();
             CustomerListView.ItemsSource = filterList;
         }
 
+        //Deleteボタン
         private void DeleteButton_Click(object sender, RoutedEventArgs e) {
              var item = CustomerListView.SelectedItem as Customer; //as:参照のキャスト
             if(item == null) {
@@ -71,6 +94,24 @@ namespace CustomerApp {
 
                 ReadDatabase(); //ListView更新
             }
+        }
+
+        //起動時に呼ばれるイベントハンドラ
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+            ReadDatabase(); //ListView更新
+        }
+
+        private void CustomerListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            var selectedItem = CustomerListView.SelectedItem as Customer;
+            if(selectedItem != null) {
+                NameTextBox.Text = selectedItem.Name;
+                PhoneTextBox.Text = selectedItem.Phone;
+                AddressTextBox.Text = selectedItem.Address;
+            }
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e) {
+            ClearScrean();
         }
     }
 }

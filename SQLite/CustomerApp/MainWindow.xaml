@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="300">
+        Title="MainWindow" Height="500" Width="300" Loaded="Window_Loaded">
     <StackPanel Margin="5">
         <Grid>
             <Grid.RowDefinitions>
@@ -28,11 +28,12 @@
         </Grid>
         <Button Content="Save" x:Name="SaveButton"  Margin="2" Click="SaveButton_Click"/>
         <Button Content="Delete" x:Name="DeleteButton"  Margin="2" Click="DeleteButton_Click"/>
-        <!--<Button Content="Read" x:Name="ReadButton"  Margin="2" Click="ReadButton_Click"/>-->
+        <Button Content="Update" x:Name="UpdateButton"  Margin="2" Click="UpdateButton_Click"/>
+        <Button Content="Clear" x:Name="ClearButton" Margin="2" Click="ClearButton_Click"/>
 
         <TextBox x:Name="SearchTextBox" FontSize="20" Margin="2" TextChanged="SearchTextBox_TextChanged"/>
 
-        <ListView x:Name="CustomerListView" Margin="2,5,2,0" Height="280">
+        <ListView x:Name="CustomerListView" Margin="2,5,2,0" Height="280" SelectionChanged="CustomerListView_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
