@@ -26,6 +26,11 @@ namespace CustomerApp {
         }
         //Saveボタン
         private void SaveButton_Click(object sender, RoutedEventArgs e) {
+            if (NameTextBox.Text == "" || PhoneTextBox.Text == "" || AddressTextBox.Text == "") {
+                MessageBox.Show("項目がすべて入力されていません。","警告",MessageBoxButton.OK,MessageBoxImage.Warning);
+                return;
+            }
+
             var customer = new Customer {
                 Name = NameTextBox.Text,
                 Phone = PhoneTextBox.Text,
@@ -42,12 +47,7 @@ namespace CustomerApp {
 
         }
 
-        private void ClearScrean() {
-            NameTextBox.Text = "";
-            PhoneTextBox.Text = "";
-            AddressTextBox.Text = "";
-            CustomerListView.SelectedItem = null;
-        }
+        
 
         //updateボタン
         private void UpdateButton_Click(object sender, RoutedEventArgs e) {
@@ -100,7 +100,7 @@ namespace CustomerApp {
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             ReadDatabase(); //ListView更新
         }
-
+        //選択行を表示
         private void CustomerListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var selectedItem = CustomerListView.SelectedItem as Customer;
             if(selectedItem != null) {
@@ -109,9 +109,16 @@ namespace CustomerApp {
                 AddressTextBox.Text = selectedItem.Address;
             }
         }
-
+        //画面のクリア
         private void ClearButton_Click(object sender, RoutedEventArgs e) {
             ClearScrean();
+        }
+        //クリア処理
+        private void ClearScrean() {
+            NameTextBox.Text = "";
+            PhoneTextBox.Text = "";
+            AddressTextBox.Text = "";
+            CustomerListView.SelectedItem = null;
         }
     }
 }
