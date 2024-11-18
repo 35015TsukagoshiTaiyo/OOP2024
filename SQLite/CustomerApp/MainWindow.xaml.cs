@@ -1,4 +1,5 @@
 ﻿using CustomerApp.Objects;
+using Microsoft.Win32;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,9 @@ namespace CustomerApp {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
+        BitmapImage bitmapImage;
+        byte[] imageBytes;
+
         List<Customer> _customers;
         public MainWindow() {
             InitializeComponent();
@@ -27,7 +31,7 @@ namespace CustomerApp {
         //Saveボタン
         private void SaveButton_Click(object sender, RoutedEventArgs e) {
             if (NameTextBox.Text == "" || PhoneTextBox.Text == "" || AddressTextBox.Text == "") {
-                MessageBox.Show("項目がすべて入力されていません。","警告",MessageBoxButton.OK,MessageBoxImage.Warning);
+                MessageBox.Show("項目がすべて入力されていません。", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -35,6 +39,7 @@ namespace CustomerApp {
                 Name = NameTextBox.Text,
                 Phone = PhoneTextBox.Text,
                 Address = AddressTextBox.Text,
+                PictureImage = imageBytes,
             };
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
@@ -47,17 +52,17 @@ namespace CustomerApp {
 
         }
 
-        
+
 
         //updateボタン
         private void UpdateButton_Click(object sender, RoutedEventArgs e) {
             var updateItem = CustomerListView.SelectedItem as Customer;
-            if (updateItem != null) { 
+            if (updateItem != null) {
                 updateItem.Name = NameTextBox.Text;
                 updateItem.Phone = PhoneTextBox.Text;
                 updateItem.Address = AddressTextBox.Text;
             }
-            
+
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
                 connection.Update(updateItem);
@@ -74,16 +79,16 @@ namespace CustomerApp {
                 CustomerListView.ItemsSource = _customers;
             }
         }
-        
+
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) {
-            var filterList = _customers.Where(x=>x.Name.Contains(SearchTextBox.Text)).ToList();
+            var filterList = _customers.Where(x => x.Name.Contains(SearchTextBox.Text)).ToList();
             CustomerListView.ItemsSource = filterList;
         }
 
         //Deleteボタン
         private void DeleteButton_Click(object sender, RoutedEventArgs e) {
-             var item = CustomerListView.SelectedItem as Customer; //as:参照のキャスト
-            if(item == null) {
+            var item = CustomerListView.SelectedItem as Customer; //as:参照のキャスト
+            if (item == null) {
                 MessageBox.Show("削除する行を選択してください");
                 return;
             }
@@ -100,13 +105,15 @@ namespace CustomerApp {
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             ReadDatabase(); //ListView更新
         }
+
         //選択行を表示
         private void CustomerListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var selectedItem = CustomerListView.SelectedItem as Customer;
-            if(selectedItem != null) {
+            if (selectedItem != null) {
                 NameTextBox.Text = selectedItem.Name;
                 PhoneTextBox.Text = selectedItem.Phone;
                 AddressTextBox.Text = selectedItem.Address;
+                //PictureImage.Source = bitmapImage;
             }
         }
         //画面のクリア
@@ -118,7 +125,29 @@ namespace CustomerApp {
             NameTextBox.Text = "";
             PhoneTextBox.Text = "";
             AddressTextBox.Text = "";
+            PictureImage.Source = null;
             CustomerListView.SelectedItem = null;
         }
+
+        private void OpenFileButton_Click(object sender, RoutedEventArgs e) {
+            var ofd = new OpenFileDialog();
+            try {
+                if (ofd.ShowDialog() == true) {
+                    //画像をPictureImageにセット
+                    bitmapImage = new BitmapImage(new Uri(ofd.FileName));
+                    PictureImage.Source = bitmapImage;
+
+                    // 画像をbyte[]に変換
+                    imageBytes = System.IO.File.ReadAllBytes(ofd.FileName);
+
+                }
+            }
+            catch (Exception) {
+                MessageBox.Show("画像ファイルが選択されていません。");
+            }
+        }
+
+
+
     }
 }

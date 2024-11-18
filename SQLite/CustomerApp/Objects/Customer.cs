@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace CustomerApp.Objects {
     public class Customer {
@@ -21,6 +22,8 @@ namespace CustomerApp.Objects {
         /// 住所
         /// </summary>
         public string Address { get; set; }
+
+        public byte[] PictureImage { get; set; }
 
         public override string ToString() {
             return string.Format("{0} {1} {2} {3}", Id, Name, Phone,Address);
