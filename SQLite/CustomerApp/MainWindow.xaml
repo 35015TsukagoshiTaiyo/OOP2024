@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerApp"
         mc:Ignorable="d"
-        Title="CustomerApp" Height="550" Width="300" Loaded="Window_Loaded"
+        Title="CustomerApp" Height="600" Width="420" Loaded="Window_Loaded"
         >
     <Window.Resources>
         <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="Margin" Value="5"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontWeight" Value="Black"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="16"/>
         </Style>
     </Window.Resources>
     <StackPanel Margin="5">
@@ -40,16 +44,16 @@
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="WhiteSmoke"/>
                     <Setter Property="Margin" Value="2"/>
-
+                    <Setter Property="FontSize" Value="16"/>
                 </Style>
 
             </StackPanel.Resources>
-            <TextBlock Text="画像" Width="48"/>
-            <Button Content="OpenFile" x:Name="OpenFileButton" Width="120"
+            <TextBlock Text="画像" Width="64"/>
+            <Button Content="OpenFile" x:Name="OpenFileButton" Width="130"
                     Click="OpenFileButton_Click"/>
-            <Button Content="Clear" x:Name="imageClearButton" Width="35" Click="ImageClear_Click"/>
-            <Border BorderBrush="Black" BorderThickness="2" Height="50" Width="50">
-                <Image x:Name="PictureImage" Height="46" Width="46"/>
+            <Button Content="Clear" x:Name="imageClearButton" Width="45" Click="ImageClear_Click"/>
+            <Border BorderBrush="Black" BorderThickness="2" Height="50" Width="70">
+                <Image x:Name="PictureImage" Height="46" Width="66"/>
             </Border>
         </StackPanel>
 
@@ -57,6 +61,7 @@
             <Grid.Resources>
                 <Style TargetType="Button">
                     <Setter Property="Margin" Value="2"/>
+                    <Setter Property="FontSize" Value="16"/>
                 </Style>
             </Grid.Resources>
             <Grid.ColumnDefinitions>
@@ -78,14 +83,27 @@
                 <Button Content="Delete" x:Name="DeleteButton" Click="DeleteButton_Click" Background="Black" Foreground="White"/>
                 <CheckBox x:Name="deleteChecker" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
-            
-
             <Button Content="Clear" x:Name="ClearButton" Grid.RowSpan="3" Grid.Column ="1" Click="ClearButton_Click" Background="White"/>
         </Grid>
 
         <TextBox x:Name="SearchTextBox" FontSize="20" Margin="2" TextChanged="SearchTextBox_TextChanged"/>
 
-        <ListView x:Name="CustomerListView" Margin="2,5,2,0" Height="260" SelectionChanged="CustomerListView_SelectionChanged">
+        <ListView x:Name="CustomerListView" Margin="2,5,2,0" Height="260" SelectionChanged="CustomerListView_SelectionChanged" FontSize="16">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="名前" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="電話番号" DisplayMemberBinding="{Binding Phone}"/>
+                    <GridViewColumn Header="住所" DisplayMemberBinding="{Binding Address}"/>
+                    <GridViewColumn Header="画像">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Width="50" Height="50" Source="{Binding PictureImage}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -95,7 +113,7 @@
                             <TextBlock Text="{Binding Phone}" Foreground="Blue"/>
                             <TextBlock Text="{Binding Address}" Foreground="Gray"/>
                         </StackPanel>
-                        <Image Source="{Binding PictureImage}" Width="120" Height="80" Grid.Column="1" Margin="30,0,0,0"/>
+                        <!--<Image Source="{Binding PictureImage}" Width="120" Height="80" Grid.Column="1" Margin="30,0,0,0"/>-->
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

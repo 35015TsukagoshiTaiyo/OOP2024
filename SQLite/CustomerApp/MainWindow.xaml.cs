@@ -33,7 +33,7 @@ namespace CustomerApp {
 
         //Saveボタン
         private void SaveButton_Click(object sender, RoutedEventArgs e) {
-            if (NameTextBox.Text == "" || PhoneTextBox.Text == "" || AddressTextBox.Text == "" || PictureImage.Source == null) {
+            if (NameTextBox.Text == "" || PhoneTextBox.Text == "" || AddressTextBox.Text == "") {
                 MessageBox.Show("項目がすべて入力されていません。", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -69,7 +69,7 @@ namespace CustomerApp {
 
         //updateボタン
         private void UpdateButton_Click(object sender, RoutedEventArgs e) {
-            if (NameTextBox.Text == "" || PhoneTextBox.Text == "" || AddressTextBox.Text == "" || PictureImage.Source == null) {
+            if (NameTextBox.Text == "" || PhoneTextBox.Text == "" || AddressTextBox.Text == "") {
                 MessageBox.Show("項目がすべて入力されていません。", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -142,7 +142,12 @@ namespace CustomerApp {
                 NameTextBox.Text = selectedItem.Name;
                 PhoneTextBox.Text = selectedItem.Phone;
                 AddressTextBox.Text = selectedItem.Address;
-                PictureImage.Source = new BitmapImage(new Uri(selectedItem.PictureImage));
+                if (!string.IsNullOrEmpty(selectedItem.PictureImage)) {
+                    PictureImage.Source = new BitmapImage(new Uri(selectedItem.PictureImage));
+                } else {
+                    
+                    PictureImage.Source = null;  // 画像を表示しない
+                }
             }
         }
 
