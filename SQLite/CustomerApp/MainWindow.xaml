@@ -5,15 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="300" Loaded="Window_Loaded">
+        Title="CustomerApp" Height="550" Width="300" Loaded="Window_Loaded"
+        >
     <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="2"/>
-            <Setter Property="Background" Value="LightBlue"/>
-        </Style>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="5"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Black"/>
         </Style>
     </Window.Resources>
     <StackPanel Margin="5">
@@ -38,15 +36,29 @@
 
         </Grid>
         <StackPanel Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="WhiteSmoke"/>
+                    <Setter Property="Margin" Value="2"/>
+
+                </Style>
+
+            </StackPanel.Resources>
             <TextBlock Text="画像" Width="48"/>
-            <Button Content="OpenFile" x:Name="OpenFileButton" Width="158"
-                    Background="WhiteSmoke" Click="OpenFileButton_Click"/>
+            <Button Content="OpenFile" x:Name="OpenFileButton" Width="120"
+                    Click="OpenFileButton_Click"/>
+            <Button Content="Clear" x:Name="imageClearButton" Width="35" Click="ImageClear_Click"/>
             <Border BorderBrush="Black" BorderThickness="2" Height="50" Width="50">
-                <Image x:Name="PictureImage" Height="50" Width="50"/>
+                <Image x:Name="PictureImage" Height="46" Width="46"/>
             </Border>
         </StackPanel>
 
         <Grid>
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="2"/>
+                </Style>
+            </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="*"/>
@@ -56,11 +68,19 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button Content="Save" x:Name="SaveButton"  Click="SaveButton_Click"/>
-            <Button Content="Delete" x:Name="DeleteButton" Grid.Row="1" Click="DeleteButton_Click"/>
-            <Button Content="Update" x:Name="UpdateButton" Grid.Row="2" Click="UpdateButton_Click"/>
+            <Button Content="Save" x:Name="SaveButton"  Click="SaveButton_Click" Background="LightSkyBlue"/>
+            <Button Content="Update" x:Name="UpdateButton" Grid.Row="1" Click="UpdateButton_Click" Background="LightYellow"/>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Delete" x:Name="DeleteButton" Click="DeleteButton_Click" Background="Black" Foreground="White"/>
+                <CheckBox x:Name="deleteChecker" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+            
 
-            <Button Content="Clear" x:Name="ClearButton" Grid.RowSpan="3" Grid.Column ="1" Click="ClearButton_Click"/>
+            <Button Content="Clear" x:Name="ClearButton" Grid.RowSpan="3" Grid.Column ="1" Click="ClearButton_Click" Background="White"/>
         </Grid>
 
         <TextBox x:Name="SearchTextBox" FontSize="20" Margin="2" TextChanged="SearchTextBox_TextChanged"/>

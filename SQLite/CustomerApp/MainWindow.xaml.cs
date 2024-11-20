@@ -33,7 +33,7 @@ namespace CustomerApp {
 
         //Saveボタン
         private void SaveButton_Click(object sender, RoutedEventArgs e) {
-            if (NameTextBox.Text == "" || PhoneTextBox.Text == "" || AddressTextBox.Text == "") {
+            if (NameTextBox.Text == "" || PhoneTextBox.Text == "" || AddressTextBox.Text == "" || PictureImage.Source == null) {
                 MessageBox.Show("項目がすべて入力されていません。", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -69,7 +69,7 @@ namespace CustomerApp {
 
         //updateボタン
         private void UpdateButton_Click(object sender, RoutedEventArgs e) {
-            if (NameTextBox.Text == "" || PhoneTextBox.Text == "" || AddressTextBox.Text == "") {
+            if (NameTextBox.Text == "" || PhoneTextBox.Text == "" || AddressTextBox.Text == "" || PictureImage.Source == null) {
                 MessageBox.Show("項目がすべて入力されていません。", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -112,6 +112,19 @@ namespace CustomerApp {
                 return;
             }
 
+            if (!(bool)deleteChecker.IsChecked) {
+                if (MessageBox.Show("本当に削除しますか?\n\n※今後表示しない場合はチェックボックスにチェックすること", "警告",
+                                    MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No) {
+                    return;
+                } else {
+                    DeleteEvent(item);
+                }
+            } else {
+                DeleteEvent(item);
+            }
+        }
+
+        private void DeleteEvent(Customer item) {
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
                 connection.Delete(item); //item:消したい場所(参照)
@@ -158,6 +171,11 @@ namespace CustomerApp {
             catch (Exception) {
                 MessageBox.Show("画像ファイルが選択されていません。");
             }
+        }
+
+        //setした画像をクリア
+        private void ImageClear_Click(object sender, RoutedEventArgs e) {
+            PictureImage.Source = null;
         }
     }
 }
