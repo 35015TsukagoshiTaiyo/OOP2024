@@ -129,7 +129,6 @@
                             <TextBlock Text="{Binding Phone}" Foreground="Blue"/>
                             <TextBlock Text="{Binding Address}" Foreground="Gray"/>
                         </StackPanel>
-                        <!--<Image Source="{Binding PictureImage}" Width="120" Height="80" Grid.Column="1" Margin="30,0,0,0"/>-->
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,18 +32,31 @@ namespace CustomerApp {
             ReadDatabase(); //ListView更新
         }
 
+        //ImageSourceをbyte[]に変換
+        public byte[] ConvertImageSourceToByteArray(ImageSource imageSource) {
+            if (imageSource is BitmapImage bitmap) {
+                using (MemoryStream memoryStream = new MemoryStream()) {
+                    PngBitmapEncoder encoder = new PngBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(bitmap));
+                    encoder.Save(memoryStream);
+                    return memoryStream.ToArray();
+                }
+            }
+            return null;
+        }
+
         //Saveボタン
         private void SaveButton_Click(object sender, RoutedEventArgs e) {
             if (NameTextBox.Text == "" || PhoneTextBox.Text == "" || AddressTextBox.Text == "") {
                 MessageBox.Show("項目がすべて入力されていません。", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
+            
             var customer = new Customer {
                 Name = NameTextBox.Text,
                 Phone = PhoneTextBox.Text,
                 Address = AddressTextBox.Text,
-                PictureImage = GetImagePath(),
+                PictureImage = ConvertImageSourceToByteArray(PictureImage.Source),
             };
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
@@ -53,18 +67,6 @@ namespace CustomerApp {
 
             ClearScrean();
 
-        }
-
-        // 画像をファイルパスとして保存
-        private string GetImagePath() {
-            string imagePath = null;
-            if (PictureImage.Source != null) {
-                var bitmap = PictureImage.Source as BitmapImage;
-                if (bitmap != null) {
-                    imagePath = bitmap.UriSource.LocalPath;
-                }
-            }
-            return imagePath;
         }
 
         //updateボタン
@@ -79,7 +81,7 @@ namespace CustomerApp {
                 updateItem.Name = NameTextBox.Text;
                 updateItem.Phone = PhoneTextBox.Text;
                 updateItem.Address = AddressTextBox.Text;
-                updateItem.PictureImage = GetImagePath();
+                updateItem.PictureImage = ConvertImageSourceToByteArray(PictureImage.Source);
             }
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
@@ -145,11 +147,23 @@ namespace CustomerApp {
                 NameTextBox.Text = selectedItem.Name;
                 PhoneTextBox.Text = selectedItem.Phone;
                 AddressTextBox.Text = selectedItem.Address;
-                if (!string.IsNullOrEmpty(selectedItem.PictureImage)) {
-                    PictureImage.Source = new BitmapImage(new Uri(selectedItem.PictureImage));
-                } else {
-                    PictureImage.Source = null;  // 画像を表示しない
-                }
+                PictureImage.Source = ConvertByteArrayToImageSource(selectedItem.PictureImage);
+            }
+        }
+        //byte[]をPictureImageに変換
+        public ImageSource ConvertByteArrayToImageSource(byte[] byteArray) {
+            if (byteArray == null || byteArray.Length == 0)
+                return null;
+
+            using (MemoryStream memoryStream = new MemoryStream(byteArray)) {
+                BitmapImage bitmapImage = new BitmapImage();
+
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memoryStream;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+
+                return bitmapImage;  // ImageSource として返す
             }
         }
 
