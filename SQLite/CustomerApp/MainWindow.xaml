@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerApp"
         mc:Ignorable="d"
-        Title="CustomerApp" Height="600" Width="420" Loaded="Window_Loaded"
+        Title="CustomerApp" Height="600" Width="460" Loaded="Window_Loaded"
         >
     <Window.Resources>
         <Style TargetType="TextBlock">
@@ -16,11 +16,13 @@
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="2"/>
         </Style>
     </Window.Resources>
     <StackPanel Margin="5">
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -30,32 +32,36 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="名前"/>
-            <TextBox x:Name="NameTextBox" Margin="2" Grid.Column="1"/>
+            <TextBox x:Name="NameTextBox" Grid.Column="1"/>
 
             <TextBlock Text="電話番号" Grid.Row="1"/>
-            <TextBox x:Name="PhoneTextBox" Margin="2" Grid.Column="1" Grid.Row="1"/>
+            <TextBox x:Name="PhoneTextBox" Grid.Column="1" Grid.Row="1"/>
 
             <TextBlock Text="住所" Grid.Row="2"/>
-            <TextBox x:Name="AddressTextBox" Margin="2" Grid.Column="1" Grid.Row="2"/>
+            <TextBox x:Name="AddressTextBox" Grid.Column="1" Grid.Row="2"/>
 
+            <TextBlock Text="画像" Grid.Row="3"/>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="WhiteSmoke"/>
+                        <Setter Property="Margin" Value="2"/>
+                        <Setter Property="FontSize" Value="16"/>
+                    </Style>
+                </Grid.Resources>
+
+                <Button Content="ファイルを開く" x:Name="OpenFileButton" Click="OpenFileButton_Click"/>
+                <Button Content="画像クリア" x:Name="imageClearButton" Grid.Column="1" Click="ImageClear_Click"/>
+                <Border BorderBrush="Black" BorderThickness="2" Grid.Column="2" Margin="0,0,2,0" Background="WhiteSmoke">
+                    <Image x:Name="PictureImage" Height="46" Grid.Column="2"/>
+                </Border>
+            </Grid>
         </Grid>
-        <StackPanel Orientation="Horizontal">
-            <StackPanel.Resources>
-                <Style TargetType="Button">
-                    <Setter Property="Background" Value="WhiteSmoke"/>
-                    <Setter Property="Margin" Value="2"/>
-                    <Setter Property="FontSize" Value="16"/>
-                </Style>
-
-            </StackPanel.Resources>
-            <TextBlock Text="画像" Width="64"/>
-            <Button Content="OpenFile" x:Name="OpenFileButton" Width="130"
-                    Click="OpenFileButton_Click"/>
-            <Button Content="Clear" x:Name="imageClearButton" Width="45" Click="ImageClear_Click"/>
-            <Border BorderBrush="Black" BorderThickness="2" Height="50" Width="70">
-                <Image x:Name="PictureImage" Height="46" Width="66"/>
-            </Border>
-        </StackPanel>
 
         <Grid>
             <Grid.Resources>
@@ -64,6 +70,7 @@
                     <Setter Property="FontSize" Value="16"/>
                 </Style>
             </Grid.Resources>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="*"/>
@@ -73,29 +80,38 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button Content="Save" x:Name="SaveButton"  Click="SaveButton_Click" Background="LightSkyBlue"/>
-            <Button Content="Update" x:Name="UpdateButton" Grid.Row="1" Click="UpdateButton_Click" Background="LightYellow"/>
+            
+            <Button Content="新規登録" x:Name="SaveButton"  Click="SaveButton_Click" Background="LightSteelBlue"/>
+            <Button Content="更新" x:Name="UpdateButton" Grid.Row="1" Click="UpdateButton_Click" Background="LightYellow"/>
+            
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="12*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Delete" x:Name="DeleteButton" Click="DeleteButton_Click" Background="Black" Foreground="White"/>
+                <Button Content="削除" x:Name="DeleteButton" Click="DeleteButton_Click" Background="Black" Foreground="White"/>
                 <CheckBox x:Name="deleteChecker" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
-            <Button Content="Clear" x:Name="ClearButton" Grid.RowSpan="3" Grid.Column ="1" Click="ClearButton_Click" Background="White"/>
+            
+            <Button Content="クリア" x:Name="ClearButton" Grid.RowSpan="3" Grid.Column ="1" Click="ClearButton_Click" Background="White"/>
         </Grid>
-
-        <TextBox x:Name="SearchTextBox" FontSize="20" Margin="2" TextChanged="SearchTextBox_TextChanged"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="74"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="検索"/>
+            <TextBox x:Name="SearchTextBox" FontSize="20" TextChanged="SearchTextBox_TextChanged" Grid.Column="1"/>
+        </Grid>
 
         <ListView x:Name="CustomerListView" Margin="2,5,2,0" Height="260" SelectionChanged="CustomerListView_SelectionChanged" FontSize="16">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
-                    <GridViewColumn Header="名前" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="電話番号" DisplayMemberBinding="{Binding Phone}"/>
-                    <GridViewColumn Header="住所" DisplayMemberBinding="{Binding Address}"/>
-                    <GridViewColumn Header="画像">
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="Auto"/>
+                    <GridViewColumn Header="名前" DisplayMemberBinding="{Binding Name}" Width="Auto"/>
+                    <GridViewColumn Header="電話番号" DisplayMemberBinding="{Binding Phone}" Width="Auto"/>
+                    <GridViewColumn Header="住所" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
+                    <GridViewColumn Header="画像" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Image Width="50" Height="50" Source="{Binding PictureImage}" />

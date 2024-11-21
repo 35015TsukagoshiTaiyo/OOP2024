@@ -86,6 +86,7 @@ namespace CustomerApp {
                 connection.CreateTable<Customer>();
                 connection.Update(updateItem);
             }
+            SearchTextBox.Text = "";
             ReadDatabase();
         }
 
@@ -108,7 +109,7 @@ namespace CustomerApp {
         private void DeleteButton_Click(object sender, RoutedEventArgs e) {
             var item = CustomerListView.SelectedItem as Customer; //as:参照のキャスト
             if (item == null) {
-                MessageBox.Show("削除する行を選択してください");
+                MessageBox.Show("削除する行を選択してください","警告",MessageBoxButton.OK,MessageBoxImage.Warning);
                 return;
             }
 
@@ -136,7 +137,6 @@ namespace CustomerApp {
 
         //選択行を表示
         private void CustomerListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            var imagePath = GetImagePath();
             var selectedItem = CustomerListView.SelectedItem as Customer;
             if (selectedItem != null) {
                 NameTextBox.Text = selectedItem.Name;
@@ -145,7 +145,6 @@ namespace CustomerApp {
                 if (!string.IsNullOrEmpty(selectedItem.PictureImage)) {
                     PictureImage.Source = new BitmapImage(new Uri(selectedItem.PictureImage));
                 } else {
-                    
                     PictureImage.Source = null;  // 画像を表示しない
                 }
             }
@@ -174,7 +173,7 @@ namespace CustomerApp {
                 }
             }
             catch (Exception) {
-                MessageBox.Show("画像ファイルが選択されていません。");
+                MessageBox.Show("画像ファイルが選択されていません。","警告",MessageBoxButton.OK,MessageBoxImage.Warning);
             }
         }
 
