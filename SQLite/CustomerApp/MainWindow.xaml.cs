@@ -99,9 +99,12 @@ namespace CustomerApp {
                 CustomerListView.ItemsSource = _customers;
             }
         }
-        //検索機能
+        //検索機能 名前・電話番号・住所に対応
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e) {
-            var filterList = _customers.Where(x => x.Name.Contains(SearchTextBox.Text)).ToList();
+            var filterList = _customers.Where(x =>
+                                x.Name.Contains(SearchTextBox.Text) ||
+                                x.Phone.Contains(SearchTextBox.Text) ||
+                                x.Address.Contains(SearchTextBox.Text)).ToList();
             CustomerListView.ItemsSource = filterList;
         }
 
@@ -109,7 +112,7 @@ namespace CustomerApp {
         private void DeleteButton_Click(object sender, RoutedEventArgs e) {
             var item = CustomerListView.SelectedItem as Customer; //as:参照のキャスト
             if (item == null) {
-                MessageBox.Show("削除する行を選択してください","警告",MessageBoxButton.OK,MessageBoxImage.Warning);
+                MessageBox.Show("削除する行を選択してください", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -173,7 +176,7 @@ namespace CustomerApp {
                 }
             }
             catch (Exception) {
-                MessageBox.Show("画像ファイルが選択されていません。","警告",MessageBoxButton.OK,MessageBoxImage.Warning);
+                MessageBox.Show("画像ファイルが選択されていません。", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

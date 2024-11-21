@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerApp"
         mc:Ignorable="d"
-        Title="CustomerApp" Height="600" Width="460" Loaded="Window_Loaded"
+        Title="CustomerApp" Height="600" Width="600" Loaded="Window_Loaded"
         >
     <Window.Resources>
         <Style TargetType="TextBlock">
