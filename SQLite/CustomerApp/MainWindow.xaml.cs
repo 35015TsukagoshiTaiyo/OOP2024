@@ -3,6 +3,8 @@ using Microsoft.Win32;
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,7 @@ namespace CustomerApp {
     /// </summary>
     public partial class MainWindow : Window {
         List<Customer> _customers;
+        string picPath = "";
         public MainWindow() {
             InitializeComponent();
         }
@@ -33,16 +36,27 @@ namespace CustomerApp {
         }
 
         //ImageSourceをbyte[]に変換
-        public byte[] ConvertImageSourceToByteArray(ImageSource imageSource) {
-            if (imageSource is BitmapImage bitmap) {
-                using (MemoryStream memoryStream = new MemoryStream()) {
-                    PngBitmapEncoder encoder = new PngBitmapEncoder();
-                    encoder.Frames.Add(BitmapFrame.Create(bitmap));
-                    encoder.Save(memoryStream);
-                    return memoryStream.ToArray();
-                }
+        //public byte[] ConvertImageSourceToByteArray(ImageSource imageSource) {
+        //    if (imageSource is BitmapImage bitmap) {
+        //        using (MemoryStream memoryStream = new MemoryStream()) {
+        //            PngBitmapEncoder encoder = new PngBitmapEncoder();
+        //            encoder.Frames.Add(BitmapFrame.Create(bitmap));
+        //            encoder.Save(memoryStream);
+        //            return memoryStream.ToArray();
+        //        }
+        //    }
+        //    return null;
+        //}
+        public byte[] ByteArrayConverter(string picPath) {
+            if (PictureImage.Source != null) {
+                Bitmap bmp = new Bitmap(picPath);
+                MemoryStream ms = new MemoryStream();
+                bmp.Save(ms, ImageFormat.Jpeg);
+                byte[] binaryData = ms.ToArray();
+                return binaryData;
+            } else {
+                return null;
             }
-            return null;
         }
 
         //Saveボタン
@@ -56,7 +70,7 @@ namespace CustomerApp {
                 Name = NameTextBox.Text,
                 Phone = PhoneTextBox.Text,
                 Address = AddressTextBox.Text,
-                PictureImage = ConvertImageSourceToByteArray(PictureImage.Source),
+                PictureImage = ByteArrayConverter(picPath),
             };
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
@@ -81,7 +95,7 @@ namespace CustomerApp {
                 updateItem.Name = NameTextBox.Text;
                 updateItem.Phone = PhoneTextBox.Text;
                 updateItem.Address = AddressTextBox.Text;
-                updateItem.PictureImage = ConvertImageSourceToByteArray(PictureImage.Source);
+                updateItem.PictureImage = ByteArrayConverter(picPath);
             }
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
@@ -186,7 +200,8 @@ namespace CustomerApp {
             try {
                 if (ofd.ShowDialog() == true) {
                     //画像をPictureImageにセット
-                    PictureImage.Source = new BitmapImage(new Uri(ofd.FileName));
+                    picPath = ofd.FileName;
+                    PictureImage.Source = new BitmapImage(new Uri(picPath));
                 }
             }
             catch (Exception) {
