@@ -111,7 +111,7 @@
                     <GridViewColumn Header="名前" DisplayMemberBinding="{Binding Name}" Width="Auto"/>
                     <GridViewColumn Header="電話番号" DisplayMemberBinding="{Binding Phone}" Width="Auto"/>
                     <GridViewColumn Header="住所" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
-                    <GridViewColumn Header="画像" Width="Auto">
+                    <GridViewColumn Header="画像" Width="Auto"><!--バインディング対象が特定の列(セル単位)-->
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Image Width="50" Height="50" Source="{Binding PictureImage}" />
@@ -120,7 +120,7 @@
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
-            <ListView.ItemTemplate>
+            <ListView.ItemTemplate><!--バインディング対象がアイテム全体(行)-->
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Grid.Column="0">

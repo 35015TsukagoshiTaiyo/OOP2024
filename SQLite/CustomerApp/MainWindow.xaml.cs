@@ -150,7 +150,7 @@ namespace CustomerApp {
                 PictureImage.Source = ConvertByteArrayToImageSource(selectedItem.PictureImage);
             }
         }
-        //byte[]をPictureImageに変換
+        //byte[]をImageSourceに変換
         public ImageSource ConvertByteArrayToImageSource(byte[] byteArray) {
             if (byteArray == null || byteArray.Length == 0)
                 return null;
