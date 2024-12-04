@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>@* ページ外 *@
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>学校求人票検索システム</title>
+
+    <style>
+        /* 全体のスタイル */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* ビューポート全体の高さ */
+            text-align: center;
+        }
+
+        /* タイトルのスタイル */
+        h1 {
+            width: 100%;
+            padding: 20px;
+            margin: 0;
+            font-size: 2em;
+        }
+
+        /* 入力項目を包むコンテナのスタイル */
+        .form-container {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px; /* 最大幅を600pxに設定 */
+        }
+
+        /* 各フォームのスタイル */
+        .prefecture, .occupation {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* ボタンのスタイル */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            width: 100%;
+        }
+    </style>
+
+
+</head>
+<body>@* ページ内 *@
+    <h1>学校求人票検索システム</h1>@* 大見出し *@
+
+    <div class="form-container">
+        <div class="companyName">
+            <label for="companyName">企業名：</label>
+            <input type="text" value="CompanyName"/> 
+        </div>
+
+
+
+        <!-- 都道府県の選択 -->
+        <div class="prefecture">
+            <label for="prefecture">都道府県:</label>
+            <select id="prefecture" name="prefecture">
+                <option value="">選択</option>
+                <option value="Tokyo">東京</option>
+                <option value="Gunma">群馬</option>
+                <option value="Saitama">埼玉</option>
+            </select>
+        </div>
+
+        <!-- 職種の選択 -->
+        <div class="occupation">
+            <label for="occupation">職種:</label>
+            <select id="occupation" name="occupation">
+                <option value="">選択</option>
+                <option value="programmer">プログラマー</option>
+                <option value="SE">SE</option>
+                <option value="networkEngineer">ネットワークエンジニア</option>
+            </select>
+        </div>
+
+        <!-- 検索ボタン -->
+        <button type="submit">検索</button>
+    </div>
+
+
+
+
+
+</body>
+</html>
