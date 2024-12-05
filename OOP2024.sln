@@ -191,6 +191,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSampleApp", "WebApp\WebS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSQLiteSample", "WebApp\WebSQLiteSample\WebSQLiteSample.csproj", "{89F9102F-60A2-45D2-A0E6-46F5C27866C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSampleYoutubeAPI", "WebApp\WebSampleYoutubeAPI\WebSampleYoutubeAPI.csproj", "{8A5838AA-99A0-4C46-BD5D-33BCA8849A53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -439,6 +441,10 @@ Global
 		{89F9102F-60A2-45D2-A0E6-46F5C27866C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89F9102F-60A2-45D2-A0E6-46F5C27866C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89F9102F-60A2-45D2-A0E6-46F5C27866C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A5838AA-99A0-4C46-BD5D-33BCA8849A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A5838AA-99A0-4C46-BD5D-33BCA8849A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A5838AA-99A0-4C46-BD5D-33BCA8849A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A5838AA-99A0-4C46-BD5D-33BCA8849A53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -518,6 +524,7 @@ Global
 		{CCE6B425-BFDE-4EAC-9804-A46C6C2151DD} = {3FF0290E-4509-4A0C-9F4A-6A14016B1958}
 		{83FDBFDD-E27F-46E4-A795-E7B022B99C3B} = {5A22EC68-0BB5-43EA-AC06-C7FDFAEE2797}
 		{89F9102F-60A2-45D2-A0E6-46F5C27866C4} = {5A22EC68-0BB5-43EA-AC06-C7FDFAEE2797}
+		{8A5838AA-99A0-4C46-BD5D-33BCA8849A53} = {5A22EC68-0BB5-43EA-AC06-C7FDFAEE2797}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A44D47AA-6067-4388-8A83-636FB27FF96A}

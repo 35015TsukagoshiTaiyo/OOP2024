@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "YouTube Video Details";
+}
+
+<h2>YouTube Video Details</h2>
+
+<!-- 動画情報をループして表示 -->
+@foreach (var video in ViewBag.VideoDetailsList) {
+        <div>
+            <h3>@video.Title</h3>
+            <a href="https://www.youtube.com/watch?v=@video.VideoId" target="_blank">
+                <img src="@video.ThumbnailUrl" alt="Thumbnail" width="320" height="180" />
+            </a>
+        </div>
+}
